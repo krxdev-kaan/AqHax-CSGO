@@ -8,17 +8,36 @@ using System.Runtime.InteropServices;
 using System.Runtime;
 using System.Diagnostics;
 
-namespace AqHaxCSGO.Memory
+namespace AqHaxCSGO.MemoryManagers
 {
     public static class Memory
     {
         public static Process m_Process;
         public static IntPtr m_pProcessHandle;
 
+        public static int clientBase { get; private set; }
+        public static int clientSize { get; private set; }
+        public static int engineBase { get; private set; }
+        public static int engineSize { get; private set; }
+
         public static int m_iNumberOfBytesRead = 0;
         public static int m_iNumberOfBytesWritten = 0;
 
-        public static bool Init(string ProcessName)
+        public static bool Init()
+        {
+            if (GetHandle("csgo"))
+            {
+                clientBase = GetModuleAdress("client_panorama");
+                clientSize = GetModuleSize("client_panorama");
+                engineBase = GetModuleAdress("engine");
+                engineSize = GetModuleSize("engine");
+
+                return true;
+            }
+            else return false;
+        }
+
+        public static bool GetHandle(string ProcessName)
         {
 
             // Check if csgo.exe is running
@@ -104,6 +123,19 @@ namespace AqHaxCSGO.Memory
             ReadProcessMemory((int)m_pProcessHandle, Adress, buffer, buffer.Length, ref m_iNumberOfBytesRead);
 
             return ConvertToFloatArray(buffer); // Transform the ByteArray to A Float Array (PseudoMatrix ;P)
+        }
+
+        public static bool ReadBytes(int StartingAdress, ref byte[] output)
+        {
+            if (ReadProcessMemory((int)m_pProcessHandle, StartingAdress, output, output.Length, ref m_iNumberOfBytesRead)) return true;
+            else return false;
+        }
+
+        public static byte[] ReadBytes(int StartingAdress, int length)
+        {
+            byte[] output = new byte[length];
+            if (ReadProcessMemory((int)m_pProcessHandle, StartingAdress, output, output.Length, ref m_iNumberOfBytesRead)) return output;
+            else return null;
         }
 
         public static void Write<T>(int Adress, object Value)

@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using AqHaxCSGO.MemoryManagers;
 using MaterialSkin;
 using MaterialSkin.Controls;
 

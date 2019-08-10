@@ -66,6 +66,8 @@
     <Compile Include="Memory\Memory.cs" />
     <Compile Include="Memory\NetvarManager.cs" />
     <Compile Include="Memory\OffsetManager.cs" />
+    <Compile Include="Memory\SigScanner.cs" />
+    <Compile Include="Offsets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCPForm.cs">

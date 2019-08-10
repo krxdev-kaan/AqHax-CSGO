@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AqHaxCSGO.Memory
+namespace AqHaxCSGO.MemoryManagers
 {
-    class NetvarManager
+    static class NetvarManager
     {
-
+        //Implement later (if necessary)
     }
 }
