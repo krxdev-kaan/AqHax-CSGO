@@ -67,6 +67,14 @@
     <Compile Include="Memory\NetvarManager.cs" />
     <Compile Include="Memory\OffsetManager.cs" />
     <Compile Include="Memory\SigScanner.cs" />
+    <Compile Include="Objects\Client.cs" />
+    <Compile Include="Objects\Engine.cs" />
+    <Compile Include="Objects\Entity.cs" />
+    <Compile Include="Objects\LocalPlayer.cs" />
+    <Compile Include="Objects\Structs\Angle.cs" />
+    <Compile Include="Objects\Structs\GlowObject.cs" />
+    <Compile Include="Objects\Structs\Vector.cs" />
+    <Compile Include="Objects\Structs\Weapon.cs" />
     <Compile Include="Offsets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Hacks\ShellcodeHacks\" />
-    <Folder Include="Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

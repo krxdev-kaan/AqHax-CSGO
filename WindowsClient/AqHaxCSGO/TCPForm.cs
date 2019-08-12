@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using AqHaxCSGO.MemoryManagers;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using AqHaxCSGO.Objects;
 
 namespace AqHaxCSGO
 {
@@ -31,6 +32,7 @@ namespace AqHaxCSGO
             materialLabel2.Text = LocalIPAddress().ToString();
             Thread th = new Thread(ExecuteServer);
             th.Start();
+            Console.WriteLine(new EntityList()[0]);
         }
 
         private static IPAddress LocalIPAddress()
