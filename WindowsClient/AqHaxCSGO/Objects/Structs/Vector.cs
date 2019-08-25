@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using static System.Math;
 using System.Threading.Tasks;
+using System.Drawing;
+using static AqHaxCSGO.Objects.Structs.Misc;
 
 namespace AqHaxCSGO.Objects
 {
@@ -20,13 +22,10 @@ namespace AqHaxCSGO.Objects
             this.z = z;
         }
 
-        //IMPLEMENT LATER
-        //IMPLEMENT LATER 
-        //IMPLEMENT LATER
-        //Not enough time for finding the window size
-        /*public bool PointOnScreen(out Vector2 OUT)
+        public bool PointOnScreen(out Vector2 OUT)
         {
             float[] ViewMatrix = Client.ViewMatrix;
+            Rectangle window = GetWindowRect(Structs.Misc.handle);
 
             OUT = new Vector2();
             var w = 0.0f;
@@ -54,7 +53,7 @@ namespace AqHaxCSGO.Objects
             OUT.x = x;
             OUT.y = y;
             return true;
-        }*/
+        }
 
         public static Vector3 Zero
         {

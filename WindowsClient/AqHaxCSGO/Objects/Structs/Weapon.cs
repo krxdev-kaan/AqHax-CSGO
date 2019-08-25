@@ -62,6 +62,10 @@ namespace AqHaxCSGO.Objects.Structs
         WEAPON_KNIFE_SURVIVAL_BOWIE = 514,
         WEAPON_KNIFE_BUTTERFLY = 515,
         WEAPON_KNIFE_PUSH = 516,
+        WEAPON_KNIFE_URSUS = 519,
+	    WEAPON_KNIFE_GYPSY_JACKKNIFE = 520,
+	    WEAPON_KNIFE_STILETTO = 522,
+	    WEAPON_KNIFE_WIDOWMAKER = 523,
         GLOVE_STUDDED_BLOODHOUND = 5027,
         GLOVE_T_SIDE = 5028,
         GLOVE_CT_SIDE = 5029,
@@ -71,12 +75,4 @@ namespace AqHaxCSGO.Objects.Structs
         GLOVE_MOTORCYCLE = 5033,
         GLOVE_SPECIALIST = 5034
     };
-
-    public struct Weapon
-    {
-        public int m_iBase;
-        public int m_iItemDefinitionIndex;
-        public int m_iXuIDLow;
-        public int m_iTexture;
-    }
 }
