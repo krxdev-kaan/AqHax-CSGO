@@ -32,7 +32,8 @@ namespace AqHaxCSGO
             materialLabel2.Text = LocalIPAddress().ToString();
             Thread th = new Thread(ExecuteServer);
             th.Start();
-            Console.WriteLine(new EntityList()[0]);
+
+            AqHaxCSGO.Objects.Structs.Misc.GetWindowRect(AqHaxCSGO.Objects.Structs.Misc.GetWindowHandle());
         }
 
         private static IPAddress LocalIPAddress()

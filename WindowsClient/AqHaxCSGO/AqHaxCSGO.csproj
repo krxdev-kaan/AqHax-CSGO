@@ -70,11 +70,15 @@
     <Compile Include="Objects\Client.cs" />
     <Compile Include="Objects\Engine.cs" />
     <Compile Include="Objects\Entity.cs" />
+    <Compile Include="Objects\Globals.cs" />
     <Compile Include="Objects\LocalPlayer.cs" />
     <Compile Include="Objects\Structs\Angle.cs" />
     <Compile Include="Objects\Structs\GlowObject.cs" />
+    <Compile Include="Objects\Structs\Hitbox.cs" />
+    <Compile Include="Objects\Structs\MiscStructs.cs" />
     <Compile Include="Objects\Structs\Vector.cs" />
     <Compile Include="Objects\Structs\Weapon.cs" />
+    <Compile Include="Objects\Weapon.cs" />
     <Compile Include="Offsets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
