@@ -18,6 +18,11 @@ namespace AqHaxCSGO.Objects
             }
         }
 
+        public static int GetViewModelIndex(int index)
+        {
+            return Memory.Read<int>(LocalPlayerPtr + 0x32F8 + index * 0x4) & 0xFFF; //0x32F8 = DT_BasePlayer -> hViewModel[0]
+        }
+
         public static int Team
         {
             get
@@ -46,15 +51,7 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                int matrix = Memory.Read<int>(LocalPlayerPtr + m_dwBoneMatrix);
-
-                Vector3 headPos = new Vector3();
-
-                headPos.x = Memory.Read<float>(matrix + (0x30 * 8) + 0x0C);
-                headPos.y = Memory.Read<float>(matrix + (0x30 * 8) + 0x1C);
-                headPos.z = Memory.Read<float>(matrix + (0x30 * 8) + 0x2C);
-
-                return headPos;
+                return Memory.Read<Vector3>(LocalPlayerPtr + m_vecViewOffset);
             }
         }
 
@@ -71,6 +68,30 @@ namespace AqHaxCSGO.Objects
             get
             {
                 return Memory.Read<Angle>(Engine.ClientStatePtr + dwClientState_ViewAngles);
+            }
+        }
+
+        public static int ActiveWeaponPtr
+        {
+            get
+            {
+                return Memory.Read<int>(LocalPlayerPtr + m_hActiveWeapon) & 0xFFF;
+            }
+        }
+
+        public static float FlashAlpha
+        {
+            set
+            {
+                Memory.Write<float>(LocalPlayerPtr + m_flFlashMaxAlpha, value);
+            }
+        }
+
+        public static int ShotsFired
+        {
+            get
+            {
+                return Memory.Read<int>(LocalPlayerPtr + m_iShotsFired);
             }
         }
     }

@@ -20,6 +20,8 @@ namespace AqHaxCSGO.Objects
 
         public static void ForceAttack(bool shoot) => Memory.Write<int>(Memory.clientBase + dwForceAttack, shoot ? 5 : 4);
 
+        public static void ForceRightAttack(bool trigger) => Memory.Write<int>(Memory.clientBase + dwForceAttack2, trigger ? 5 : 4);
+
         public static void ForceJump(bool jump) => Memory.Write<int>(Memory.clientBase + dwForceJump, jump ? 5 : 4);
     }
 }
