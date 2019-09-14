@@ -25,6 +25,12 @@ namespace AqHaxCSGO
         public TCPForm()
         {
             InitializeComponent();
+            Application.ApplicationExit += new EventHandler(AppEx);
+        }
+
+        private void AppEx(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
         }
 
         private void TCPForm_Load(object sender, EventArgs e)
@@ -32,8 +38,6 @@ namespace AqHaxCSGO
             materialLabel2.Text = LocalIPAddress().ToString();
             Thread th = new Thread(ExecuteServer);
             th.Start();
-
-            AqHaxCSGO.Objects.Structs.Misc.GetWindowRect(AqHaxCSGO.Objects.Structs.Misc.GetWindowHandle());
         }
 
         private static IPAddress LocalIPAddress()
@@ -163,6 +167,36 @@ namespace AqHaxCSGO
             {
                 this.materialLabel3.Text = text;
                 this.materialLabel3.ForeColor = color;
+            }
+        }
+
+        private void SetOfLabel(string text, Color color)
+        {
+            if (this.label1.InvokeRequired)
+            {
+                this.label1.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    this.label1.Text = text;
+                    this.label1.ForeColor = color;
+                });
+            }
+            else
+            {
+                this.label1.Text = text;
+                this.label1.ForeColor = color;
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            if (Memory.Init())
+            {
+                SetOfLabel("CSGO Online", Color.Green);
+                IntPtr temp = AqHaxCSGO.Objects.Structs.Misc.handle;
+            }
+            else
+            {
+                SetOfLabel("CSGO Offline", Color.Red);
             }
         }
     }
