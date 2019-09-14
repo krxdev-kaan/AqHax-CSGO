@@ -57,7 +57,7 @@ namespace AqHaxCSGO.Objects.Structs
             else
                 return (IntPtr)null;
         }
-        public static Rectangle GetWindowRect(IntPtr handle)
+        public static Rectangle GetWindowRect()
         {
             int mil = DateTime.Now.Millisecond;
             Rect rect;
