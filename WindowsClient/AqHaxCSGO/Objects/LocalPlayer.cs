@@ -39,6 +39,14 @@ namespace AqHaxCSGO.Objects
             }
         }
 
+        public static int CrosshairID
+        {
+            get
+            {
+                return Memory.Read<int>(LocalPlayerPtr + m_iCrosshairId);
+            }
+        }
+
         public static Vector3 VectorOrigin
         {
             get

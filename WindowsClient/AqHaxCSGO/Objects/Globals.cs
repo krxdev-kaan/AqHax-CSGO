@@ -39,4 +39,10 @@ namespace AqHaxCSGO.Objects
 
         public static bool BunnyHopEnabled = false;
     }
+
+    static class GlobalLists
+    {
+        public static EntityList entityList = new EntityList();
+        public static WeaponList weaponList = new WeaponList();
+    }
 }
