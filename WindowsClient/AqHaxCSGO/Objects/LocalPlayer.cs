@@ -77,6 +77,10 @@ namespace AqHaxCSGO.Objects
             {
                 return Memory.Read<Angle>(Engine.ClientStatePtr + dwClientState_ViewAngles);
             }
+            set
+            {
+                Memory.Write<Angle>(Engine.ClientStatePtr +  dwClientState_ViewAngles, value);
+            }
         }
 
         public static int ActiveWeaponPtr
