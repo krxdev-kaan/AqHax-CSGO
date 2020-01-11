@@ -51,7 +51,6 @@ namespace AqHaxCSGO.Objects.Structs
         {
             int mil = DateTime.Now.Millisecond;
             var processes = Process.GetProcessesByName("csgo");
-            Console.WriteLine(DateTime.Now.Millisecond - mil);
             if (processes.Length > 0)
                 return processes[0].MainWindowHandle;
             else
@@ -66,7 +65,6 @@ namespace AqHaxCSGO.Objects.Structs
             ClientToScreen(handle, ref p);
             rect.Left = p.X;
             rect.Top = p.Y;
-            Console.WriteLine(DateTime.Now.Millisecond - mil);
             return new Rectangle(p.X, p.Y, rect.Right, rect.Bottom);
         }
     }

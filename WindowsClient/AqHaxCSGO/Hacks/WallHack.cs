@@ -12,8 +12,9 @@ namespace AqHaxCSGO.Hacks
 {
     static class WallHack
     {
-        static void WallHackThread()
+        public static void WallHackThread()
         {
+            Console.WriteLine("wallhack init");
             while (true)
             {
                 if (!Globals.WallHackEnabled)
@@ -41,9 +42,11 @@ namespace AqHaxCSGO.Hacks
                         glowObject.b = Globals.WallHackEnemy.B / 255;
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
-                        glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 2 : 1;
+                        glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
                         glowObject.m_bRenderWhenOccluded = false;
                         glowObject.m_bRenderWhenUnoccluded = true;
+
+                        entityList[i].GlowObject = glowObject;
                     }
                     else
                     {
@@ -53,17 +56,19 @@ namespace AqHaxCSGO.Hacks
                         glowObject.b = 0 / 255;
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
-                        glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 2 : 1;
+                        glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
                         glowObject.m_bRenderWhenOccluded = false;
                         glowObject.m_bRenderWhenUnoccluded = true;
+
+                        entityList[i].GlowObject = glowObject;
                     }
                 }
 
-                Thread.Sleep(2);
+                Thread.Sleep(3);
             }
         }
 
-        static void RenderColorThread()
+        public static void RenderColorThread()
         {
             while (true)
             {
@@ -104,7 +109,7 @@ namespace AqHaxCSGO.Hacks
                     entityList[i].RenderColor = rc;
                 }
 
-                Thread.Sleep(2);
+                Thread.Sleep(3);
             }
         }
     }

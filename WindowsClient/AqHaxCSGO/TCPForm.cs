@@ -14,14 +14,12 @@ using AqHaxCSGO.MemoryManagers;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using AqHaxCSGO.Objects;
+using static AqHaxCSGO.Objects.Globals;
 
 namespace AqHaxCSGO
 {
     public partial class TCPForm : MaterialForm
     {
-        public bool WallHackEnabled = false;
-        public bool AntiFlashEnabled = false;
-
         public TCPForm()
         {
             InitializeComponent();
@@ -35,9 +33,11 @@ namespace AqHaxCSGO
 
         private void TCPForm_Load(object sender, EventArgs e)
         {
-            materialLabel2.Text = LocalIPAddress().ToString();
+            materialLabel2.Text = LocalIPAddress()?.ToString();
             Thread th = new Thread(ExecuteServer);
             th.Start();
+            OffsetManager.DownloadOffsets();
+            Threads.InitAll();
         }
 
         private static IPAddress LocalIPAddress()
@@ -115,7 +115,7 @@ namespace AqHaxCSGO
                     {
                         SetTextOfLabel("CONNECTED", Color.Green);
                     }
-                    else if (data.Contains("wall"))
+                    else if (data.Contains("wall,"))
                     {
                         string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                         if (formattedStr[1] == "on")
@@ -127,7 +127,65 @@ namespace AqHaxCSGO
                             WallHackEnabled = false;
                         }
                     }
-                    else if (data.Contains("flash"))
+                    else if (data.Contains("wallfull,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            WallHackFullEnabled = true;
+                        }
+                        else
+                        {
+                            WallHackFullEnabled = false;
+                        }
+                    }
+                    else if (data.Contains("wallonly,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            WallHackGlowOnly = true;
+                        }
+                        else
+                        {
+                            WallHackGlowOnly = false;
+                        }
+                    }
+                    else if (data.Contains("enemycolor,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        WallHackEnemy = ColorTranslator.FromHtml("#" + formattedStr[1]);
+                    }
+                    else if (data.Contains("rendercolor,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            RenderEnabled = true;
+                        }
+                        else
+                        {
+                            RenderEnabled = false;
+                        }
+                    }
+                    else if (data.Contains("rendercolorenemy,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            RenderEnemyOnly = true;
+                        }
+                        else
+                        {
+                            RenderEnemyOnly = false;
+                        }
+                    }
+                    else if (data.Contains("renderercolor,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        RenderColor = ColorTranslator.FromHtml("#" + formattedStr[1]);
+                    }
+                    else if (data.Contains("flash,"))
                     {
                         string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                         if (formattedStr[1] == "on")

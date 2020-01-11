@@ -59,7 +59,7 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return Memory.Read<Vector3>(LocalPlayerPtr + m_vecViewOffset);
+                return VectorOrigin + Memory.Read<Vector3>(LocalPlayerPtr + m_vecViewOffset);
             }
         }
 

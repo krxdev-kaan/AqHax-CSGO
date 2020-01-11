@@ -92,11 +92,11 @@ namespace AqHaxCSGO.Hacks
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);
                 for (int i = 0; i < mp; i++)
                 {
-                    Entity ent = entityList[i];
-                    if (ent.Dormant) continue;
-                    if (ent.Health <= 0) continue;
+                    if (entityList[i].Dormant) continue;
+                    if (entityList[i].Health <= 0) continue;
+                    if (entityList[i].Team == LocalPlayer.Team) continue;
 
-                    Vector3 entSelectedPos = ent.GetBonePosition((int)Globals.AimPosition);
+                    Vector3 entSelectedPos = entityList[i].GetBonePosition((int)Globals.AimPosition);
                     Vector2 entPosOnScreen;
                     if (entSelectedPos.PointOnScreen(out entPosOnScreen))
                     {
@@ -118,6 +118,7 @@ namespace AqHaxCSGO.Hacks
                 if (closestEntityPos.x != 99999f && (GetAsyncKeyState((int)Keys.ShiftKey) & 0x8000) > 0)
                 {
                     Angle AimAt = CalcAngle(LocalPlayer.VectorEyeLevel, closestEntityPos);
+                    Console.WriteLine(closestEntityPos.x);
 
                     if (Globals.AimRecoil)
                     {
