@@ -71,6 +71,19 @@ namespace AqHaxCSGO.Objects
             }
         }
 
+        public bool Spotted
+        {
+            get
+            {
+                return Memory.Read<int>(Base + m_bSpotted) == 1;
+            }
+            
+            set 
+            {
+                Memory.Write<int>(Base + m_bSpotted, value ? 1 : 0);
+            }
+        }
+
         public Vector3 VectorOrigin
         {
             get

@@ -31,7 +31,7 @@ namespace AqHaxCSGO.MemoryManagers
                     }
                     catch (Exception err)
                     {
-                        MessageBox.Show("Field Of Offset Missing: " + props[0]); //If we got an error this means we found a offset name which doesn't confront any of the variables name
+                        Console.WriteLine("Field Of Offset Missing: " + props[0]); //If we got an error this means we found a offset name which doesn't confront any of the variables name
                     }
                 }
             }
@@ -67,7 +67,7 @@ namespace AqHaxCSGO.MemoryManagers
                             }
                             catch
                             {
-                                MessageBox.Show("Unknown Field Of Offset: {0}", reader.Value.ToString());
+                                Console.WriteLine("Unknown Field Of Offset: {0}", reader.Value.ToString());
                             }
                         }
                         else if (reader.TokenType == JsonToken.Integer) //If we found an integer it's the value of the variable which we previously set the currentField to be
@@ -87,7 +87,7 @@ namespace AqHaxCSGO.MemoryManagers
                             }
                             else
                             {
-                                MessageBox.Show("Field Of Offset Is Null: {0}", reader.Value.ToString());
+                                Console.WriteLine("Field Of Offset Is Null: {0}", reader.Value.ToString());
                                 tw.WriteLine();
                             }
                         }

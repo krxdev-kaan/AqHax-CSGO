@@ -16,6 +16,7 @@ namespace AqHaxCSGO
         static Thread renderThread = new Thread(WallHack.RenderColorThread);
         static Thread aimThread = new Thread(Aimbot.AimbotThread);
         static Thread triggerThread = new Thread(Aimbot.TriggerThread);
+        static Thread radarThread = new Thread(WallHack.RadarThread);
 
         public static void InitAll()
         {
@@ -26,6 +27,7 @@ namespace AqHaxCSGO
             renderThread.Start();
             aimThread.Start();
             triggerThread.Start();
+            radarThread.Start();
         }
     }
 }

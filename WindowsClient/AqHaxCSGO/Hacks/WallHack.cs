@@ -14,7 +14,6 @@ namespace AqHaxCSGO.Hacks
     {
         public static void WallHackThread()
         {
-            Console.WriteLine("wallhack init");
             while (true)
             {
                 if (!Globals.WallHackEnabled)
@@ -107,6 +106,34 @@ namespace AqHaxCSGO.Hacks
                     rc.b = Globals.RenderColor.B;
                     rc.a = 255;
                     entityList[i].RenderColor = rc;
+                }
+
+                Thread.Sleep(3);
+            }
+        }
+
+        public static void RadarThread() 
+        {
+            while (true) 
+            {
+                if (!Globals.RadarEnabled)
+                {
+                    Thread.Sleep(10);
+                    continue;
+                }
+                if (!Engine.InGame)
+                {
+                    Thread.Sleep(10);
+                    continue;
+                }
+
+                int mp = Engine.MaxPlayer;
+                for (int i = 0; i < mp; i++)
+                {
+                    if (entityList[i].Dormant) continue;
+                    if (entityList[i].Team == LocalPlayer.Team) continue;
+
+                    if (!entityList[i].Spotted) entityList[i].Spotted = true;
                 }
 
                 Thread.Sleep(3);

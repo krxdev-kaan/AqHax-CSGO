@@ -14,6 +14,7 @@ namespace AqHaxCSGO.Objects
         public static bool WallHackFullEnabled = false;
         public static bool WallHackGlowOnly = false;
         public static Color WallHackEnemy = Color.Red;
+        public static Color WallHackTeammate = Color.Green;
 
         public static bool RenderEnabled = false;
         public static bool RenderEnemyOnly = false;
@@ -38,6 +39,8 @@ namespace AqHaxCSGO.Objects
         public static bool AntiFlashEnabled = false;
 
         public static bool BunnyHopEnabled = false;
+
+        public static bool RadarEnabled = false;
     }
 
     static class GlobalLists

@@ -16,7 +16,7 @@ namespace AqHaxCSGO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TCPForm()); //Change to MainForm to use computer based UI
+            Application.Run(new MainForm()); //Change to TCPForm to use mobile device based UI
         }
     }
 }
