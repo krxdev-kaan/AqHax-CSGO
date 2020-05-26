@@ -251,5 +251,35 @@ namespace AqHaxCSGO
                 return f;
             }
         }
+
+        private void aimCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void shootOnCollideCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recoilControlCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void triggerBotCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void holdForTriggerCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

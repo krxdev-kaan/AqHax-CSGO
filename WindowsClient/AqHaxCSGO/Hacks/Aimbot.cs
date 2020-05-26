@@ -25,7 +25,7 @@ namespace AqHaxCSGO.Hacks
         {
             while (true)
             {
-                if (!Globals.TriggerEnabled)
+                if (!Globals.TriggerEnabled && !Globals.AimShootOnCollide)
                 {
                     Thread.Sleep(10);
                     continue;

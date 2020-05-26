@@ -23,5 +23,17 @@ namespace AqHaxCSGO.Objects
         public static void ForceRightAttack(bool trigger) => Memory.Write<int>(Memory.clientBase + dwForceAttack2, trigger ? 5 : 4);
 
         public static void ForceJump(bool jump) => Memory.Write<int>(Memory.clientBase + dwForceJump, jump ? 5 : 4);
+
+        public static byte ForceUpdateSpectatorGlow 
+        {
+            get 
+            {
+                return Memory.Read<byte>(Memory.clientBase + force_update_spectator_glow);
+            }
+            set 
+            {
+                Memory.Write<byte>(Memory.clientBase + force_update_spectator_glow, value);
+            }
+        }
     }
 }

@@ -111,6 +111,8 @@ namespace AqHaxCSGO
                         if (data != null) break;
                     }
 
+                    Console.WriteLine(data);
+
                     if (data == "Merhabalar AQ")
                     {
                         SetTextOfLabel("CONNECTED", Color.Green);
@@ -118,9 +120,11 @@ namespace AqHaxCSGO
                     else if (data.Contains("wall,"))
                     {
                         string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        Console.WriteLine(formattedStr[1]);
                         if (formattedStr[1] == "on")
                         {
                             WallHackEnabled = true;
+                            Console.WriteLine(WallHackEnabled);
                         }
                         else
                         {
@@ -139,7 +143,7 @@ namespace AqHaxCSGO
                             WallHackFullEnabled = false;
                         }
                     }
-                    else if (data.Contains("wallonly,"))
+                    else if (data.Contains("wallglow,"))
                     {
                         string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                         if (formattedStr[1] == "on")

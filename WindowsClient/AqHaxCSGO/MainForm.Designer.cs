@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabController = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.rColor = new System.Windows.Forms.PictureBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.tColor = new System.Windows.Forms.PictureBox();
@@ -44,19 +46,26 @@
             this.radarCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.wallCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.holdForTriggerCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.triggerBotCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
+            this.recoilControlCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.shootOnCollideCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.aimCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tabChangeRight = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabChangeLeft = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.rColor = new System.Windows.Forms.PictureBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialDivider5 = new MaterialSkin.Controls.MaterialDivider();
+            this.aimAssistCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabController.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -90,11 +99,35 @@
             this.tabPage1.Controls.Add(this.wallCheckBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(249, 242);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Wall-Hack";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(182, 206);
+            this.materialLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(46, 19);
+            this.materialLabel4.TabIndex = 14;
+            this.materialLabel4.Text = "Color";
+            // 
+            // rColor
+            // 
+            this.rColor.BackColor = System.Drawing.Color.Red;
+            this.rColor.Location = new System.Drawing.Point(228, 206);
+            this.rColor.Name = "rColor";
+            this.rColor.Size = new System.Drawing.Size(21, 21);
+            this.rColor.TabIndex = 12;
+            this.rColor.TabStop = false;
+            this.rColor.Click += new System.EventHandler(this.rColor_Click);
             // 
             // materialLabel2
             // 
@@ -282,12 +315,126 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.aimAssistCheckBox);
+            this.tabPage2.Controls.Add(this.materialDivider5);
+            this.tabPage2.Controls.Add(this.holdForTriggerCheckBox);
+            this.tabPage2.Controls.Add(this.triggerBotCheckBox);
+            this.tabPage2.Controls.Add(this.materialDivider4);
+            this.tabPage2.Controls.Add(this.recoilControlCheckBox);
+            this.tabPage2.Controls.Add(this.shootOnCollideCheckBox);
+            this.tabPage2.Controls.Add(this.aimCheckBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(249, 242);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Aim-Hack";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // holdForTriggerCheckBox
+            // 
+            this.holdForTriggerCheckBox.AutoSize = true;
+            this.holdForTriggerCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.holdForTriggerCheckBox.Depth = 0;
+            this.holdForTriggerCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.holdForTriggerCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.holdForTriggerCheckBox.Location = new System.Drawing.Point(27, 152);
+            this.holdForTriggerCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.holdForTriggerCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.holdForTriggerCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.holdForTriggerCheckBox.Name = "holdForTriggerCheckBox";
+            this.holdForTriggerCheckBox.Ripple = true;
+            this.holdForTriggerCheckBox.Size = new System.Drawing.Size(130, 30);
+            this.holdForTriggerCheckBox.TabIndex = 11;
+            this.holdForTriggerCheckBox.Text = "Hold For Trigger";
+            this.holdForTriggerCheckBox.UseVisualStyleBackColor = false;
+            this.holdForTriggerCheckBox.CheckedChanged += new System.EventHandler(this.holdForTriggerCheckBox_CheckedChanged);
+            // 
+            // triggerBotCheckBox
+            // 
+            this.triggerBotCheckBox.AutoSize = true;
+            this.triggerBotCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.triggerBotCheckBox.Depth = 0;
+            this.triggerBotCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.triggerBotCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.triggerBotCheckBox.Location = new System.Drawing.Point(2, 122);
+            this.triggerBotCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.triggerBotCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.triggerBotCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.triggerBotCheckBox.Name = "triggerBotCheckBox";
+            this.triggerBotCheckBox.Ripple = true;
+            this.triggerBotCheckBox.Size = new System.Drawing.Size(100, 30);
+            this.triggerBotCheckBox.TabIndex = 10;
+            this.triggerBotCheckBox.Text = "Trigger-Bot";
+            this.triggerBotCheckBox.UseVisualStyleBackColor = false;
+            this.triggerBotCheckBox.CheckedChanged += new System.EventHandler(this.triggerBotCheckBox_CheckedChanged);
+            // 
+            // materialDivider4
+            // 
+            this.materialDivider4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider4.Depth = 0;
+            this.materialDivider4.Location = new System.Drawing.Point(-7, 96);
+            this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider4.Name = "materialDivider4";
+            this.materialDivider4.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider4.TabIndex = 9;
+            this.materialDivider4.Text = "materialDivider4";
+            // 
+            // recoilControlCheckBox
+            // 
+            this.recoilControlCheckBox.AutoSize = true;
+            this.recoilControlCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.recoilControlCheckBox.Depth = 0;
+            this.recoilControlCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.recoilControlCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.recoilControlCheckBox.Location = new System.Drawing.Point(27, 63);
+            this.recoilControlCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.recoilControlCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.recoilControlCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.recoilControlCheckBox.Name = "recoilControlCheckBox";
+            this.recoilControlCheckBox.Ripple = true;
+            this.recoilControlCheckBox.Size = new System.Drawing.Size(116, 30);
+            this.recoilControlCheckBox.TabIndex = 8;
+            this.recoilControlCheckBox.Text = "Control Recoil";
+            this.recoilControlCheckBox.UseVisualStyleBackColor = false;
+            this.recoilControlCheckBox.CheckedChanged += new System.EventHandler(this.recoilControlCheckBox_CheckedChanged);
+            // 
+            // shootOnCollideCheckBox
+            // 
+            this.shootOnCollideCheckBox.AutoSize = true;
+            this.shootOnCollideCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.shootOnCollideCheckBox.Depth = 0;
+            this.shootOnCollideCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.shootOnCollideCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.shootOnCollideCheckBox.Location = new System.Drawing.Point(27, 33);
+            this.shootOnCollideCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.shootOnCollideCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.shootOnCollideCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.shootOnCollideCheckBox.Name = "shootOnCollideCheckBox";
+            this.shootOnCollideCheckBox.Ripple = true;
+            this.shootOnCollideCheckBox.Size = new System.Drawing.Size(149, 30);
+            this.shootOnCollideCheckBox.TabIndex = 7;
+            this.shootOnCollideCheckBox.Text = "Shoot When Visible";
+            this.shootOnCollideCheckBox.UseVisualStyleBackColor = false;
+            this.shootOnCollideCheckBox.CheckedChanged += new System.EventHandler(this.shootOnCollideCheckBox_CheckedChanged);
+            // 
+            // aimCheckBox
+            // 
+            this.aimCheckBox.AutoSize = true;
+            this.aimCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.aimCheckBox.Depth = 0;
+            this.aimCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.aimCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.aimCheckBox.Location = new System.Drawing.Point(2, 3);
+            this.aimCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.aimCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.aimCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.aimCheckBox.Name = "aimCheckBox";
+            this.aimCheckBox.Ripple = true;
+            this.aimCheckBox.Size = new System.Drawing.Size(87, 30);
+            this.aimCheckBox.TabIndex = 6;
+            this.aimCheckBox.Text = "Rage-Bot";
+            this.aimCheckBox.UseVisualStyleBackColor = false;
+            this.aimCheckBox.CheckedChanged += new System.EventHandler(this.aimCheckBox_CheckedChanged);
             // 
             // tabPage3
             // 
@@ -352,30 +499,6 @@
             this.tabChangeLeft.UseVisualStyleBackColor = true;
             this.tabChangeLeft.Click += new System.EventHandler(this.tabChangeLeft_Click);
             // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(182, 206);
-            this.materialLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(46, 19);
-            this.materialLabel4.TabIndex = 14;
-            this.materialLabel4.Text = "Color";
-            // 
-            // rColor
-            // 
-            this.rColor.BackColor = System.Drawing.Color.Red;
-            this.rColor.Location = new System.Drawing.Point(228, 206);
-            this.rColor.Name = "rColor";
-            this.rColor.Size = new System.Drawing.Size(21, 21);
-            this.rColor.TabIndex = 12;
-            this.rColor.TabStop = false;
-            this.rColor.Click += new System.EventHandler(this.rColor_Click);
-            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
@@ -389,6 +512,36 @@
             this.materialLabel3.Size = new System.Drawing.Size(97, 19);
             this.materialLabel3.TabIndex = 6;
             this.materialLabel3.Text = "AqHax-CSGO";
+            // 
+            // materialDivider5
+            // 
+            this.materialDivider5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider5.Depth = 0;
+            this.materialDivider5.Location = new System.Drawing.Point(3, 185);
+            this.materialDivider5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider5.Name = "materialDivider5";
+            this.materialDivider5.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider5.TabIndex = 12;
+            this.materialDivider5.Text = "materialDivider5";
+            // 
+            // aimAssistCheckBox
+            // 
+            this.aimAssistCheckBox.AutoSize = true;
+            this.aimAssistCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.aimAssistCheckBox.Depth = 0;
+            this.aimAssistCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.aimAssistCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.aimAssistCheckBox.Location = new System.Drawing.Point(2, 211);
+            this.aimAssistCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.aimAssistCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.aimAssistCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.aimAssistCheckBox.Name = "aimAssistCheckBox";
+            this.aimAssistCheckBox.Ripple = true;
+            this.aimAssistCheckBox.Size = new System.Drawing.Size(98, 30);
+            this.aimAssistCheckBox.TabIndex = 13;
+            this.aimAssistCheckBox.Text = "Aim-Assist";
+            this.aimAssistCheckBox.UseVisualStyleBackColor = false;
+            this.aimAssistCheckBox.CheckedChanged += new System.EventHandler(this.aimAssistCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -409,9 +562,11 @@
             this.tabController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rColor)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,6 +596,14 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private System.Windows.Forms.PictureBox rColor;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialCheckBox recoilControlCheckBox;
+        private MaterialSkin.Controls.MaterialCheckBox shootOnCollideCheckBox;
+        private MaterialSkin.Controls.MaterialCheckBox aimCheckBox;
+        private MaterialSkin.Controls.MaterialCheckBox holdForTriggerCheckBox;
+        private MaterialSkin.Controls.MaterialCheckBox triggerBotCheckBox;
+        private MaterialSkin.Controls.MaterialDivider materialDivider4;
+        private MaterialSkin.Controls.MaterialCheckBox aimAssistCheckBox;
+        private MaterialSkin.Controls.MaterialDivider materialDivider5;
     }
 }
 
