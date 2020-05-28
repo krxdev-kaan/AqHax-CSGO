@@ -36,7 +36,7 @@ namespace AqHaxCSGO.Hacks
                     continue;
                 }
 
-                if (Globals.TriggerPressOnlyEnabled)
+                if (Globals.TriggerPressOnlyEnabled && !Globals.AimShootOnCollide)
                 {
                     if ((GetAsyncKeyState((int)Keys.ShiftKey) & 0x8000) > 0)
                     {

@@ -10,7 +10,7 @@ But now thanks to the Corona Virus i finally have time to start and finish this 
 
 ## Roadmap
 - [x] Make and implement "Visuals" tab. [ Estimated Time: 24-26 May ]
-- [ ] Make and implement "Aim" tab.     [ Estimated Time: 26-28 May ]
+- [x] Make and implement "Aim" tab.     [ Estimated Time: 26-28 May ]
 - [ ] Make and implement "Misc" tab.    [ Estimated Time: 28-30 May ]
 - [ ] Make and implement "Settings" tab.[ Estimated Time: 30-01 May-Jun ]
 
@@ -24,17 +24,18 @@ And of course this roadmap is just the core functionalities such as (other goals
   - Anti-Flash
 
 # Planned Features
-  - [ ] An IOS UI to control the hack during a game using an IOS device. (IOS App already complete)
+  - [x] An IOS UI to control the hack during a game using an IOS device. (IOS App already complete)
   - [x] Ofc a normal Windows UI for those whom doesn't own an IOS device or just not interested.
   - [ ] Maybe an in-game menu but not my main goal rn.
   - [ ] BSP Parsing would be pretty cool to achieve but im not pretty sure if i can do it.
-  - [ ] Aimbot with some customization.
-  - [ ] WallHack with some customization.
+  - [x] Aimbot with some customization.
+  - [x] WallHack with some customization.
   - [ ] ESP and HealthBar (will include player name, rank, gun, etc.)
   - [ ] Bunny-Hop
   - [ ] Anti-Flash
   - [ ] Chat-bot (maybe)
   - [ ] Animated Clan Name (maybe)
+  - [ ] Just a Aim-Assist to look pretty much legit (i will probably make it)
 
 # Credits
 

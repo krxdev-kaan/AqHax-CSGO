@@ -254,32 +254,40 @@ namespace AqHaxCSGO
 
         private void aimCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Globals.AimEnabled = !Globals.AimEnabled;
+            if (Globals.AimEnabled)
+            {
+                triggerBotCheckBox.Checked = false;
+            }
         }
 
         private void shootOnCollideCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Globals.AimShootOnCollide = !Globals.AimShootOnCollide;
         }
 
         private void recoilControlCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Globals.AimRecoil = !Globals.AimRecoil;
         }
 
         private void triggerBotCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Globals.TriggerEnabled = !Globals.TriggerEnabled;
+            if (Globals.TriggerEnabled)
+            {
+                aimCheckBox.Checked = false;
+            }
         }
 
         private void holdForTriggerCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            Globals.TriggerPressOnlyEnabled = !Globals.TriggerPressOnlyEnabled;
         }
 
         private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            MessageBox.Show("This feature is not implemented yet because im not sure if i want to add it right now.");
         }
     }
 }
