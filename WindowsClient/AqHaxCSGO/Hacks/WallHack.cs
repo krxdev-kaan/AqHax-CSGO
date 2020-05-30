@@ -42,8 +42,8 @@ namespace AqHaxCSGO.Hacks
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
-                        glowObject.m_bRenderWhenOccluded = false;
-                        glowObject.m_bRenderWhenUnoccluded = true;
+                        glowObject.m_bRenderWhenOccluded = true;
+                        glowObject.m_bRenderWhenUnoccluded = false;
 
                         entityList[i].GlowObject = glowObject;
                     }
@@ -56,8 +56,8 @@ namespace AqHaxCSGO.Hacks
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
-                        glowObject.m_bRenderWhenOccluded = false;
-                        glowObject.m_bRenderWhenUnoccluded = true;
+                        glowObject.m_bRenderWhenOccluded = true;
+                        glowObject.m_bRenderWhenUnoccluded = false;
 
                         entityList[i].GlowObject = glowObject;
                     }

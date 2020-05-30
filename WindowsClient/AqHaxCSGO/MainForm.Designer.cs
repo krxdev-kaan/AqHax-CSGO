@@ -46,6 +46,8 @@
             this.radarCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.wallCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.aimAssistCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialDivider5 = new MaterialSkin.Controls.MaterialDivider();
             this.holdForTriggerCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.triggerBotCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
@@ -58,14 +60,16 @@
             this.tabChangeRight = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabChangeLeft = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialDivider5 = new MaterialSkin.Controls.MaterialDivider();
-            this.aimAssistCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.antiFlashCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialDivider6 = new MaterialSkin.Controls.MaterialDivider();
+            this.bunnyHopCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabController.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctColor)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -330,6 +334,36 @@
             this.tabPage2.Text = "Aim-Hack";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // aimAssistCheckBox
+            // 
+            this.aimAssistCheckBox.AutoSize = true;
+            this.aimAssistCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.aimAssistCheckBox.Depth = 0;
+            this.aimAssistCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.aimAssistCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.aimAssistCheckBox.Location = new System.Drawing.Point(2, 211);
+            this.aimAssistCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.aimAssistCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.aimAssistCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.aimAssistCheckBox.Name = "aimAssistCheckBox";
+            this.aimAssistCheckBox.Ripple = true;
+            this.aimAssistCheckBox.Size = new System.Drawing.Size(98, 30);
+            this.aimAssistCheckBox.TabIndex = 13;
+            this.aimAssistCheckBox.Text = "Aim-Assist";
+            this.aimAssistCheckBox.UseVisualStyleBackColor = false;
+            this.aimAssistCheckBox.CheckedChanged += new System.EventHandler(this.aimAssistCheckBox_CheckedChanged);
+            // 
+            // materialDivider5
+            // 
+            this.materialDivider5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider5.Depth = 0;
+            this.materialDivider5.Location = new System.Drawing.Point(3, 185);
+            this.materialDivider5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider5.Name = "materialDivider5";
+            this.materialDivider5.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider5.TabIndex = 12;
+            this.materialDivider5.Text = "materialDivider5";
+            // 
             // holdForTriggerCheckBox
             // 
             this.holdForTriggerCheckBox.AutoSize = true;
@@ -438,6 +472,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.bunnyHopCheckBox);
+            this.tabPage3.Controls.Add(this.antiFlashCheckBox);
+            this.tabPage3.Controls.Add(this.materialDivider6);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(249, 242);
@@ -513,35 +550,54 @@
             this.materialLabel3.TabIndex = 6;
             this.materialLabel3.Text = "AqHax-CSGO";
             // 
-            // materialDivider5
+            // antiFlashCheckBox
             // 
-            this.materialDivider5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider5.Depth = 0;
-            this.materialDivider5.Location = new System.Drawing.Point(3, 185);
-            this.materialDivider5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider5.Name = "materialDivider5";
-            this.materialDivider5.Size = new System.Drawing.Size(260, 23);
-            this.materialDivider5.TabIndex = 12;
-            this.materialDivider5.Text = "materialDivider5";
+            this.antiFlashCheckBox.AutoSize = true;
+            this.antiFlashCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.antiFlashCheckBox.Depth = 0;
+            this.antiFlashCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.antiFlashCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.antiFlashCheckBox.Location = new System.Drawing.Point(-2, 133);
+            this.antiFlashCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.antiFlashCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.antiFlashCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.antiFlashCheckBox.Name = "antiFlashCheckBox";
+            this.antiFlashCheckBox.Ripple = true;
+            this.antiFlashCheckBox.Size = new System.Drawing.Size(92, 30);
+            this.antiFlashCheckBox.TabIndex = 15;
+            this.antiFlashCheckBox.Text = "Anti-Flash";
+            this.antiFlashCheckBox.UseVisualStyleBackColor = false;
+            this.antiFlashCheckBox.CheckedChanged += new System.EventHandler(this.antiFlashCheckBox_CheckedChanged);
             // 
-            // aimAssistCheckBox
+            // materialDivider6
             // 
-            this.aimAssistCheckBox.AutoSize = true;
-            this.aimAssistCheckBox.BackColor = System.Drawing.Color.Maroon;
-            this.aimAssistCheckBox.Depth = 0;
-            this.aimAssistCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
-            this.aimAssistCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.aimAssistCheckBox.Location = new System.Drawing.Point(2, 211);
-            this.aimAssistCheckBox.Margin = new System.Windows.Forms.Padding(0);
-            this.aimAssistCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.aimAssistCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
-            this.aimAssistCheckBox.Name = "aimAssistCheckBox";
-            this.aimAssistCheckBox.Ripple = true;
-            this.aimAssistCheckBox.Size = new System.Drawing.Size(98, 30);
-            this.aimAssistCheckBox.TabIndex = 13;
-            this.aimAssistCheckBox.Text = "Aim-Assist";
-            this.aimAssistCheckBox.UseVisualStyleBackColor = false;
-            this.aimAssistCheckBox.CheckedChanged += new System.EventHandler(this.aimAssistCheckBox_CheckedChanged);
+            this.materialDivider6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider6.Depth = 0;
+            this.materialDivider6.Location = new System.Drawing.Point(-4, 107);
+            this.materialDivider6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider6.Name = "materialDivider6";
+            this.materialDivider6.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider6.TabIndex = 14;
+            this.materialDivider6.Text = "materialDivider6";
+            // 
+            // bunnyHopCheckBox
+            // 
+            this.bunnyHopCheckBox.AutoSize = true;
+            this.bunnyHopCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.bunnyHopCheckBox.Depth = 0;
+            this.bunnyHopCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.bunnyHopCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bunnyHopCheckBox.Location = new System.Drawing.Point(-2, 74);
+            this.bunnyHopCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.bunnyHopCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.bunnyHopCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.bunnyHopCheckBox.Name = "bunnyHopCheckBox";
+            this.bunnyHopCheckBox.Ripple = true;
+            this.bunnyHopCheckBox.Size = new System.Drawing.Size(98, 30);
+            this.bunnyHopCheckBox.TabIndex = 16;
+            this.bunnyHopCheckBox.Text = "Bunny-Hop";
+            this.bunnyHopCheckBox.UseVisualStyleBackColor = false;
+            this.bunnyHopCheckBox.CheckedChanged += new System.EventHandler(this.bunnyHopCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -567,6 +623,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctColor)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,6 +662,9 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
         private MaterialSkin.Controls.MaterialCheckBox aimAssistCheckBox;
         private MaterialSkin.Controls.MaterialDivider materialDivider5;
+        private MaterialSkin.Controls.MaterialCheckBox bunnyHopCheckBox;
+        private MaterialSkin.Controls.MaterialCheckBox antiFlashCheckBox;
+        private MaterialSkin.Controls.MaterialDivider materialDivider6;
     }
 }
 

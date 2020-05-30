@@ -34,35 +34,45 @@ namespace AqHaxCSGO
             rColor.Region = new Region(path3);
 
             #region HANDLE SAVES
-            string[] lines = File.ReadAllLines("CSG.dat");
-            Color colorCT = new Color();
-            Color colorT = new Color();
-            Color colorR = new Color();
-            int p = 0;
-            foreach (string line in lines)
+            try
             {
-                //if (p == 0) trigk = Convert.ToInt32(line);
-                if (p == 1)
-                {
-                    colorCT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
-                }
-                if (p == 2)
-                {
-                    colorT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
-                }
-                if (p == 3)
-                {
-                    colorR = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
-                }
-                p++;
-            }
 
-            ctColor.BackColor = colorCT;
-            tColor.BackColor = colorT;
-            rColor.BackColor = colorR;
-            Globals.WallHackEnemy = colorCT;
-            Globals.WallHackTeammate = colorT;
-            Globals.RenderColor = colorR;
+                string[] lines = File.ReadAllLines("CSG.dat");
+                Color colorCT = new Color();
+                Color colorT = new Color();
+                Color colorR = new Color();
+                int p = 0;
+                foreach (string line in lines)
+                {
+                    //if (p == 0) trigk = Convert.ToInt32(line);
+                    if (p == 1)
+                    {
+                        colorCT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
+                    }
+                    if (p == 2)
+                    {
+                        colorT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
+                    }
+                    if (p == 3)
+                    {
+                        colorR = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
+                    }
+                    p++;
+                }
+
+                ctColor.BackColor = colorCT;
+                tColor.BackColor = colorT;
+                rColor.BackColor = colorR;
+                Globals.WallHackEnemy = colorCT;
+                Globals.WallHackTeammate = colorT;
+                Globals.RenderColor = colorR;
+            }
+            catch 
+            {
+                MessageBox.Show("Save file not found or created. Going to continue with default settings.");
+                File.Create("CSG.dat");
+                File.WriteAllLines("CSG.dat", new string[] {"16", "000000000", "000000000", "000000000"});
+            }
             #endregion
 
             if (!Memory.Init())
@@ -288,6 +298,16 @@ namespace AqHaxCSGO
         private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             MessageBox.Show("This feature is not implemented yet because im not sure if i want to add it right now.");
+        }
+
+        private void bunnyHopCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.BunnyHopEnabled = !Globals.BunnyHopEnabled;
+        }
+
+        private void antiFlashCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.AntiFlashEnabled = !Globals.AntiFlashEnabled;
         }
     }
 }

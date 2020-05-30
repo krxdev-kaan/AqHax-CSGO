@@ -1,7 +1,11 @@
 # AqHax-CSGO
 
 AqHax is a CSGO Hack that is written in C#. I made lots of hacks on CSGO but this time i will make a open-source one.
-This hack will be made with all the knowledge i had in C# and ideas from all around GITHUB so code similarities are expected but most of the code will indeed be mine.
+This hack supports an IOS App to be used wirelessly from your IOS Devices !
+App is made by me and you can find it right here [CSGOHackGUI](https://github.com/krxdev-kaan/CSGOHackGUI/).
+
+The full release of the hack is expected to be available in one week. 
+But you can launch the hack in visual studio right now and it'll work just fine.
 
 ## Why did the project take so long ?
 
@@ -11,7 +15,7 @@ But now thanks to the Corona Virus i finally have time to start and finish this 
 ## Roadmap
 - [x] Make and implement "Visuals" tab. [ Estimated Time: 24-26 May ]
 - [x] Make and implement "Aim" tab.     [ Estimated Time: 26-28 May ]
-- [ ] Make and implement "Misc" tab.    [ Estimated Time: 28-30 May ]
+- [x] Make and implement "Misc" tab.    [ Estimated Time: 28-30 May ]
 - [ ] Make and implement "Settings" tab.[ Estimated Time: 30-01 May-Jun ]
 
 And of course this roadmap is just the core functionalities such as (other goals are down below "*Planned Features*")
@@ -31,8 +35,8 @@ And of course this roadmap is just the core functionalities such as (other goals
   - [x] Aimbot with some customization.
   - [x] WallHack with some customization.
   - [ ] ESP and HealthBar (will include player name, rank, gun, etc.)
-  - [ ] Bunny-Hop
-  - [ ] Anti-Flash
+  - [x] Bunny-Hop
+  - [x] Anti-Flash
   - [ ] Chat-bot (maybe)
   - [ ] Animated Clan Name (maybe)
   - [ ] Just a Aim-Assist to look pretty much legit (i will probably make it)
