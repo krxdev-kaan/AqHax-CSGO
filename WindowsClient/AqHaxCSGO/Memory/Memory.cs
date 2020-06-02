@@ -39,7 +39,6 @@ namespace AqHaxCSGO.MemoryManagers
 
         public static bool GetHandle(string ProcessName)
         {
-
             // Check if csgo.exe is running
             if (Process.GetProcessesByName(ProcessName).Length > 0)
                 m_Process = Process.GetProcessesByName(ProcessName)[0];

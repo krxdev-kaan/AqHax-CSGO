@@ -48,8 +48,8 @@ namespace AqHaxCSGO.MemoryManagers
         {
             try
             {
-                StreamWriter sw = new StreamWriter(File.OpenWrite("Offsets.data")); //Prepare to update the save file
-                TextWriter tw = sw;
+                //StreamWriter sw = new StreamWriter(File.OpenWrite("Offsets.data"));  //Uncomment to gather all the offsets as a file
+                //TextWriter tw = sw; //Uncomment to gather all the offsets as a file
                 string offsetJSON = (new WebClient()).DownloadString("https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.json"); //Download the JSON containing updated offsets (Thanks to frk1/hazedumper :))
                 FieldInfo currentField = null;
                 JsonTextReader reader = new JsonTextReader(new StringReader(offsetJSON)); //Init JSON Reader
@@ -62,7 +62,8 @@ namespace AqHaxCSGO.MemoryManagers
                             try
                             {
                                 currentField = typeof(Offsets).GetField(reader.Value.ToString(), BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField | BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
-                                if (reader.Value.ToString() != "signatures" && reader.Value.ToString() != "netvars") tw.Write(reader.Value.ToString() + " ");
+                                //Uncomment to gather all the offsets as a file
+                                //if (reader.Value.ToString() != "signatures" && reader.Value.ToString() != "netvars") tw.Write(reader.Value.ToString() + " ");
                                 Console.WriteLine("Prop: " + reader.Value.ToString());
                             }
                             catch
@@ -77,7 +78,7 @@ namespace AqHaxCSGO.MemoryManagers
                                 try
                                 {
                                     currentField.SetValue(null, Convert.ToInt32(reader.Value.ToString()));
-                                    tw.WriteLine(reader.Value.ToString());
+                                    //tw.WriteLine(reader.Value.ToString()); //Uncomment to gather all the offsets as a file
                                     Console.WriteLine("Val: " + reader.Value);
                                 }
                                 catch
@@ -88,14 +89,14 @@ namespace AqHaxCSGO.MemoryManagers
                             else
                             {
                                 Console.WriteLine("Field Of Offset Is Null: {0}", reader.Value.ToString());
-                                tw.WriteLine();
+                                //tw.WriteLine(); //Uncomment to gather all the offsets as a file
                             }
                         }
                     }
                 }
 
-                tw.Close();
-                sw.Close();
+                //tw.Close(); //Uncomment to gather all the offsets as a file
+                //sw.Close(); //Uncomment to gather all the offsets as a file
             }
             catch
             {

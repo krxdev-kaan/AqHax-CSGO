@@ -24,12 +24,12 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.AntiFlashEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
@@ -44,12 +44,12 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.BunnyHopEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
@@ -63,7 +63,7 @@ namespace AqHaxCSGO.Hacks
                     }
                 }
 
-                Thread.Sleep(2);
+                Thread.Sleep(Globals.BunnyHopAccuracy);
             }
         }
     }

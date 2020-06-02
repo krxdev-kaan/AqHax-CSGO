@@ -18,18 +18,19 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.WallHackEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
                 int mp = Engine.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
+                    if (entityList[i] == null) continue;
                     if (entityList[i].Dormant) continue;
                     if (entityList[i].Health <= 0) continue;
 
@@ -63,7 +64,7 @@ namespace AqHaxCSGO.Hacks
                     }
                 }
 
-                Thread.Sleep(3);
+                Thread.Sleep(Globals.UsageDelay);
             }
         }
 
@@ -73,18 +74,19 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.RenderEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
                 int mp = Engine.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
+                    if (entityList[i] == null) continue;
                     if (entityList[i].Dormant) continue;
                     if (entityList[i].Health <= 0) continue;
 
@@ -108,7 +110,7 @@ namespace AqHaxCSGO.Hacks
                     entityList[i].RenderColor = rc;
                 }
 
-                Thread.Sleep(3);
+                Thread.Sleep(Globals.UsageDelay);
             }
         }
 
@@ -118,25 +120,26 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.RadarEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
                 int mp = Engine.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
+                    if (entityList[i] == null) continue;
                     if (entityList[i].Dormant) continue;
                     if (entityList[i].Team == LocalPlayer.Team) continue;
 
                     if (!entityList[i].Spotted) entityList[i].Spotted = true;
                 }
 
-                Thread.Sleep(3);
+                Thread.Sleep(Globals.UsageDelay);
             }
         }
     }

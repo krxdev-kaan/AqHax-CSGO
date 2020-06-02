@@ -11,12 +11,14 @@ namespace AqHaxCSGO
         /// <summary>
         /// Uygulamanın ana girdi noktası.
         /// </summary>
+        public static EntryForm entryForm;
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm()); //Change to TCPForm to use mobile device based UI
+            entryForm = new EntryForm();
+            Application.Run(entryForm); //Change to TCPForm to use mobile device based UI
         }
     }
 }

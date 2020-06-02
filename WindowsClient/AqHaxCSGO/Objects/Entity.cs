@@ -11,7 +11,7 @@ namespace AqHaxCSGO.Objects
 {
     class EntityList
     {
-        private Entity[] entities = new Entity[64];
+        private Entity[] entities = new Entity[4096];
 
         public EntityList()
         {
@@ -25,7 +25,14 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return entities[index];
+                try
+                {
+                    return entities[index];
+                }
+                catch 
+                {
+                    return null;
+                }
             }
         }
     }

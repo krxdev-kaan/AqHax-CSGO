@@ -4,28 +4,24 @@ AqHax is a CSGO Hack that is written in C#. I made lots of hacks on CSGO but thi
 This hack supports an IOS App to be used wirelessly from your IOS Devices !
 App is made by me and you can find it right here [CSGOHackGUI](https://github.com/krxdev-kaan/CSGOHackGUI/).
 
-The full release of the hack is expected to be available in one week. 
-But you can launch the hack in visual studio right now and it'll work just fine.
+The full release of the hack is expected to be available in one week.
+
+## Download & Setup
+Just download the exe from [Releases](https://github.com/krxdev-kaan/AqHax-CSGO/releases) and launch it up.
+When an update is available it will automatically prompt you to update :)
 
 ## Why did the project take so long ?
 
 So guys i was very discouraged with this project and archieved it a long time ago because i literally had no time to work on it.
 But now thanks to the Corona Virus i finally have time to start and finish this project once and for all.
 
-## Roadmap
+EDIT: Project has reached it's initial release you can go ahead and download :)
+
+## Release Roadmap ( COMPLETE )
 - [x] Make and implement "Visuals" tab. [ Estimated Time: 24-26 May ]
 - [x] Make and implement "Aim" tab.     [ Estimated Time: 26-28 May ]
 - [x] Make and implement "Misc" tab.    [ Estimated Time: 28-30 May ]
-- [ ] Make and implement "Settings" tab.[ Estimated Time: 30-01 May-Jun ]
-
-And of course this roadmap is just the core functionalities such as (other goals are down below "*Planned Features*")
-  - Wall-Hack and effects
-  - Render Color Changing
-  - Radar
-  - Aim Hack with adjusments
-  - Trigger-Bot
-  - Bunny-Hop
-  - Anti-Flash
+- [x] Make and implement "Settings" tab.[ Estimated Time: 30-01 May-Jun ]
 
 # Planned Features
   - [x] An IOS UI to control the hack during a game using an IOS device. (IOS App already complete)
@@ -40,6 +36,11 @@ And of course this roadmap is just the core functionalities such as (other goals
   - [ ] Chat-bot (maybe)
   - [ ] Animated Clan Name (maybe)
   - [ ] Just a Aim-Assist to look pretty much legit (i will probably make it)
+  - [ ] Skin Changer
+  - [ ] Knife Changer
+  - [ ] Glove Changer
+  - [ ] Custom Entity Glow System
+  - [ ] Silent Aim (maybe)
 
 # Credits
 

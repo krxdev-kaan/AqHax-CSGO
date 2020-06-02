@@ -20,6 +20,8 @@ namespace AqHaxCSGO.Objects
         public static bool RenderEnemyOnly = false;
         public static Color RenderColor = Color.Red;
 
+        public static bool RadarEnabled = false;
+
         public static bool ESPEnabled = false;
         public static bool ESPSkeletonEnabled = false;
         public static bool ESPHealthEnabled = false;
@@ -37,10 +39,50 @@ namespace AqHaxCSGO.Objects
         public static bool TriggerPressOnlyEnabled = false;
 
         public static bool AntiFlashEnabled = false;
-
         public static bool BunnyHopEnabled = false;
 
-        public static bool RadarEnabled = false;
+
+
+
+
+        private static int _BunnyHopDelay = 1;
+        public static int BunnyHopAccuracy {
+            get 
+            {
+                return _BunnyHopDelay;
+            }
+            set 
+            {
+                _BunnyHopDelay = 5 - value;
+            }
+        }
+
+        private static int _IdleWait = 10;
+        public static int IdleWait
+        {
+            get
+            {
+                return _IdleWait;
+            }
+            set
+            {
+                _IdleWait = 50 - (value * 10);
+            }
+        }
+
+        private static int _UsageDelay = 1;
+        public static int UsageDelay
+        {
+            get
+            {
+                return _UsageDelay;
+            }
+            set
+            {
+                _UsageDelay = 5 - value;
+            }
+        }
+        public static int TriggerKey = 16;
     }
 
     static class GlobalLists

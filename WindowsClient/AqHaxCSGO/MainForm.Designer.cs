@@ -55,14 +55,31 @@
             this.shootOnCollideCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.aimCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.bunnyHopCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.antiFlashCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialDivider6 = new MaterialSkin.Controls.MaterialDivider();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.saveButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.keyButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.usagePowerSlider = new System.Windows.Forms.TrackBar();
+            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            this.bunnySlider = new System.Windows.Forms.TrackBar();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.idlePowerSlider = new System.Windows.Forms.TrackBar();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.tabLabel = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.tabChangeRight = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabChangeLeft = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.antiFlashCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialDivider6 = new MaterialSkin.Controls.MaterialDivider();
-            this.bunnyHopCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabController.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
@@ -70,6 +87,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctColor)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usagePowerSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunnySlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idlePowerSlider)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabController
@@ -77,6 +99,8 @@
             this.tabController.Controls.Add(this.tabPage1);
             this.tabController.Controls.Add(this.tabPage2);
             this.tabController.Controls.Add(this.tabPage3);
+            this.tabController.Controls.Add(this.tabPage4);
+            this.tabController.Controls.Add(this.tabPage5);
             this.tabController.Depth = 0;
             this.tabController.Location = new System.Drawing.Point(0, 62);
             this.tabController.MouseState = MaterialSkin.MouseState.HOVER;
@@ -115,7 +139,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(182, 206);
+            this.materialLabel4.Location = new System.Drawing.Point(183, 208);
             this.materialLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -139,13 +163,13 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(210, 42);
+            this.materialLabel2.Location = new System.Drawing.Point(181, 55);
             this.materialLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(18, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(47, 19);
             this.materialLabel2.TabIndex = 11;
-            this.materialLabel2.Text = "T";
+            this.materialLabel2.Text = "Team";
             // 
             // materialLabel1
             // 
@@ -153,18 +177,18 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(200, 7);
+            this.materialLabel1.Location = new System.Drawing.Point(173, 19);
             this.materialLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(28, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(54, 19);
             this.materialLabel1.TabIndex = 10;
-            this.materialLabel1.Text = "CT";
+            this.materialLabel1.Text = "Enemy";
             // 
             // tColor
             // 
             this.tColor.BackColor = System.Drawing.Color.Chartreuse;
-            this.tColor.Location = new System.Drawing.Point(228, 42);
+            this.tColor.Location = new System.Drawing.Point(228, 53);
             this.tColor.Name = "tColor";
             this.tColor.Size = new System.Drawing.Size(21, 21);
             this.tColor.TabIndex = 9;
@@ -174,7 +198,7 @@
             // ctColor
             // 
             this.ctColor.BackColor = System.Drawing.Color.Red;
-            this.ctColor.Location = new System.Drawing.Point(228, 6);
+            this.ctColor.Location = new System.Drawing.Point(228, 17);
             this.ctColor.Name = "ctColor";
             this.ctColor.Size = new System.Drawing.Size(21, 21);
             this.ctColor.TabIndex = 8;
@@ -409,7 +433,7 @@
             this.materialDivider4.Location = new System.Drawing.Point(-7, 96);
             this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider4.Name = "materialDivider4";
-            this.materialDivider4.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider4.Size = new System.Drawing.Size(270, 23);
             this.materialDivider4.TabIndex = 9;
             this.materialDivider4.Text = "materialDivider4";
             // 
@@ -482,6 +506,286 @@
             this.tabPage3.Text = "Misc";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // bunnyHopCheckBox
+            // 
+            this.bunnyHopCheckBox.AutoSize = true;
+            this.bunnyHopCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.bunnyHopCheckBox.Depth = 0;
+            this.bunnyHopCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.bunnyHopCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bunnyHopCheckBox.Location = new System.Drawing.Point(-2, 74);
+            this.bunnyHopCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.bunnyHopCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.bunnyHopCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.bunnyHopCheckBox.Name = "bunnyHopCheckBox";
+            this.bunnyHopCheckBox.Ripple = true;
+            this.bunnyHopCheckBox.Size = new System.Drawing.Size(98, 30);
+            this.bunnyHopCheckBox.TabIndex = 16;
+            this.bunnyHopCheckBox.Text = "Bunny-Hop";
+            this.bunnyHopCheckBox.UseVisualStyleBackColor = false;
+            this.bunnyHopCheckBox.CheckedChanged += new System.EventHandler(this.bunnyHopCheckBox_CheckedChanged);
+            // 
+            // antiFlashCheckBox
+            // 
+            this.antiFlashCheckBox.AutoSize = true;
+            this.antiFlashCheckBox.BackColor = System.Drawing.Color.Maroon;
+            this.antiFlashCheckBox.Depth = 0;
+            this.antiFlashCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.antiFlashCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.antiFlashCheckBox.Location = new System.Drawing.Point(-2, 133);
+            this.antiFlashCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.antiFlashCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.antiFlashCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.antiFlashCheckBox.Name = "antiFlashCheckBox";
+            this.antiFlashCheckBox.Ripple = true;
+            this.antiFlashCheckBox.Size = new System.Drawing.Size(92, 30);
+            this.antiFlashCheckBox.TabIndex = 15;
+            this.antiFlashCheckBox.Text = "Anti-Flash";
+            this.antiFlashCheckBox.UseVisualStyleBackColor = false;
+            this.antiFlashCheckBox.CheckedChanged += new System.EventHandler(this.antiFlashCheckBox_CheckedChanged);
+            // 
+            // materialDivider6
+            // 
+            this.materialDivider6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider6.Depth = 0;
+            this.materialDivider6.Location = new System.Drawing.Point(-4, 107);
+            this.materialDivider6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider6.Name = "materialDivider6";
+            this.materialDivider6.Size = new System.Drawing.Size(260, 23);
+            this.materialDivider6.TabIndex = 14;
+            this.materialDivider6.Text = "materialDivider6";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.saveButton);
+            this.tabPage4.Controls.Add(this.keyButton);
+            this.tabPage4.Controls.Add(this.materialLabel10);
+            this.tabPage4.Controls.Add(this.usagePowerSlider);
+            this.tabPage4.Controls.Add(this.materialLabel9);
+            this.tabPage4.Controls.Add(this.bunnySlider);
+            this.tabPage4.Controls.Add(this.materialLabel6);
+            this.tabPage4.Controls.Add(this.idlePowerSlider);
+            this.tabPage4.Controls.Add(this.materialLabel5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(249, 242);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Settings";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // saveButton
+            // 
+            this.saveButton.AutoSize = true;
+            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.saveButton.Depth = 0;
+            this.saveButton.Location = new System.Drawing.Point(137, 210);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.saveButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Primary = false;
+            this.saveButton.Size = new System.Drawing.Size(104, 36);
+            this.saveButton.TabIndex = 19;
+            this.saveButton.Text = "Apply & Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // keyButton
+            // 
+            this.keyButton.BackColor = System.Drawing.Color.Transparent;
+            this.keyButton.Depth = 0;
+            this.keyButton.Location = new System.Drawing.Point(4, 226);
+            this.keyButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.keyButton.Name = "keyButton";
+            this.keyButton.Primary = true;
+            this.keyButton.Size = new System.Drawing.Size(112, 23);
+            this.keyButton.TabIndex = 18;
+            this.keyButton.Text = "Press";
+            this.keyButton.UseVisualStyleBackColor = false;
+            this.keyButton.Click += new System.EventHandler(this.keyButton_Click);
+            // 
+            // materialLabel10
+            // 
+            this.materialLabel10.AutoSize = true;
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel10.Location = new System.Drawing.Point(3, 206);
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            this.materialLabel10.Size = new System.Drawing.Size(117, 19);
+            this.materialLabel10.TabIndex = 17;
+            this.materialLabel10.Text = "Aim/Trigger Key";
+            // 
+            // usagePowerSlider
+            // 
+            this.usagePowerSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.usagePowerSlider.Location = new System.Drawing.Point(18, 91);
+            this.usagePowerSlider.Maximum = 4;
+            this.usagePowerSlider.Name = "usagePowerSlider";
+            this.usagePowerSlider.Size = new System.Drawing.Size(210, 45);
+            this.usagePowerSlider.TabIndex = 16;
+            this.usagePowerSlider.Value = 4;
+            // 
+            // materialLabel9
+            // 
+            this.materialLabel9.AutoSize = true;
+            this.materialLabel9.Depth = 0;
+            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel9.Location = new System.Drawing.Point(25, 69);
+            this.materialLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel9.Name = "materialLabel9";
+            this.materialLabel9.Size = new System.Drawing.Size(197, 19);
+            this.materialLabel9.TabIndex = 15;
+            this.materialLabel9.Text = "Power Consumption On Use";
+            // 
+            // bunnySlider
+            // 
+            this.bunnySlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.bunnySlider.Location = new System.Drawing.Point(18, 158);
+            this.bunnySlider.Maximum = 4;
+            this.bunnySlider.Name = "bunnySlider";
+            this.bunnySlider.Size = new System.Drawing.Size(210, 45);
+            this.bunnySlider.TabIndex = 14;
+            this.bunnySlider.Value = 4;
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(68, 136);
+            this.materialLabel6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(115, 19);
+            this.materialLabel6.TabIndex = 13;
+            this.materialLabel6.Text = "Bunny Accuracy";
+            // 
+            // idlePowerSlider
+            // 
+            this.idlePowerSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.idlePowerSlider.Location = new System.Drawing.Point(18, 22);
+            this.idlePowerSlider.Maximum = 4;
+            this.idlePowerSlider.Name = "idlePowerSlider";
+            this.idlePowerSlider.Size = new System.Drawing.Size(210, 45);
+            this.idlePowerSlider.TabIndex = 12;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(37, 0);
+            this.materialLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(173, 19);
+            this.materialLabel5.TabIndex = 11;
+            this.materialLabel5.Text = "Idle Power Consumption";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.materialLabel8);
+            this.tabPage5.Controls.Add(this.materialLabel7);
+            this.tabPage5.Controls.Add(this.materialLabel20);
+            this.tabPage5.Controls.Add(this.materialLabel19);
+            this.tabPage5.Controls.Add(this.materialLabel18);
+            this.tabPage5.Controls.Add(this.materialLabel17);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(249, 242);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "About";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel8.Location = new System.Drawing.Point(-1, 19);
+            this.materialLabel8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(267, 133);
+            this.materialLabel8.TabIndex = 11;
+            this.materialLabel8.Text = resources.GetString("materialLabel8.Text");
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(76, 0);
+            this.materialLabel7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(97, 19);
+            this.materialLabel7.TabIndex = 10;
+            this.materialLabel7.Text = "AqHax-CSGO";
+            // 
+            // materialLabel20
+            // 
+            this.materialLabel20.AutoSize = true;
+            this.materialLabel20.Depth = 0;
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel20.Location = new System.Drawing.Point(0, 233);
+            this.materialLabel20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel20.Name = "materialLabel20";
+            this.materialLabel20.Size = new System.Drawing.Size(262, 19);
+            this.materialLabel20.TabIndex = 9;
+            this.materialLabel20.Text = "Copyright © 2019 All Rights Reserved.";
+            // 
+            // materialLabel19
+            // 
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel19.Location = new System.Drawing.Point(27, 214);
+            this.materialLabel19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(200, 19);
+            this.materialLabel19.TabIndex = 8;
+            this.materialLabel19.Text = "Made By: KRXDevelops-Kaan";
+            // 
+            // materialLabel18
+            // 
+            this.materialLabel18.AutoSize = true;
+            this.materialLabel18.Depth = 0;
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel18.Location = new System.Drawing.Point(0, 184);
+            this.materialLabel18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel18.Name = "materialLabel18";
+            this.materialLabel18.Size = new System.Drawing.Size(261, 19);
+            this.materialLabel18.TabIndex = 7;
+            this.materialLabel18.Text = "I\'m not resposible for any kind of ban.";
+            // 
+            // materialLabel17
+            // 
+            this.materialLabel17.AutoSize = true;
+            this.materialLabel17.Depth = 0;
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel17.Location = new System.Drawing.Point(80, 165);
+            this.materialLabel17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel17.Name = "materialLabel17";
+            this.materialLabel17.Size = new System.Drawing.Size(99, 19);
+            this.materialLabel17.TabIndex = 6;
+            this.materialLabel17.Text = "DISCLAIMER:";
+            // 
             // tabLabel
             // 
             this.tabLabel.AutoSize = true;
@@ -550,55 +854,6 @@
             this.materialLabel3.TabIndex = 6;
             this.materialLabel3.Text = "AqHax-CSGO";
             // 
-            // antiFlashCheckBox
-            // 
-            this.antiFlashCheckBox.AutoSize = true;
-            this.antiFlashCheckBox.BackColor = System.Drawing.Color.Maroon;
-            this.antiFlashCheckBox.Depth = 0;
-            this.antiFlashCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
-            this.antiFlashCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.antiFlashCheckBox.Location = new System.Drawing.Point(-2, 133);
-            this.antiFlashCheckBox.Margin = new System.Windows.Forms.Padding(0);
-            this.antiFlashCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.antiFlashCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
-            this.antiFlashCheckBox.Name = "antiFlashCheckBox";
-            this.antiFlashCheckBox.Ripple = true;
-            this.antiFlashCheckBox.Size = new System.Drawing.Size(92, 30);
-            this.antiFlashCheckBox.TabIndex = 15;
-            this.antiFlashCheckBox.Text = "Anti-Flash";
-            this.antiFlashCheckBox.UseVisualStyleBackColor = false;
-            this.antiFlashCheckBox.CheckedChanged += new System.EventHandler(this.antiFlashCheckBox_CheckedChanged);
-            // 
-            // materialDivider6
-            // 
-            this.materialDivider6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider6.Depth = 0;
-            this.materialDivider6.Location = new System.Drawing.Point(-4, 107);
-            this.materialDivider6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider6.Name = "materialDivider6";
-            this.materialDivider6.Size = new System.Drawing.Size(260, 23);
-            this.materialDivider6.TabIndex = 14;
-            this.materialDivider6.Text = "materialDivider6";
-            // 
-            // bunnyHopCheckBox
-            // 
-            this.bunnyHopCheckBox.AutoSize = true;
-            this.bunnyHopCheckBox.BackColor = System.Drawing.Color.Maroon;
-            this.bunnyHopCheckBox.Depth = 0;
-            this.bunnyHopCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
-            this.bunnyHopCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bunnyHopCheckBox.Location = new System.Drawing.Point(-2, 74);
-            this.bunnyHopCheckBox.Margin = new System.Windows.Forms.Padding(0);
-            this.bunnyHopCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.bunnyHopCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
-            this.bunnyHopCheckBox.Name = "bunnyHopCheckBox";
-            this.bunnyHopCheckBox.Ripple = true;
-            this.bunnyHopCheckBox.Size = new System.Drawing.Size(98, 30);
-            this.bunnyHopCheckBox.TabIndex = 16;
-            this.bunnyHopCheckBox.Text = "Bunny-Hop";
-            this.bunnyHopCheckBox.UseVisualStyleBackColor = false;
-            this.bunnyHopCheckBox.CheckedChanged += new System.EventHandler(this.bunnyHopCheckBox_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,10 +866,12 @@
             this.Controls.Add(this.tabLabel);
             this.Controls.Add(this.tabController);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Sizable = false;
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyEvent);
             this.tabController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -625,6 +882,13 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usagePowerSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunnySlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.idlePowerSlider)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -665,6 +929,23 @@
         private MaterialSkin.Controls.MaterialCheckBox bunnyHopCheckBox;
         private MaterialSkin.Controls.MaterialCheckBox antiFlashCheckBox;
         private MaterialSkin.Controls.MaterialDivider materialDivider6;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TrackBar idlePowerSlider;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.TrackBar bunnySlider;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel20;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private System.Windows.Forms.TrackBar usagePowerSlider;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialRaisedButton keyButton;
+        private MaterialSkin.Controls.MaterialFlatButton saveButton;
     }
 }
 

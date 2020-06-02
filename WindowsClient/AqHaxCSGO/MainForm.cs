@@ -5,46 +5,112 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Timers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Drawing.Drawing2D;
+using System.Diagnostics;
 using System.Windows.Forms;
 using AqHaxCSGO.MemoryManagers;
 using AqHaxCSGO.Objects;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Newtonsoft.Json;
+using System.Net;
+using SlimDX.DirectInput;
+using System.Threading;
 
 namespace AqHaxCSGO
 {
     public partial class MainForm : MaterialForm
     {
+        private bool IsWaitingForInput = false;
+        private int currentKey = 16;
+
+        KeysConverter keyConverter = new KeysConverter();
+
+        System.Timers.Timer timer = new System.Timers.Timer();
+
         public MainForm()
         {
             InitializeComponent();
 
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            #region VERSION CHECK
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            int[] versionParts = { fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart };
+            int[] latestVersion = GetVersion();
+
+            if (latestVersion[0] != 0) 
+            {
+                if (latestVersion[0] > versionParts[0])
+                {
+                    DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes) 
+                    {
+                        Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
+                    }
+                }
+                else if (latestVersion[0] == versionParts[0]) 
+                {
+                    if (latestVersion[1] > versionParts[1])
+                    {
+                        DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
+                        }
+                    }
+                    else if (latestVersion[1] == versionParts[1])
+                    {
+                        if (latestVersion[2] > versionParts[2])
+                        {
+                            DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
+                            if (dr == DialogResult.Yes)
+                            {
+                                Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region CUSTOM RENDER
+                        GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, ctColor.Width, ctColor.Height);
             ctColor.Region = new Region(path);
 
-            System.Drawing.Drawing2D.GraphicsPath path2 = new System.Drawing.Drawing2D.GraphicsPath();
+            GraphicsPath path2 = new GraphicsPath();
             path2.AddEllipse(0, 0, tColor.Width, tColor.Height);
             tColor.Region = new Region(path2);
 
-            System.Drawing.Drawing2D.GraphicsPath path3 = new System.Drawing.Drawing2D.GraphicsPath();
+            GraphicsPath path3 = new GraphicsPath();
             path3.AddEllipse(0, 0, rColor.Width, rColor.Height);
             rColor.Region = new Region(path3);
+            #endregion
 
             #region HANDLE SAVES
+            #region Visuals Data
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+            string fullSavePath = Path.Combine(programDataPath, "CSG.dat");
             try
             {
-
-                string[] lines = File.ReadAllLines("CSG.dat");
+                string[] lines = File.ReadAllLines(fullSavePath);
+                if (lines.Length == 0) 
+                {
+                    File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
+                    lines = File.ReadAllLines(fullSavePath);
+                }
                 Color colorCT = new Color();
                 Color colorT = new Color();
                 Color colorR = new Color();
                 int p = 0;
                 foreach (string line in lines)
                 {
-                    //if (p == 0) trigk = Convert.ToInt32(line);
                     if (p == 1)
                     {
                         colorCT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
@@ -69,18 +135,47 @@ namespace AqHaxCSGO
             }
             catch 
             {
-                MessageBox.Show("Save file not found or created. Going to continue with default settings.");
-                File.Create("CSG.dat");
-                File.WriteAllLines("CSG.dat", new string[] {"16", "000000000", "000000000", "000000000"});
+                try
+                {
+                    try
+                    {
+                        File.Create(fullSavePath);
+                        File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
+                    }
+                    catch 
+                    {
+                        Directory.CreateDirectory(programDataPath);
+                        File.Create(fullSavePath);
+                        File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("IO Error. \nApp save file cannot be initialized. \nRunning the program again should shortly fix th issue.",
+                                    "FATAL ERROR");
+                    Environment.Exit(1);
+                }
             }
             #endregion
 
+            #region Settings
+            SaveManager.SettingsScheme settings = SaveManager.LoadSettings();
+            Globals.BunnyHopAccuracy = Math.Abs(settings.BunnyAccuracy - 5);
+            Globals.IdleWait = Math.Abs(settings.IdlePowerConsumption - 50) / 10;
+            Globals.UsageDelay = Math.Abs(settings.UsagePowerConsumption - 5);
+            Globals.TriggerKey = settings.TriggerKey;
+            currentKey = settings.TriggerKey;
+            #endregion
+            #endregion
+
+            #region SETUP
             if (!Memory.Init())
             {
-                var materialSkinManager = MaterialSkinManager.Instance;
-                materialSkinManager.AddFormToManage(this);
-                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-                materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red600, Accent.Red200, TextShade.WHITE);
+                timer.Stop();
+                timer.Dispose();
+                timer = null;
+                new EntryForm().Show();
+                this.Close();
             }
             else 
             {
@@ -89,14 +184,94 @@ namespace AqHaxCSGO
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green900, Primary.Green600, Accent.Green200, TextShade.WHITE);
             }
+            #endregion
 
-            
-            Application.ApplicationExit += new EventHandler(AppEx);
+            #region EVENT REGISTER
+            this.FormClosing += new FormClosingEventHandler(AppEx);
+
+            timer.Elapsed += new ElapsedEventHandler(UpdateHandle);
+            timer.Interval = 90000;
+            timer.Start();
+            #endregion
         }
 
-        private void AppEx(object sender, EventArgs e)
+        private int[] GetVersion()
+        {
+            try
+            {
+                using (var webC = new WebClient())
+                {
+                    webC.Headers.Add("User-Agent", "request");
+                    string json = webC.DownloadString("https://api.github.com/repos/krxdev-kaan/AqHax-CSGO/releases");
+                    JsonTextReader reader = new JsonTextReader(new StringReader(json));
+                    while (reader.Read())
+                    {
+                        if (reader.Value != null)
+                        {
+                            if (reader.TokenType == JsonToken.PropertyName)
+                            {
+                                if (reader.Value.ToString() == "tag_name")
+                                {
+                                    reader.Read();
+                                    string version = reader.Value.ToString();
+                                    string int_ified = version.Substring(1);
+                                    string[] splitted = int_ified.Split('.');
+                                    int[] result = new int[3];
+                                    for (int i = 0; i < splitted.Length; i++)
+                                    {
+                                        result[i] = Convert.ToInt32(splitted[i]);
+                                    }
+                                    return result;
+                                }
+                            }
+                        }
+                    }
+                    return new int[] { 0, 0, 0 };
+                }
+            }
+            catch 
+            {
+                return new int[] { 0, 0, 0 };
+            }
+        }
+
+        #region Events
+        private void AppEx(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(1);
+        }
+
+        private void KeyEvent(object sender, KeyEventArgs e)
+        {
+            if (IsWaitingForInput) 
+            {
+                currentKey = e.KeyValue;
+                keyButton.Text = e.KeyCode.ToString();
+                IsWaitingForInput = false;
+            }
+        }
+
+        private void UpdateHandle(object source, ElapsedEventArgs e)
+        {
+            if (!(Process.GetProcessesByName("csgo").Length > 0))
+            {
+                timer.Stop();
+                timer.Dispose();
+                timer = null;
+                if (this.InvokeRequired) 
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        this.Hide();
+                        Program.entryForm.Visible = true;
+                        this.Close();
+                        var materialSkinManager = MaterialSkinManager.Instance;
+                        materialSkinManager.AddFormToManage(this);
+                        materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red600, Accent.Red200, TextShade.WHITE);
+                    });
+                }
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -104,7 +279,9 @@ namespace AqHaxCSGO
             OffsetManager.DownloadOffsets();
             Threads.InitAll();
         }
+        #endregion
 
+        #region User Events
         private void tabChangeLeft_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < tabController.TabPages.Count; i++) 
@@ -114,6 +291,14 @@ namespace AqHaxCSGO
                     tabController.SelectTab(i-1 >= 0 ? i - 1 : tabController.TabPages.Count - 1);
                     tabLabel.Text = tabController.TabPages[i - 1 >= 0 ? i - 1 : tabController.TabPages.Count - 1].Text;
                     tabLabel.Location = new Point(this.Size.Width / 2 - tabLabel.Width / 2, tabLabel.Location.Y);
+
+                    if (tabLabel.Text.Contains("Settings")) 
+                    {
+                        bunnySlider.Value = Math.Abs(Globals.BunnyHopAccuracy - 5);
+                        idlePowerSlider.Value = Math.Abs(Globals.IdleWait - 50) / 10;
+                        usagePowerSlider.Value = Math.Abs(Globals.UsageDelay - 5);
+                        keyButton.Text = keyConverter.ConvertToString(Globals.TriggerKey).Replace("İ", "I");
+                    }
                     break;
                 }
             }
@@ -128,6 +313,14 @@ namespace AqHaxCSGO
                     tabController.SelectTab(i + 1 < tabController.TabPages.Count ? i + 1 : 0);
                     tabLabel.Text = tabController.TabPages[i + 1 < tabController.TabPages.Count ? i + 1 : 0].Text;
                     tabLabel.Location = new Point(this.Size.Width / 2 - tabLabel.Width / 2, tabLabel.Location.Y);
+
+                    if (tabLabel.Text.Contains("Settings"))
+                    {
+                        bunnySlider.Value = Math.Abs(Globals.BunnyHopAccuracy - 5);
+                        idlePowerSlider.Value = Math.Abs(Globals.IdleWait - 50) / 10;
+                        usagePowerSlider.Value = Math.Abs(Globals.UsageDelay - 5);
+                        keyButton.Text = keyConverter.ConvertToString(Globals.TriggerKey).Replace("İ", "I");
+                    }
                     break;
                 }
             }
@@ -177,9 +370,12 @@ namespace AqHaxCSGO
             string g = ToFormedColor(c.G.ToString());
             string b = ToFormedColor(c.B.ToString());
 
-            string[] lines = File.ReadAllLines("CSG.dat");
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+            string fullSavePath = Path.Combine(programDataPath, "CSG.dat");
+            string[] lines = File.ReadAllLines(fullSavePath);
             lines[1] = r + g + b;
-            File.WriteAllLines("CSG.dat", lines);
+            File.WriteAllLines(fullSavePath, lines);
 
             int r2 = Convert.ToInt32(r);
             int g2 = Convert.ToInt32(g);
@@ -204,9 +400,12 @@ namespace AqHaxCSGO
             string g = ToFormedColor(c.G.ToString());
             string b = ToFormedColor(c.B.ToString());
 
-            string[] lines = File.ReadAllLines("CSG.dat");
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+            string fullSavePath = Path.Combine(programDataPath, "CSG.dat");
+            string[] lines = File.ReadAllLines(fullSavePath);
             lines[2] = r + g + b;
-            File.WriteAllLines("CSG.dat", lines);
+            File.WriteAllLines(fullSavePath, lines);
 
             int r2 = Convert.ToInt32(r);
             int g2 = Convert.ToInt32(g);
@@ -231,9 +430,12 @@ namespace AqHaxCSGO
             string g = ToFormedColor(c.G.ToString());
             string b = ToFormedColor(c.B.ToString());
 
-            string[] lines = File.ReadAllLines("CSG.dat");
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+            string fullSavePath = Path.Combine(programDataPath, "CSG.dat");
+            string[] lines = File.ReadAllLines(fullSavePath);
             lines[3] = r + g + b;
-            File.WriteAllLines("CSG.dat", lines);
+            File.WriteAllLines(fullSavePath, lines);
 
             int r2 = Convert.ToInt32(r);
             int g2 = Convert.ToInt32(g);
@@ -309,5 +511,33 @@ namespace AqHaxCSGO
         {
             Globals.AntiFlashEnabled = !Globals.AntiFlashEnabled;
         }
+
+        private void keyButton_Click(object sender, EventArgs e)
+        {
+            IsWaitingForInput = !IsWaitingForInput;
+            keyButton.Text = "Press any key..";
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (IsWaitingForInput) 
+            {
+                MessageBox.Show("Aim/Trigger Key undefined.", "Error");
+                return;
+            }
+
+            Globals.TriggerKey = currentKey;
+            Globals.BunnyHopAccuracy = bunnySlider.Value;
+            Globals.IdleWait = idlePowerSlider.Value;
+            Globals.UsageDelay = usagePowerSlider.Value;
+
+            SaveManager.SettingsScheme settings = new SaveManager.SettingsScheme();
+            settings.BunnyAccuracy = Globals.BunnyHopAccuracy;
+            settings.IdlePowerConsumption = Globals.IdleWait;
+            settings.UsagePowerConsumption = Globals.UsageDelay;
+            settings.TriggerKey = Globals.TriggerKey;
+            SaveManager.SaveSettings(settings);
+        }
+        #endregion
     }
 }

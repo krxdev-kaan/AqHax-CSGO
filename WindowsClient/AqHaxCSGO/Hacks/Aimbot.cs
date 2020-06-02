@@ -27,12 +27,12 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.TriggerEnabled && !Globals.AimShootOnCollide)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
@@ -76,12 +76,12 @@ namespace AqHaxCSGO.Hacks
             {
                 if (!Globals.AimEnabled)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
                 if (!Engine.InGame)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
@@ -92,6 +92,7 @@ namespace AqHaxCSGO.Hacks
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);
                 for (int i = 0; i < mp; i++)
                 {
+                    if (entityList[i] == null) continue;
                     if (entityList[i].Dormant) continue;
                     if (entityList[i].Health <= 0) continue;
                     if (entityList[i].Team == LocalPlayer.Team) continue;
@@ -150,7 +151,7 @@ namespace AqHaxCSGO.Hacks
                     }
                 }
 
-                Thread.Sleep(2);
+                Thread.Sleep(Globals.UsageDelay);
             }
         }
 
