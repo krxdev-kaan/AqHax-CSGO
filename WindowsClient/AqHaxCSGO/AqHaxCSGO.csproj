@@ -79,7 +79,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Memory\Memory.cs" />
-    <Compile Include="Memory\NetvarManager.cs" />
+    <Compile Include="Memory\NetvarManager\NetvarManager.cs" />
     <Compile Include="Memory\OffsetManager.cs" />
     <Compile Include="Memory\SigScanner.cs" />
     <Compile Include="Objects\Client.cs" />

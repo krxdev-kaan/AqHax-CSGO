@@ -32,6 +32,7 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.launcherButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.initButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.progressOfLaunch = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // materialLabel3
@@ -39,12 +40,12 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.BackColor = System.Drawing.Color.Transparent;
             this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(2, 2);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(109, 20);
+            this.materialLabel3.Size = new System.Drawing.Size(97, 19);
             this.materialLabel3.TabIndex = 7;
             this.materialLabel3.Text = "AqHax-CSGO";
             // 
@@ -53,12 +54,12 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.BackColor = System.Drawing.Color.Transparent;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(14, 34);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(237, 20);
+            this.materialLabel1.Size = new System.Drawing.Size(220, 19);
             this.materialLabel1.TabIndex = 8;
             this.materialLabel1.Text = "CSGO Disconnected/Not Found";
             // 
@@ -88,11 +89,20 @@
             this.initButton.UseVisualStyleBackColor = true;
             this.initButton.Click += new System.EventHandler(this.initButton_Click);
             // 
+            // progressOfLaunch
+            // 
+            this.progressOfLaunch.Location = new System.Drawing.Point(12, 326);
+            this.progressOfLaunch.Name = "progressOfLaunch";
+            this.progressOfLaunch.Size = new System.Drawing.Size(228, 11);
+            this.progressOfLaunch.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressOfLaunch.TabIndex = 11;
+            // 
             // EntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 349);
+            this.Controls.Add(this.progressOfLaunch);
             this.Controls.Add(this.initButton);
             this.Controls.Add(this.launcherButton);
             this.Controls.Add(this.materialLabel1);
@@ -112,5 +122,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialRaisedButton launcherButton;
         private MaterialSkin.Controls.MaterialRaisedButton initButton;
+        private System.Windows.Forms.ProgressBar progressOfLaunch;
     }
 }

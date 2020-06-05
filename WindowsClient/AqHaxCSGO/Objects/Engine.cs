@@ -38,11 +38,11 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return Memory.Read<int>(ClientStatePtr + 0x174);
+                return Memory.Read<int>(ClientStatePtr + clientstate_delta_ticks);
             }
             set
             {
-                Memory.Write<int>(ClientStatePtr + 0x174, value);
+                Memory.Write<int>(ClientStatePtr + clientstate_delta_ticks, value);
             }
         }
 

@@ -27,8 +27,8 @@ namespace AqHaxCSGO.MemoryManagers
         {
             if (GetHandle("csgo"))
             {
-                clientBase = GetModuleAdress("client_panorama");
-                clientSize = GetModuleSize("client_panorama");
+                clientBase = GetModuleAdress("client");
+                clientSize = GetModuleSize("client");
                 engineBase = GetModuleAdress("engine");
                 engineSize = GetModuleSize("engine");
 
@@ -182,6 +182,12 @@ namespace AqHaxCSGO.MemoryManagers
             {
                 Console.WriteLine("Insuccessful");
             }
+        }
+
+        public static bool CanRead(int Address, int Size)
+        {
+            byte[] temp = new byte[Size];
+            return ReadProcessMemory((int)m_pProcessHandle, Address, temp, Size, ref m_iNumberOfBytesRead);
         }
 
         #region Transformation

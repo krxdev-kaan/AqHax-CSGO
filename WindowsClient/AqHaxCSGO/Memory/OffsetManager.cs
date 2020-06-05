@@ -105,11 +105,11 @@ namespace AqHaxCSGO.MemoryManagers
         }
 
         /**
-         * Scans the offsets by using SigScanner
+         * Scans the offsets by using SigScanner and so on
          */
         public static void ScanOffsets()
         {
-            //Implement when a list of needed offsets made
+            
         }
     }
 }

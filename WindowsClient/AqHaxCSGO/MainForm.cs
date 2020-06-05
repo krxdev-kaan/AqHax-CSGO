@@ -276,8 +276,9 @@ namespace AqHaxCSGO
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            OffsetManager.DownloadOffsets();
+            NetvarManager.LoadOffsets(); // Call this first we will need it in OffsetManager
             Threads.InitAll();
+            OffsetManager.ScanOffsets();
         }
         #endregion
 

@@ -34,6 +34,16 @@ namespace AqHaxCSGO.MemoryManagers
             return 0;
         }
 
+        public static Int32 ClientSigScan(byte[] sig)
+        {
+            return FindPattern(sig, GetFullfilledMask(sig), Memory.clientBase, Memory.clientSize);
+        }
+
+        public static Int32 EngineSigScan(byte[] sig)
+        {
+            return FindPattern(sig, GetFullfilledMask(sig), Memory.engineBase, Memory.engineSize);
+        }
+
         public static Int32 ClientSigScan(string sig, int offset = 0, int extra = 0)
         {
             return SigScan(sig, offset, extra, Memory.clientBase, Memory.clientSize);
@@ -121,6 +131,17 @@ namespace AqHaxCSGO.MemoryManagers
             }
 
             return mask;
+        }
+
+        private static string GetFullfilledMask(byte[] buffer)
+        {
+            string result = "";
+            for (int i = 0; i < buffer.Length; i++) 
+            {
+                result += "x";
+            }
+            Console.WriteLine("Result: " + result);
+            return result;
         }
     }
 }

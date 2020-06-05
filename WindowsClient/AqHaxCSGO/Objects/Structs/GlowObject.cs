@@ -22,27 +22,38 @@ namespace AqHaxCSGO.Objects.Structs
         public float b;
         [FieldOffset(0x10)]
         public float a;
+
         [FieldOffset(0x14)]
-        public int jnk1;
+        public int unk1;
         [FieldOffset(0x18)]
-        public int jnk2;
+        public int unk2;
+
         [FieldOffset(0x1C)]
         public float BloomAmount;
         [FieldOffset(0x20)]
-        public int jnk3;
-
+        public float LocalPlayerIs0_3;
         [FieldOffset(0x24)]
         public bool m_bRenderWhenOccluded;
         [FieldOffset(0x25)]
         public bool m_bRenderWhenUnoccluded;
         [FieldOffset(0x26)]
         public bool m_bFullBloom;
+
+        [FieldOffset(0x27)]
+        public byte unk3;
+
+        [FieldOffset(0x28)]
+        public int FullBloomStencilValue;
         [FieldOffset(0x2C)]
         public int m_nGlowStyle;
+        [FieldOffset(0x30)]
+        public int SplitScreenSlot;
+        [FieldOffset(0x34)]
+        public int NextFreeSlot;
 
         public static int GetSize()
         {
-            return 0x2C;
+            return 0x38;
         }
 
         public static int Ptr
