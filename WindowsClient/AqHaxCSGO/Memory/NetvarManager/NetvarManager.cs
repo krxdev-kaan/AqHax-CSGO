@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace AqHaxCSGO.MemoryManagers
 	 */
     static class NetvarManager
     {
-		private static List<NetVar> netvarList = new List<NetVar>();
+		public static List<NetVar> netvarList = new List<NetVar>();
 		private static CClass clientClass = new CClass();
 		private static RecvTable table = new RecvTable();
 		private static RecvProp prop = new RecvProp();
@@ -32,6 +33,19 @@ namespace AqHaxCSGO.MemoryManagers
 					ScanTable(table, 0, tableName);
 				}
 			}
+		}
+
+		public static int GetOffsetByName(string tableName, string propName) 
+		{
+			foreach (NetVar n in netvarList) 
+			{
+				if (n.ClassName == tableName && n.PropName == propName) 
+				{
+					return n.Offset;
+				}
+			}
+			Console.WriteLine("Table: {0}, Prop: {1} --- NOT FOUND", tableName, propName);
+			return -1;
 		}
 
 		private static void ScanTable(RecvTable table, int offset, String className)

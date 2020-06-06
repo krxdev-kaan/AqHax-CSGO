@@ -10,6 +10,7 @@ using System.Timers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -36,6 +37,7 @@ namespace AqHaxCSGO
         public MainForm()
         {
             InitializeComponent();
+            AllocConsole();
 
             #region VERSION CHECK
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -77,7 +79,7 @@ namespace AqHaxCSGO
                 }
             }
             #endregion
-
+            
             #region CUSTOM RENDER
                         GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, ctColor.Width, ctColor.Height);
@@ -167,14 +169,20 @@ namespace AqHaxCSGO
             currentKey = settings.TriggerKey;
             #endregion
             #endregion
-
+            
             #region SETUP
             if (!Memory.Init())
             {
                 timer.Stop();
                 timer.Dispose();
                 timer = null;
-                new EntryForm().Show();
+                if (Program.entryForm.InvokeRequired)
+                {
+                    Program.entryForm.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        Program.entryForm.Visible = true;
+                    });
+                }
                 this.Close();
             }
             else 
@@ -277,8 +285,10 @@ namespace AqHaxCSGO
         private void MainForm_Load(object sender, EventArgs e)
         {
             NetvarManager.LoadOffsets(); // Call this first we will need it in OffsetManager
-            Threads.InitAll();
             OffsetManager.ScanOffsets();
+            Threads.InitAll();
+            FreeConsole();
+            NetvarManager.netvarList.Clear();
         }
         #endregion
 
@@ -539,6 +549,13 @@ namespace AqHaxCSGO
             settings.TriggerKey = Globals.TriggerKey;
             SaveManager.SaveSettings(settings);
         }
+        #endregion
+
+        #region Some Shit For Loading State
+        [DllImport("kernel32.dll")]
+        static extern bool AllocConsole();
+        [DllImport("kernel32.dll")]
+        static extern bool FreeConsole();
         #endregion
     }
 }

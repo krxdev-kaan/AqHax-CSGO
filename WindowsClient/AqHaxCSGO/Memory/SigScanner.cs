@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,14 +45,14 @@ namespace AqHaxCSGO.MemoryManagers
             return FindPattern(sig, GetFullfilledMask(sig), Memory.engineBase, Memory.engineSize);
         }
 
-        public static Int32 ClientSigScan(string sig, int offset = 0, int extra = 0)
+        public static Int32 ClientSigScan(string sig, int offset = 0, int extra = 0, bool isRelative = true)
         {
-            return SigScan(sig, offset, extra, Memory.clientBase, Memory.clientSize);
+            return SigScan(sig, offset, extra, Memory.clientBase, Memory.clientSize) + (isRelative ? 0 : Memory.clientBase);
         }
 
-        public static Int32 EngineSigScan(string sig, int offset = 0, int extra = 0)
+        public static Int32 EngineSigScan(string sig, int offset = 0, int extra = 0, bool isRelative = true)
         {
-            return SigScan(sig, offset, extra, Memory.engineBase, Memory.engineSize);
+            return SigScan(sig, offset, extra, Memory.engineBase, Memory.engineSize) + (isRelative ? 0 : Memory.engineBase);
         }
 
         private static Int32 SigScan(string sig, int offset, int extra, Int32 module, Int32 moduleSize)
@@ -140,7 +141,6 @@ namespace AqHaxCSGO.MemoryManagers
             {
                 result += "x";
             }
-            Console.WriteLine("Result: " + result);
             return result;
         }
     }

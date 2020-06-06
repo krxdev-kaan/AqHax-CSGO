@@ -38,10 +38,11 @@ namespace AqHaxCSGO.Hacks
 
                 if (Globals.TriggerPressOnlyEnabled && !Globals.AimShootOnCollide)
                 {
-                    if ((GetAsyncKeyState((int)Keys.ShiftKey) & 0x8000) > 0)
+                    if ((GetAsyncKeyState(Globals.TriggerKey) & 0x8000) > 0)
                     {
                         if (LocalPlayer.CrosshairID > 0 && LocalPlayer.CrosshairID < Engine.MaxPlayer + 2)
                         {
+                            if (entityList[LocalPlayer.CrosshairID - 1] == null) continue;
                             if (entityList[LocalPlayer.CrosshairID - 1].Team != LocalPlayer.Team)
                             {
                                 Thread.Sleep(1);
@@ -56,7 +57,8 @@ namespace AqHaxCSGO.Hacks
                 {
                     if (LocalPlayer.CrosshairID > 0 && LocalPlayer.CrosshairID < Engine.MaxPlayer + 2)
                     {
-                        if (entityList[LocalPlayer.CrosshairID - 1].Team != LocalPlayer.Team)
+                        if (entityList[LocalPlayer.CrosshairID - 1] == null) continue; // TRIGGER BOT CRASH FIX
+                        if (entityList[LocalPlayer.CrosshairID - 1] != null && entityList[LocalPlayer.CrosshairID - 1].Team != LocalPlayer.Team)
                         {
                             Thread.Sleep(1);
                             Client.ForceAttack(true);
@@ -116,7 +118,7 @@ namespace AqHaxCSGO.Hacks
                     }
                 }
 
-                if (closestEntityPos.x != 99999f && (GetAsyncKeyState((int)Keys.ShiftKey) & 0x8000) > 0)
+                if (closestEntityPos.x != 99999f && (GetAsyncKeyState(Globals.TriggerKey) & 0x8000) > 0)
                 {
                     Angle AimAt = CalcAngle(LocalPlayer.VectorEyeLevel, closestEntityPos);
                     Console.WriteLine(closestEntityPos.x);

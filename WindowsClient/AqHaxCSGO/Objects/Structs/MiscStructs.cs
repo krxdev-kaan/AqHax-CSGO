@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Drawing;
+using AqHaxCSGO.MemoryManagers;
 
 namespace AqHaxCSGO.Objects.Structs
 {
@@ -17,18 +18,19 @@ namespace AqHaxCSGO.Objects.Structs
         };
 
         private static IntPtr privhandle = (IntPtr)0;
-
+        private static IntPtr flag = (IntPtr)0;
         public static IntPtr handle
         {
             get
             {
-                if (privhandle != (IntPtr)0)
+                if (privhandle != (IntPtr)0 && flag == Memory.m_pProcessHandle)
                 {
                     return privhandle;
                 }
                 else
                 {
                     privhandle = GetWindowHandle();
+                    flag = Memory.m_pProcessHandle;
                     return privhandle;
                 }
             }
@@ -54,7 +56,7 @@ namespace AqHaxCSGO.Objects.Structs
             if (processes.Length > 0)
                 return processes[0].MainWindowHandle;
             else
-                return (IntPtr)null;
+                return (IntPtr)0;
         }
         public static Rectangle GetWindowRect()
         {
