@@ -41,6 +41,8 @@ EDIT: Project has reached it's initial release you can go ahead and download :)
   - [ ] Glove Changer
   - [ ] Custom Entity Glow System
   - [ ] Silent Aim (maybe)
+  - [x] Signature Scanning
+  - [x] Full Netvar Manager
 
 # Credits
 
