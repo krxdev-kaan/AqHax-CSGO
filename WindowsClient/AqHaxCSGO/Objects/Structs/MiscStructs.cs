@@ -18,19 +18,20 @@ namespace AqHaxCSGO.Objects.Structs
         };
 
         private static IntPtr privhandle = (IntPtr)0;
-        private static IntPtr flag = (IntPtr)0;
+        private static int interval = 0;
         public static IntPtr handle
         {
             get
             {
-                if (privhandle != (IntPtr)0 && flag == Memory.m_pProcessHandle)
+                if (privhandle != (IntPtr)0 && interval < 1000)
                 {
+                    interval++;
                     return privhandle;
                 }
                 else
                 {
                     privhandle = GetWindowHandle();
-                    flag = Memory.m_pProcessHandle;
+                    interval = 0;
                     return privhandle;
                 }
             }

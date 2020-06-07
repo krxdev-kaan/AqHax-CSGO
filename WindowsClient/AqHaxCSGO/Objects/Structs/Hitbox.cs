@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AqHaxCSGO.Objects.Structs
 {
+    /**
+     * All bones will be implemented later on !
+     */
     public enum Hitbox
     {
         ENTITY_HEAD = 8,

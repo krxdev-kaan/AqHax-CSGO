@@ -20,8 +20,6 @@ namespace AqHaxCSGO
 
         public static void InitAll()
         {
-            Console.WriteLine("threads starting");
-
             bunnyThread.IsBackground = true;
             antiFlashThread.IsBackground = true;
             wallThread.IsBackground = true;

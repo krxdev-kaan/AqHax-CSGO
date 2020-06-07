@@ -171,16 +171,13 @@ namespace AqHaxCSGO.MemoryManagers
 
                 if (VirtualProtectEx(m_pProcessHandle, (IntPtr)Adress, (UIntPtr)Value.Length, oldFlag, out nvm))
                 {
-                    Console.WriteLine("Full Success");
                 }
                 else
                 {
-                    Console.WriteLine("Half Successful");
                 }
             }
             else
             {
-                Console.WriteLine("Insuccessful");
             }
         }
 
