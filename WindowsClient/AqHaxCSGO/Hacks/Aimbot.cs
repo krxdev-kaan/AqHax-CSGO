@@ -11,6 +11,7 @@ using AqHaxCSGO.Objects;
 using AqHaxCSGO.Objects.Structs;
 using static System.Math;
 using static AqHaxCSGO.Objects.GlobalLists;
+using AqHaxCSGO.Hacks.Features;
 
 namespace AqHaxCSGO.Hacks
 {

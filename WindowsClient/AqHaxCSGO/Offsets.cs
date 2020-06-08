@@ -143,6 +143,8 @@ namespace AqHaxCSGO
         public static Int32 model_ambient_min;
         public static Int32 set_abs_angles;
         public static Int32 set_abs_origin;
+
+        public static Int32 dwClientCmd;
         #endregion
     }
 }

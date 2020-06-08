@@ -7,6 +7,7 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Runtime;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace AqHaxCSGO.MemoryManagers
 {
@@ -46,7 +47,7 @@ namespace AqHaxCSGO.MemoryManagers
             {
                 return false;
             }
-            m_pProcessHandle = OpenProcess(0x0008 | 0x0010 | 0x0020, false, m_Process.Id); // Sets Our ProcessHandle
+            m_pProcessHandle = OpenProcess(0x1F0FFF, false, m_Process.Id); // Sets Our ProcessHandle
             return true;
         }
 
@@ -144,18 +145,18 @@ namespace AqHaxCSGO.MemoryManagers
             WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, buffer.Length, out m_iNumberOfBytesWritten);
         }
 
-        public static void Write<T>(int Adress, byte Value, bool isByte)
-        {
-            byte[] buffer = StructureToByteArray(Value);
-
-            WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, sizeof(byte), out m_iNumberOfBytesWritten);
-        }
-
         public static void Write<T>(int Adress, char[] Value)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(Value);
 
             WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, buffer.Length, out m_iNumberOfBytesWritten);
+        }
+
+        public static void Write<T>(int Adress, byte Value, bool isByte)
+        {
+            byte[] buffer = StructureToByteArray(Value);
+
+            WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, sizeof(byte), out m_iNumberOfBytesWritten);
         }
 
         public static void WriteProtectedMemory<T>(int Adress, object ob)
@@ -214,7 +215,7 @@ namespace AqHaxCSGO.MemoryManagers
             }
         }
 
-        private static byte[] StructureToByteArray(object obj)
+        public static byte[] StructureToByteArray(object obj)
         {
             int len = Marshal.SizeOf(obj);
 
@@ -234,33 +235,68 @@ namespace AqHaxCSGO.MemoryManagers
 
         [DllImport("kernel32.dll")]
         private static extern IntPtr OpenProcess(
-            int dwDesiredAccess, 
-            bool bInheritHandle, 
+            int dwDesiredAccess,
+            bool bInheritHandle,
             int dwProcessId);
 
         [DllImport("kernel32.dll")]
         private static extern bool ReadProcessMemory(
-            int hProcess, 
-            int lpBaseAddress, 
-            byte[] buffer, 
-            int size, 
+            int hProcess,
+            int lpBaseAddress,
+            byte[] buffer,
+            int size,
             ref int lpNumberOfBytesRead);
 
         [DllImport("kernel32.dll")]
-        private static extern bool WriteProcessMemory(
-            int hProcess, 
-            int lpBaseAddress, 
-            byte[] buffer, 
-            int size, 
+        public static extern bool WriteProcessMemory(
+            int hProcess,
+            int lpBaseAddress,
+            byte[] buffer,
+            int size,
             out int lpNumberOfBytesWritten);
 
         [DllImport("kernel32.dll")]
-        static extern bool VirtualProtectEx(
-            IntPtr hProcess, 
-            IntPtr lpAddress, 
-            UIntPtr dwSize, 
+        public static extern bool VirtualProtectEx(
+            IntPtr hProcess,
+            IntPtr lpAddress,
+            UIntPtr dwSize,
             uint flNewProtect,
             out uint lpflOldProtect);
+
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        public static extern IntPtr VirtualAllocEx(
+            IntPtr hProcess,
+            IntPtr lpAddress,
+            IntPtr dwSize,
+            uint flAllocationType,
+            uint flProtect);
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr CreateRemoteThread(
+                  IntPtr hProcess,
+                  IntPtr lpThreadAttributes,
+                  uint dwStackSize,
+                  IntPtr lpStartAddress,
+                  IntPtr lpParameter,
+                  uint dwCreationFlags,
+                  out IntPtr lpThreadId);
+
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        public static extern bool VirtualFreeEx(
+            IntPtr hProcess,
+            IntPtr lpAddress,
+            UIntPtr dwSize,
+            uint dwFreeType);
+
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        public static extern Int32 WaitForSingleObject(
+            IntPtr hHandle,
+            UInt32 dwMilliseconds);
+
+        [DllImport("kernel32.dll")]
+        public static extern Int32 CloseHandle(
+            IntPtr hObject
+        );
         #endregion
     }
 }

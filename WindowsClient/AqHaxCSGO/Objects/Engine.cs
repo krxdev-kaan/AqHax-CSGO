@@ -57,5 +57,18 @@ namespace AqHaxCSGO.Objects
                 Memory.Write<byte>(Memory.engineBase + dwbSendPackets, value ? (byte)0x1 : (byte)0x0, true);
             }
         }
+
+        public static void ClientCMD_Execute(string command)
+        {
+            byte[] t = Encoding.UTF8.GetBytes(command + "\0");
+            IntPtr commandPointer = Memory.VirtualAllocEx(Memory.m_pProcessHandle, IntPtr.Zero, (IntPtr)(t.Length), 0x00002000 | 0x00001000, 0x40);
+            IntPtr th;
+            int a;
+            Memory.WriteProcessMemory((int)Memory.m_pProcessHandle, (int)commandPointer, t, t.Length, out a);
+            IntPtr hThread = Memory.CreateRemoteThread(Memory.m_pProcessHandle, IntPtr.Zero, 0, IntPtr.Add(new IntPtr(Memory.engineBase), dwClientCmd), commandPointer, 0, out th);
+            Memory.WaitForSingleObject(hThread, 0xFFFFFFFF);
+            Memory.VirtualFreeEx(Memory.m_pProcessHandle, commandPointer, (UIntPtr)t.Length, 0x00008000);
+            Memory.CloseHandle(hThread);
+        }
     }
 }

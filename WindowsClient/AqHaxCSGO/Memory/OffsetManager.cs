@@ -163,6 +163,8 @@ namespace AqHaxCSGO.MemoryManagers
             set_abs_origin = SigScanner.ClientSigScan("55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8", 0, 0, true);
             is_c4_owner = SigScanner.ClientSigScan("56 8B F1 85 F6 74 31", 0, 0, true);
             force_update_spectator_glow = SigScanner.ClientSigScan("74 07 8B CB E8 ? ? ? ? 83 C7 10", 0, 0, true);
+            dwClientCmd = SigScanner.EngineSigScan("55 8B EC 8B 0D ? ? ? ? 81 F9 ? ? ? ? 75 0C A1 ? ? ? ? 35 ? ? ? ? EB 05 8B 01 FF 50 34 50", 0, 0, true);
+            Console.WriteLine(dwClientCmd);
             GC.Collect();
 
 
