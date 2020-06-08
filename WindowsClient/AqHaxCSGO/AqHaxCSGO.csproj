@@ -93,7 +93,6 @@
       <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Hacks\Aimbot.cs" />
-    <Compile Include="Hacks\Features\ChatBot.cs" />
     <Compile Include="Hacks\Others.cs" />
     <Compile Include="Hacks\WallHack.cs" />
     <Compile Include="MainForm.cs">
@@ -112,6 +111,7 @@
     <Compile Include="Objects\Globals.cs" />
     <Compile Include="Objects\LocalPlayer.cs" />
     <Compile Include="Objects\Structs\Angle.cs" />
+    <Compile Include="Objects\Structs\ClassIDs.cs" />
     <Compile Include="Objects\Structs\GlowObject.cs" />
     <Compile Include="Objects\Structs\Hitbox.cs" />
     <Compile Include="Objects\Structs\MiscStructs.cs" />
@@ -161,7 +161,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Hacks\Features\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="clientIcon.ico" />
   </ItemGroup>

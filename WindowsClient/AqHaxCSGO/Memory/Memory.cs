@@ -47,7 +47,7 @@ namespace AqHaxCSGO.MemoryManagers
             {
                 return false;
             }
-            m_pProcessHandle = OpenProcess(0x1F0FFF, false, m_Process.Id); // Sets Our ProcessHandle
+            m_pProcessHandle = OpenProcess(0x0008 | 0x0010 | 0x0020 | 0x00100000, false, m_Process.Id); // Sets Our ProcessHandle
             return true;
         }
 
