@@ -24,7 +24,7 @@ namespace AqHaxCSGO.Objects
 
         public bool PointOnScreen(out Vector2 OUT)
         {
-            float[] ViewMatrix = Client.ViewMatrix;
+            float[] ViewMatrix = ClientDLL.ViewMatrix;
             Rectangle window = GetWindowRect();
 
             OUT = new Vector2();

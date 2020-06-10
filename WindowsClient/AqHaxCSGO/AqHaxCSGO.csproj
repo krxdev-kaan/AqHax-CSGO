@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>clientIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\clientIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -86,53 +86,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntryForm.cs">
+    <Compile Include="Forms\EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EntryForm.Designer.cs">
+    <Compile Include="Forms\EntryForm.Designer.cs">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Hacks\Aimbot.cs" />
     <Compile Include="Hacks\Others.cs" />
     <Compile Include="Hacks\WallHack.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Memory\Memory.cs" />
-    <Compile Include="Memory\NetvarManager\NetvarManager.cs" />
+    <Compile Include="Memory\NetvarManager.cs" />
     <Compile Include="Memory\OffsetManager.cs" />
     <Compile Include="Memory\SigScanner.cs" />
-    <Compile Include="Objects\Client.cs" />
-    <Compile Include="Objects\Engine.cs" />
-    <Compile Include="Objects\Entity.cs" />
-    <Compile Include="Objects\Globals.cs" />
-    <Compile Include="Objects\LocalPlayer.cs" />
+    <Compile Include="Objects\Classes\CClass.cs" />
+    <Compile Include="Objects\Entity\CCSPlayer.cs" />
+    <Compile Include="Objects\ClientDLL.cs" />
+    <Compile Include="Objects\EngineDLL.cs" />
+    <Compile Include="Objects\Entity\CBaseEntity.cs" />
+    <Compile Include="Misc\Globals.cs" />
+    <Compile Include="Objects\Entity\CBasePlayer.cs" />
+    <Compile Include="Objects\Managers\GlowObjectManager.cs" />
     <Compile Include="Objects\Structs\Angle.cs" />
     <Compile Include="Objects\Structs\ClassIDs.cs" />
     <Compile Include="Objects\Structs\GlowObject.cs" />
-    <Compile Include="Objects\Structs\Hitbox.cs" />
+    <Compile Include="Objects\Structs\HitboxGroup.cs" />
     <Compile Include="Objects\Structs\MiscStructs.cs" />
     <Compile Include="Objects\Structs\Vector.cs" />
-    <Compile Include="Objects\Structs\Weapon.cs" />
-    <Compile Include="Objects\Weapon.cs" />
-    <Compile Include="Offsets.cs" />
+    <Compile Include="Objects\Structs\ItemDefinitionIndex.cs" />
+    <Compile Include="Objects\Entity\CBaseCombatWeapon.cs" />
+    <Compile Include="Misc\Offsets.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveManager.cs" />
-    <Compile Include="TCPForm.cs">
+    <Compile Include="Misc\SaveManager.cs" />
+    <Compile Include="Forms\TCPForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TCPForm.Designer.cs">
+    <Compile Include="Forms\TCPForm.Designer.cs">
       <DependentUpon>TCPForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Threads.cs" />
-    <EmbeddedResource Include="EntryForm.resx">
+    <Compile Include="Misc\Threads.cs" />
+    <EmbeddedResource Include="Forms\EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -144,7 +147,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TCPForm.resx">
+    <EmbeddedResource Include="Forms\TCPForm.resx">
       <DependentUpon>TCPForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -165,7 +168,7 @@
     <Folder Include="Hacks\Features\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="clientIcon.ico" />
+    <Content Include="Resources\clientIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.0\build\Fody.targets')" />

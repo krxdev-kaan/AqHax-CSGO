@@ -27,13 +27,13 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
-                LocalPlayer.FlashAlpha = 0.0f;
+                CBasePlayer.FlashAlpha = 0.0f;
                 Thread.Sleep(5);
             }
         }
@@ -47,7 +47,7 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
@@ -55,11 +55,11 @@ namespace AqHaxCSGO.Hacks
 
                 if ((GetAsyncKeyState((int)Keys.Space) & 0x8000) > 0)
                 {
-                    if (LocalPlayer.Flags == 257)
+                    if (CBasePlayer.Flags == 257)
                     {
-                        Client.ForceJump(true);
+                        ClientDLL.ForceJump(true);
                         Thread.Sleep(10);
-                        Client.ForceJump(false);
+                        ClientDLL.ForceJump(false);
                     }
                 }
 

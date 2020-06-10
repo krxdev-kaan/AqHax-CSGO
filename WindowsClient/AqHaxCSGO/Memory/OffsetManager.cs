@@ -118,6 +118,7 @@ namespace AqHaxCSGO.MemoryManagers
             dwClientState_PlayerInfo = SigScanner.EngineSigScan("8B 89 ? ? ? ? 85 C9 0F 84 ? ? ? ? 8B 01", 2, 0, false);
             dwClientState_State = SigScanner.EngineSigScan("83 B8 ? ? ? ? ? 0F 94 C0 C3", 2, 0, false);
             dwClientState_ViewAngles = SigScanner.EngineSigScan("F3 0F 11 80 ? ? ? ? D9 46 04 D9 05", 4, 0, false);
+            dwClientState_ModelPrecacheTable = SigScanner.EngineSigScan("0C 3B 81 ? ? ? ? 75 11 8B 45 10 83 F8 01 7C 09 50 83", 3, 0, false);
             clientstate_delta_ticks = SigScanner.EngineSigScan("C7 87 ? ? ? ? ? ? ? ? FF 15 ? ? ? ? 83 C4 08", 2, 0, false);
             clientstate_last_outgoing_command = SigScanner.EngineSigScan("8B 8F ? ? ? ? 8B 87 ? ? ? ? 41", 2, 0, false);
             clientstate_choked_commands = SigScanner.EngineSigScan("8B 87 ? ? ? ? 41", 2, 0, false);
@@ -165,6 +166,7 @@ namespace AqHaxCSGO.MemoryManagers
             force_update_spectator_glow = SigScanner.ClientSigScan("74 07 8B CB E8 ? ? ? ? 83 C7 10", 0, 0, true);
             //dwClientCmd = SigScanner.EngineSigScan("55 8B EC 8B 0D ? ? ? ? 81 F9 ? ? ? ? 75 0C A1 ? ? ? ? 35 ? ? ? ? EB 05 8B 01 FF 50 34 50", 0, 0, true);
             //Console.WriteLine(dwClientCmd);
+            
             GC.Collect();
 
 
@@ -254,6 +256,11 @@ namespace AqHaxCSGO.MemoryManagers
             m_flCustomBloomScale = NetvarManager.GetOffsetByName("DT_EnvTonemapController", "m_flCustomBloomScale");                    // I MAY ADD THESE IF I NEED
             m_flCustomAutoExposureMin = NetvarManager.GetOffsetByName("DT_EnvTonemapController", "m_flCustomAutoExposureMin");          // I MAY ADD THESE IF I NEED
             m_flCustomAutoExposureMax = NetvarManager.GetOffsetByName("DT_EnvTonemapController", "m_flCustomAutoExposureMax"); */       // I MAY ADD THESE IF I NEED
+            m_iViewModelIndex = NetvarManager.GetOffsetByName("DT_WeaponCSBase", "m_iViewModelIndex");
+            m_iWorldModelIndex = NetvarManager.GetOffsetByName("DT_WeaponCSBase", "m_iWorldModelIndex");
+            m_iWorldDroppedModelIndex = NetvarManager.GetOffsetByName("DT_WeaponCSBase", "m_iWorldDroppedModelIndex");
+            m_hViewModel = NetvarManager.GetOffsetByName("DT_CSPlayer", "m_hViewModel[0]");
+            m_nModelIndex = NetvarManager.GetOffsetByName("DT_BaseViewModel", "m_nModelIndex");
         }
     }
 }
