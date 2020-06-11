@@ -43,11 +43,10 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(4, 4);
-            this.materialLabel3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel3.Location = new System.Drawing.Point(2, 2);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(193, 37);
+            this.materialLabel3.Size = new System.Drawing.Size(97, 19);
             this.materialLabel3.TabIndex = 7;
             this.materialLabel3.Text = "AqHax-CSGO";
             // 
@@ -58,23 +57,21 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(28, 65);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(14, 34);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(439, 37);
+            this.materialLabel1.Size = new System.Drawing.Size(220, 19);
             this.materialLabel1.TabIndex = 8;
             this.materialLabel1.Text = "CSGO Disconnected/Not Found";
             // 
             // launcherButton
             // 
             this.launcherButton.Depth = 0;
-            this.launcherButton.Location = new System.Drawing.Point(110, 292);
-            this.launcherButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.launcherButton.Location = new System.Drawing.Point(55, 152);
             this.launcherButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.launcherButton.Name = "launcherButton";
             this.launcherButton.Primary = true;
-            this.launcherButton.Size = new System.Drawing.Size(280, 69);
+            this.launcherButton.Size = new System.Drawing.Size(140, 36);
             this.launcherButton.TabIndex = 9;
             this.launcherButton.Text = "Launch The Game";
             this.launcherButton.UseVisualStyleBackColor = true;
@@ -83,12 +80,11 @@
             // initButton
             // 
             this.initButton.Depth = 0;
-            this.initButton.Location = new System.Drawing.Point(36, 419);
-            this.initButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.initButton.Location = new System.Drawing.Point(18, 218);
             this.initButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.initButton.Name = "initButton";
             this.initButton.Primary = true;
-            this.initButton.Size = new System.Drawing.Size(444, 69);
+            this.initButton.Size = new System.Drawing.Size(222, 36);
             this.initButton.TabIndex = 10;
             this.initButton.Text = "Connect to launched game";
             this.initButton.UseVisualStyleBackColor = true;
@@ -96,25 +92,23 @@
             // 
             // progressOfLaunch
             // 
-            this.progressOfLaunch.Location = new System.Drawing.Point(24, 627);
-            this.progressOfLaunch.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.progressOfLaunch.Location = new System.Drawing.Point(12, 326);
             this.progressOfLaunch.Name = "progressOfLaunch";
-            this.progressOfLaunch.Size = new System.Drawing.Size(456, 21);
+            this.progressOfLaunch.Size = new System.Drawing.Size(228, 11);
             this.progressOfLaunch.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressOfLaunch.TabIndex = 11;
             // 
             // EntryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 671);
+            this.ClientSize = new System.Drawing.Size(252, 349);
             this.Controls.Add(this.progressOfLaunch);
             this.Controls.Add(this.initButton);
             this.Controls.Add(this.launcherButton);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialLabel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.Name = "EntryForm";
             this.Sizable = false;

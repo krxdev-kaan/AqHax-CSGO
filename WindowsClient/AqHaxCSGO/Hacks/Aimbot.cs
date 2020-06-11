@@ -90,7 +90,7 @@ namespace AqHaxCSGO.Hacks
                 }
 
                 int mp = EngineDLL.MaxPlayer;
-                Rectangle screen = Misc.GetWindowRect();
+                Rectangle screen = Objects.Structs.Misc.GetWindowRect();
                 Vector2 screenOrigin = new Vector2(screen.Width / 2, screen.Height / 2);
                 double latestDistance = screen.Width;
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);

@@ -180,7 +180,7 @@ namespace AqHaxCSGO.Objects
             }
         }
 
-        public string Name
+        public string CustomName
         {
             set
             {

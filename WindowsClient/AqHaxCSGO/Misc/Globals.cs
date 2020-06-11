@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using AqHaxCSGO.Objects.Structs;
+using AqHaxCSGO.Misc;
 
 namespace AqHaxCSGO.Objects
 {
@@ -40,6 +41,10 @@ namespace AqHaxCSGO.Objects
 
         public static bool AntiFlashEnabled = false;
         public static bool BunnyHopEnabled = false;
+
+        public static bool SkinChangerEnabled = false;
+        public static bool KnifeChangerEnabled = false;
+        public static bool ManualLoadEnabled = false;
 
 
 
@@ -83,6 +88,11 @@ namespace AqHaxCSGO.Objects
             }
         }
         public static int TriggerKey = 16;
+
+
+
+        public static Dictionary<string, SkinObj> CsgoSkinList = new Dictionary<string, SkinObj>();
+        public static List<Skin> LoadedPresets = new List<Skin>();
     }
 
     static class GlobalLists

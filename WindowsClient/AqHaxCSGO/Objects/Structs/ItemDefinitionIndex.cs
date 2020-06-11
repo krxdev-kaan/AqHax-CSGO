@@ -8,8 +8,7 @@ namespace AqHaxCSGO.Objects.Structs
 {
     public enum ItemDefinitionIndex
     {
-        ITEM_NONE = 0,
-		WEAPON_DEAGLE = 1,
+        WEAPON_DEAGLE = 1,
 		WEAPON_ELITE = 2,
 		WEAPON_FIVESEVEN = 3,
 		WEAPON_GLOCK = 4,

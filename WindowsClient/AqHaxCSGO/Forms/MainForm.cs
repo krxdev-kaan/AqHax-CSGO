@@ -22,6 +22,8 @@ using Newtonsoft.Json;
 using System.Net;
 using SlimDX.DirectInput;
 using System.Threading;
+using AqHaxCSGO.Misc;
+using AqHaxCSGO.Objects.Structs;
 
 namespace AqHaxCSGO
 {
@@ -29,7 +31,6 @@ namespace AqHaxCSGO
     {
         private bool IsWaitingForInput = false;
         private int currentKey = 16;
-
         KeysConverter keyConverter = new KeysConverter();
 
         System.Timers.Timer timer = new System.Timers.Timer();
@@ -168,8 +169,21 @@ namespace AqHaxCSGO
             Globals.TriggerKey = settings.TriggerKey;
             currentKey = settings.TriggerKey;
             #endregion
+
+            #region SkinChangerPresets
+            LoadSkins();
             #endregion
-            
+            #endregion
+
+            #region HANDLE FORM ELEMENTS
+            List<string> res = Globals.CsgoSkinList.Keys.ToList();
+            res.Sort();
+            foreach (string s in res) skinSelector.Items.Add(s);
+
+            List<string> ids = Enum.GetNames(typeof(ItemDefinitionIndex)).ToList();
+            foreach (string s in ids) if(s.Contains("WEAPON")) weaponSelector.Items.Add(s);
+            #endregion
+
             #region SETUP
             if (!Memory.Init())
             {
@@ -243,6 +257,30 @@ namespace AqHaxCSGO
             }
         }
 
+        private void LoadSkins()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourcePath = "AqHaxCSGO.Resources.Skins.dat";
+
+            using (StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(resourcePath)))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string raw = reader.ReadLine();
+                    string[] splitted = raw.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
+                    int count = 0;
+                    foreach (SkinObj s in Globals.CsgoSkinList.Values) 
+                    {
+                        if (s.SkinName == splitted[1]) 
+                        {
+                            count += 1;
+                        }
+                    }
+                    Globals.CsgoSkinList.Add(splitted[1] + (count == 0 ? "" : count.ToString()), new Misc.SkinObj(Convert.ToInt32(splitted[0]), splitted[1]));
+                }
+            }
+        }
+
         #region Events
         private void AppEx(object sender, FormClosingEventArgs e)
         {
@@ -284,7 +322,7 @@ namespace AqHaxCSGO
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            NetvarManager.LoadOffsets(); // Call this first we will need it in OffsetManager
+            NetvarManager.LoadOffsets();
             OffsetManager.ScanOffsets();
             Threads.InitAll();
             FreeConsole();
@@ -548,6 +586,26 @@ namespace AqHaxCSGO
             settings.UsagePowerConsumption = Globals.UsageDelay;
             settings.TriggerKey = Globals.TriggerKey;
             SaveManager.SaveSettings(settings);
+        }
+
+        private void skinChangerButton_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.SkinChangerEnabled = !Globals.SkinChangerEnabled;
+        }
+
+        private void knifeChangerButton_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.KnifeChangerEnabled = !Globals.KnifeChangerEnabled;
+        }
+
+        private void manualLoadButton_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.ManualLoadEnabled = !Globals.ManualLoadEnabled;
+        }
+
+        private void skinSaveButton_Click(object sender, EventArgs e)
+        {
+            //IMPLEMENT TOMORROW
         }
         #endregion
 
