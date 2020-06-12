@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using AqHaxCSGO.Hacks;
+using AqHaxCSGO.Hacks.Features;
 
 namespace AqHaxCSGO
 {
@@ -17,6 +18,8 @@ namespace AqHaxCSGO
         static Thread aimThread = new Thread(Aimbot.AimbotThread);
         static Thread triggerThread = new Thread(Aimbot.TriggerThread);
         static Thread radarThread = new Thread(WallHack.RadarThread);
+        static Thread skinChangerThread = new Thread(SkinChanger.SkinChangerThread);
+        static Thread knifeChangerThread = new Thread(KnifeChanger.KnifeChangerThread);
 
         public static void InitAll()
         {
@@ -27,6 +30,8 @@ namespace AqHaxCSGO
             aimThread.IsBackground = true;
             triggerThread.IsBackground = true;
             radarThread.IsBackground = true;
+            skinChangerThread.IsBackground = true;
+            knifeChangerThread.IsBackground = true;
 
             bunnyThread.Start();
             antiFlashThread.Start();
@@ -35,6 +40,8 @@ namespace AqHaxCSGO
             aimThread.Start();
             triggerThread.Start();
             radarThread.Start();
+            skinChangerThread.Start();
+            knifeChangerThread.Start();
         }
     }
 }

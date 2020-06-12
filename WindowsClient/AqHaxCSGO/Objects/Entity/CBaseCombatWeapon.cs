@@ -41,7 +41,7 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return new CBaseCombatWeapon(CBasePlayer.ActiveWeaponIndex - 1);
+                return new CBaseCombatWeapon((IntPtr)CBasePlayer.ActiveWeaponIndex);
             }
         }
     }
@@ -187,6 +187,14 @@ namespace AqHaxCSGO.Objects
                 Memory.Write<char[]>(Base + m_szCustomName, value.ToCharArray());
             }
         }
+
+        public int EntityQuality 
+        {
+            set 
+            {
+                Memory.Write<int>(Base + m_iEntityQuality, value);
+            }
+        }
         #endregion
 
         #region KnifeSDK
@@ -196,16 +204,23 @@ namespace AqHaxCSGO.Objects
             {
                 return Memory.Read<int>(Base + m_iViewModelIndex);
             }
+            set
+            {
+                Memory.Write<int>(Base + m_iViewModelIndex, value);
+            }
         }
 
         private int ViewModelBase
         {
             get
             {
-                return Memory.Read<int>(Memory.clientBase + dwEntityList + (CBasePlayer.GetViewModelIndex(Index) - 1) * 0x10);
+                return Memory.Read<int>(Memory.clientBase + dwEntityList + (CBasePlayer.GetViewModelIndex(0) - 1) * 0x10);
             }
         }
 
+        /**
+         * USE ONLY ON ACTIVE WEAPON !!!
+         */
         public int ViewModelEntityModelIndex
         {
             get
@@ -222,11 +237,11 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return Memory.Read<int>(Base + 0x258);
+                return Memory.Read<int>(Base + m_nModelIndex);
             }
             set
             {
-                Memory.Write<int>(Base + 0x258, value);
+                Memory.Write<int>(Base + m_nModelIndex, value);
             }
         }
         #endregion

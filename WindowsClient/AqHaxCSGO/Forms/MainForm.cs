@@ -182,6 +182,9 @@ namespace AqHaxCSGO
 
             List<string> ids = Enum.GetNames(typeof(ItemDefinitionIndex)).ToList();
             foreach (string s in ids) if(s.Contains("WEAPON")) weaponSelector.Items.Add(s);
+
+            List<string> knives = Constants.KnifeList.Keys.ToList();
+            foreach (string s in knives) knifeSelectionBox.Items.Add(s);
             #endregion
 
             #region SETUP
@@ -606,6 +609,12 @@ namespace AqHaxCSGO
         private void skinSaveButton_Click(object sender, EventArgs e)
         {
             //IMPLEMENT TOMORROW
+        }
+
+        private void knifeSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Globals.SelectedKnife = (string)knifeSelectionBox.SelectedItem;
+            Console.WriteLine(Globals.SelectedKnife);
         }
         #endregion
 
