@@ -94,6 +94,7 @@ namespace AqHaxCSGO
         public static Int32 m_vecVelocity;
         public static Int32 m_vecViewOffset;
         public static Int32 m_viewPunchAngle;
+        public static Int32 m_nSequence;
         public static Int32 clientstate_choked_commands;
         public static Int32 clientstate_delta_ticks;
         public static Int32 clientstate_last_outgoing_command;

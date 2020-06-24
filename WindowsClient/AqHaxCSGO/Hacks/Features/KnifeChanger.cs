@@ -15,6 +15,11 @@ namespace AqHaxCSGO.Hacks.Features
 {
     static class KnifeChanger
     {
+        [DllImport("user32.dll", CharSet = CharSet.Ansi, SetLastError = true)]
+        private static extern int GetAsyncKeyState(
+            int vKey
+        );
+
         public static void KnifeChangerThread()
         {
             bool shouldReloadModelIndex = true;
@@ -57,8 +62,8 @@ namespace AqHaxCSGO.Hacks.Features
                 }
 
                 CBaseCombatWeapon activeWeapon = weaponList.ActiveWeapon;
-                for (int i = 0; i < 20; i++)
-                    if (activeWeapon.IsKnife()) activeWeapon.ViewModelEntityModelIndex = selectedKnifeModelIndex;
+                for (int i = 0; i < 50; i++) //Seems to be making it more stable
+                    if (weaponList.ActiveWeapon.IsKnife()) activeWeapon.ViewModelEntityModelIndex = selectedKnifeModelIndex;
 
                 Thread.Sleep(Globals.IdleWait);
             }

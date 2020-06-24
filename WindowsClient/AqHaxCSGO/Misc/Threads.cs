@@ -20,6 +20,7 @@ namespace AqHaxCSGO
         static Thread radarThread = new Thread(WallHack.RadarThread);
         static Thread skinChangerThread = new Thread(SkinChanger.SkinChangerThread);
         static Thread knifeChangerThread = new Thread(KnifeChanger.KnifeChangerThread);
+        static Thread knifeChangerAnimFixThread = new Thread(KnifeChangerAnimationFix.KnifeChangerAnimationFixThread);
 
         public static void InitAll()
         {
@@ -32,6 +33,7 @@ namespace AqHaxCSGO
             radarThread.IsBackground = true;
             skinChangerThread.IsBackground = true;
             knifeChangerThread.IsBackground = true;
+            knifeChangerAnimFixThread.IsBackground = true;
 
             bunnyThread.Start();
             antiFlashThread.Start();
@@ -42,6 +44,7 @@ namespace AqHaxCSGO
             radarThread.Start();
             skinChangerThread.Start();
             knifeChangerThread.Start();
+            knifeChangerAnimFixThread.Start();
         }
     }
 }

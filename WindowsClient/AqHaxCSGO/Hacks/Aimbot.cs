@@ -42,7 +42,8 @@ namespace AqHaxCSGO.Hacks
                     {
                         if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                         {
-                            CCSPlayer crossEntity = entityList[CBasePlayer.CrosshairID - 1] as CCSPlayer;
+                            CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                            CCSPlayer crossEntity = new CCSPlayer(baseEntity);
                             if (crossEntity == null) continue; // TRIGGER BOT CRASH FIX
                             if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
                             {
@@ -58,7 +59,8 @@ namespace AqHaxCSGO.Hacks
                 {
                     if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                     {
-                        CCSPlayer crossEntity = entityList[CBasePlayer.CrosshairID - 1] as CCSPlayer;
+                        CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                        CCSPlayer crossEntity = new CCSPlayer(baseEntity);
                         if (crossEntity == null) continue;
                         if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
                         {
@@ -96,7 +98,8 @@ namespace AqHaxCSGO.Hacks
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);
                 for (int i = 0; i < mp; i++)
                 {
-                    CCSPlayer entity = entityList[i] as CCSPlayer;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;

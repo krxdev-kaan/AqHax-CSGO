@@ -30,7 +30,8 @@ namespace AqHaxCSGO.Hacks
                 int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    CCSPlayer entity = entityList[i] as CCSPlayer;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;
@@ -87,7 +88,8 @@ namespace AqHaxCSGO.Hacks
                 int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    CCSPlayer entity = entityList[i] as CCSPlayer;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;
@@ -134,7 +136,8 @@ namespace AqHaxCSGO.Hacks
                 int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    CCSPlayer entity = entityList[i] as CCSPlayer;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Team == CBasePlayer.Team) continue;

@@ -39,7 +39,7 @@ namespace AqHaxCSGO.Objects
 
     class CBaseEntity 
     {
-        protected int index;
+        public int index;
 
         public CBaseEntity(int index)
         {

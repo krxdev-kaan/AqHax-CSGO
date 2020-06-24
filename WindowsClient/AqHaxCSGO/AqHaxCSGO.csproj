@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Hacks\Aimbot.cs" />
     <Compile Include="Hacks\Features\KnifeChanger.cs" />
+    <Compile Include="Hacks\Features\KnifeChangerAnimationFix.cs" />
     <Compile Include="Hacks\Features\SkinChanger.cs" />
     <Compile Include="Hacks\Others.cs" />
     <Compile Include="Hacks\WallHack.cs" />

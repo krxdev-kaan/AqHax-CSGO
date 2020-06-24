@@ -15,6 +15,10 @@ namespace AqHaxCSGO.Objects
         {
         }
 
+        public CCSPlayer(CBaseEntity baseEnt) : base(baseEnt.index)
+        { 
+        }
+
         public int Team
         {
             get

@@ -134,6 +134,7 @@ namespace AqHaxCSGO.Objects
 
         public static bool SkinChangerEnabled = false;
         public static bool KnifeChangerEnabled = false;
+        public static bool KnifeChangerAnimFixEnabled = false;
         public static bool ManualLoadEnabled = false;
         public static string SelectedKnife = "Bayonet";
 

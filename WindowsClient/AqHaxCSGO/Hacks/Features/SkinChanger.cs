@@ -40,34 +40,40 @@ namespace AqHaxCSGO.Hacks.Features
 
                     bool contin = false;
                     Skin selected = null;
-                    foreach (Skin s in Globals.LoadedPresets)
+                    try
                     {
-                        if (Convert.ToInt32(s.WeaponID) == currentWeapon.ItemDefinitionIndex)
+                        foreach (Skin s in Globals.LoadedPresets)
                         {
-                            contin = true;
-                            selected = s;
-                            break;
+                            if (Convert.ToInt32(s.WeaponID) == currentWeapon.ItemDefinitionIndex)
+                            {
+                                contin = true;
+                                selected = s;
+                                break;
+                            }
                         }
                     }
+                    catch { continue; }
+
                     if (!contin) continue;
+                    if (currentWeapon.IsKnife()) continue;
 
                     if (currentWeapon.PaintKit != Convert.ToInt32(selected.PaintKit) &&
                         currentWeapon.ItemDefinitionIndex == Convert.ToInt32(selected.WeaponID))
                     {
                         currentWeapon.ItemIDHigh = -1;
                         currentWeapon.PaintKit = selected.PaintKit;
-                        currentWeapon.Seed = selected.Seed;
+                        if (selected.Seed != -1) currentWeapon.Seed = selected.Seed;
                         currentWeapon.Wear = selected.Wear;
                         currentWeapon.AccountID = currentWeapon.XuIDLow;
-                        if (selected.CustomName != null) currentWeapon.CustomName = selected.CustomName;
+                        if (selected.CustomName != null && selected.CustomName != "") currentWeapon.CustomName = selected.CustomName;
 
                         if (!Globals.ManualLoadEnabled)
                         {
                             if (EngineDLL.ForceReload != -1) EngineDLL.ForceReload = -1;
                         }
-                        else 
+                        else
                         {
-                            if ((GetAsyncKeyState((int)Keys.P) & 0x8000) > 0) 
+                            if ((GetAsyncKeyState((int)Keys.P) & 0x8000) > 0)
                             {
                                 if (EngineDLL.ForceReload != -1) EngineDLL.ForceReload = -1;
                             }

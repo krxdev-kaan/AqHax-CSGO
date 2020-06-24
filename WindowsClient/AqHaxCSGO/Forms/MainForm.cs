@@ -282,6 +282,32 @@ namespace AqHaxCSGO
                     Globals.CsgoSkinList.Add(splitted[1] + (count == 0 ? "" : count.ToString()), new Misc.SkinObj(Convert.ToInt32(splitted[0]), splitted[1]));
                 }
             }
+
+            try
+            {
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+                string fullSavePath = Path.Combine(programDataPath, "SKChanger");
+
+                if (!Directory.Exists(fullSavePath)) 
+                    Directory.CreateDirectory(fullSavePath);
+
+                string[] files = Directory.GetFiles(fullSavePath);
+
+                foreach (string file in files)
+                {
+                    string[] lines2 = File.ReadAllLines(file);
+                    Globals.LoadedPresets.Add(new Skin(Convert.ToInt32(file.Split(new string[] { ".dat" }, StringSplitOptions.RemoveEmptyEntries)[0].Substring(fullSavePath.Length + 1)),
+                                                       Convert.ToInt32(lines2[0]),
+                                                       lines2[1] != "" && lines2[1] != null ? Convert.ToInt32(lines2[1]) : -1,
+                                                       Convert.ToSingle(lines2[2]),
+                                                       lines2[3]));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("IO Error (0x3)");
+            }
         }
 
         #region Events
@@ -608,7 +634,49 @@ namespace AqHaxCSGO
 
         private void skinSaveButton_Click(object sender, EventArgs e)
         {
-            //IMPLEMENT TOMORROW
+            if (Enum.Parse(typeof(ItemDefinitionIndex), (string)weaponSelector.SelectedItem) == null || 
+                Globals.CsgoSkinList[(string)skinSelector.SelectedItem] == null)
+            {
+                MessageBox.Show("Both WeaponID and SkinID should be declared.");
+                return;
+            }
+
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
+            string fullSavePath = Path.Combine(programDataPath, "SKChanger");
+
+            string[] conts = new string[] { Globals.CsgoSkinList[(string)skinSelector.SelectedItem].SkinID.ToString(), 
+                                            seedTextBox.Text, 
+                                            ((float)((float)(wearSlider.Value) / 100)).ToString(), 
+                                            tagTextBox.Text};
+
+            File.WriteAllLines(Path.Combine(fullSavePath, ((int)Enum.Parse(typeof(ItemDefinitionIndex), (string)weaponSelector.SelectedItem)).ToString() + ".dat"), conts);
+
+            MessageBox.Show("Preset Saved");
+
+            Globals.LoadedPresets.Clear();
+
+            try
+            {
+                if (!Directory.Exists(fullSavePath))
+                    Directory.CreateDirectory(fullSavePath);
+
+                string[] files = Directory.GetFiles(fullSavePath);
+
+                foreach (string file in files)
+                {
+                    string[] lines2 = File.ReadAllLines(file);
+                    Globals.LoadedPresets.Add(new Skin(Convert.ToInt32(file.Split(new string[] { ".dat" }, StringSplitOptions.RemoveEmptyEntries)[0].Substring(fullSavePath.Length + 1)),
+                                                       Convert.ToInt32(lines2[0]),
+                                                       lines2[1] != "" && lines2[1] != null ? Convert.ToInt32(lines2[1]) : -1,
+                                                       Convert.ToSingle(lines2[2]),
+                                                       lines2[3]));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("IO Error (0x3)");
+            }
         }
 
         private void knifeSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -624,5 +692,10 @@ namespace AqHaxCSGO
         [DllImport("kernel32.dll")]
         static extern bool FreeConsole();
         #endregion
+
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.KnifeChangerAnimFixEnabled = !Globals.KnifeChangerAnimFixEnabled;
+        }
     }
 }

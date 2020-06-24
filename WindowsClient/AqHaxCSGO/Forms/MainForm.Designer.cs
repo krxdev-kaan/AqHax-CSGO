@@ -59,6 +59,9 @@
             this.antiFlashCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialDivider6 = new MaterialSkin.Controls.MaterialDivider();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.knifeSelectionBox = new System.Windows.Forms.ComboBox();
+            this.seedTextBox = new System.Windows.Forms.TextBox();
             this.skinSaveButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.manualLoadButton = new MaterialSkin.Controls.MaterialCheckBox();
             this.tagTextBox = new System.Windows.Forms.TextBox();
@@ -94,9 +97,7 @@
             this.tabChangeRight = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabChangeLeft = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.knifeSelectionBox = new System.Windows.Forms.ComboBox();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.tabController.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
@@ -577,9 +578,10 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.materialCheckBox1);
             this.tabPage6.Controls.Add(this.materialLabel16);
             this.tabPage6.Controls.Add(this.knifeSelectionBox);
-            this.tabPage6.Controls.Add(this.textBox1);
+            this.tabPage6.Controls.Add(this.seedTextBox);
             this.tabPage6.Controls.Add(this.skinSaveButton);
             this.tabPage6.Controls.Add(this.manualLoadButton);
             this.tabPage6.Controls.Add(this.tagTextBox);
@@ -600,12 +602,44 @@
             this.tabPage6.Text = "S/K Changer";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.Depth = 0;
+            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel16.Location = new System.Drawing.Point(2, 130);
+            this.materialLabel16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Size = new System.Drawing.Size(47, 19);
+            this.materialLabel16.TabIndex = 34;
+            this.materialLabel16.Text = "Knife:";
+            // 
+            // knifeSelectionBox
+            // 
+            this.knifeSelectionBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.knifeSelectionBox.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.knifeSelectionBox.FormattingEnabled = true;
+            this.knifeSelectionBox.Location = new System.Drawing.Point(68, 130);
+            this.knifeSelectionBox.Name = "knifeSelectionBox";
+            this.knifeSelectionBox.Size = new System.Drawing.Size(185, 21);
+            this.knifeSelectionBox.TabIndex = 33;
+            this.knifeSelectionBox.SelectedIndexChanged += new System.EventHandler(this.knifeSelectionBox_SelectedIndexChanged);
+            // 
+            // seedTextBox
+            // 
+            this.seedTextBox.Location = new System.Drawing.Point(68, 45);
+            this.seedTextBox.Name = "seedTextBox";
+            this.seedTextBox.Size = new System.Drawing.Size(185, 20);
+            this.seedTextBox.TabIndex = 32;
+            // 
             // skinSaveButton
             // 
             this.skinSaveButton.BackColor = System.Drawing.Color.Transparent;
             this.skinSaveButton.Depth = 0;
             this.skinSaveButton.ForeColor = System.Drawing.Color.Transparent;
-            this.skinSaveButton.Location = new System.Drawing.Point(128, 174);
+            this.skinSaveButton.Location = new System.Drawing.Point(128, 154);
             this.skinSaveButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.skinSaveButton.Name = "skinSaveButton";
             this.skinSaveButton.Primary = true;
@@ -622,7 +656,7 @@
             this.manualLoadButton.Depth = 0;
             this.manualLoadButton.Font = new System.Drawing.Font("Roboto", 10F);
             this.manualLoadButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.manualLoadButton.Location = new System.Drawing.Point(128, 216);
+            this.manualLoadButton.Location = new System.Drawing.Point(128, 184);
             this.manualLoadButton.Margin = new System.Windows.Forms.Padding(0);
             this.manualLoadButton.MouseLocation = new System.Drawing.Point(-1, -1);
             this.manualLoadButton.MouseState = MaterialSkin.MouseState.HOVER;
@@ -749,7 +783,7 @@
             this.skinChangerButton.Depth = 0;
             this.skinChangerButton.Font = new System.Drawing.Font("Roboto", 10F);
             this.skinChangerButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.skinChangerButton.Location = new System.Drawing.Point(5, 174);
+            this.skinChangerButton.Location = new System.Drawing.Point(2, 154);
             this.skinChangerButton.Margin = new System.Windows.Forms.Padding(0);
             this.skinChangerButton.MouseLocation = new System.Drawing.Point(-1, -1);
             this.skinChangerButton.MouseState = MaterialSkin.MouseState.HOVER;
@@ -768,7 +802,7 @@
             this.knifeChangerButton.Depth = 0;
             this.knifeChangerButton.Font = new System.Drawing.Font("Roboto", 10F);
             this.knifeChangerButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.knifeChangerButton.Location = new System.Drawing.Point(5, 216);
+            this.knifeChangerButton.Location = new System.Drawing.Point(2, 184);
             this.knifeChangerButton.Margin = new System.Windows.Forms.Padding(0);
             this.knifeChangerButton.MouseLocation = new System.Drawing.Point(-1, -1);
             this.knifeChangerButton.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1079,37 +1113,24 @@
             this.materialLabel3.TabIndex = 6;
             this.materialLabel3.Text = "AqHax-CSGO";
             // 
-            // textBox1
+            // materialCheckBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(68, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 20);
-            this.textBox1.TabIndex = 32;
-            // 
-            // materialLabel16
-            // 
-            this.materialLabel16.AutoSize = true;
-            this.materialLabel16.Depth = 0;
-            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(2, 130);
-            this.materialLabel16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(47, 19);
-            this.materialLabel16.TabIndex = 34;
-            this.materialLabel16.Text = "Knife:";
-            // 
-            // knifeSelectionBox
-            // 
-            this.knifeSelectionBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.knifeSelectionBox.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.knifeSelectionBox.FormattingEnabled = true;
-            this.knifeSelectionBox.Location = new System.Drawing.Point(68, 130);
-            this.knifeSelectionBox.Name = "knifeSelectionBox";
-            this.knifeSelectionBox.Size = new System.Drawing.Size(185, 21);
-            this.knifeSelectionBox.TabIndex = 33;
-            this.knifeSelectionBox.SelectedIndexChanged += new System.EventHandler(this.knifeSelectionBox_SelectedIndexChanged);
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.BackColor = System.Drawing.Color.Maroon;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.materialCheckBox1.Location = new System.Drawing.Point(0, 214);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(249, 30);
+            this.materialCheckBox1.TabIndex = 35;
+            this.materialCheckBox1.Text = "Knife Animation Fixer (CPU HEAVY)";
+            this.materialCheckBox1.UseVisualStyleBackColor = false;
+            this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.materialCheckBox1_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1222,7 +1243,8 @@
         private MaterialSkin.Controls.MaterialRaisedButton skinSaveButton;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private System.Windows.Forms.ComboBox knifeSelectionBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox seedTextBox;
+        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
     }
 }
 

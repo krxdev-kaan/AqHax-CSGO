@@ -225,11 +225,23 @@ namespace AqHaxCSGO.Objects
         {
             get
             {
-                return Memory.Read<int>(ViewModelBase + 0x258);
+                return Memory.Read<int>(ViewModelBase + m_nModelIndex);
             }
             set
             {
-                Memory.Write<int>(ViewModelBase + 0x258, value);
+                Memory.Write<int>(ViewModelBase + m_nModelIndex, value);
+            }
+        }
+
+        public int Sequence 
+        { 
+            get 
+            {
+                return Memory.Read<int>(ViewModelBase + m_nSequence);
+            }
+            set 
+            {
+                Memory.Write<int>(ViewModelBase + m_nSequence, value);
             }
         }
 
