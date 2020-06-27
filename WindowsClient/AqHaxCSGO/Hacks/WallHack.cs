@@ -21,20 +21,22 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
-                int mp = Engine.MaxPlayer;
+                int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    if (entityList[i] == null) continue;
-                    if (entityList[i].Dormant) continue;
-                    if (entityList[i].Health <= 0) continue;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
+                    if (entity == null) continue;
+                    if (entity.Dormant) continue;
+                    if (entity.Health <= 0) continue;
 
-                    if (entityList[i].Team != LocalPlayer.Team)
+                    if (entity.Team != CBasePlayer.Team)
                     {
                         GlowObject glowObject = entityList[i].GlowObject;
                         glowObject.r = Globals.WallHackEnemy.R / 255;
@@ -77,27 +79,29 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
-                int mp = Engine.MaxPlayer;
+                int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    if (entityList[i] == null) continue;
-                    if (entityList[i].Dormant) continue;
-                    if (entityList[i].Health <= 0) continue;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
+                    if (entity == null) continue;
+                    if (entity.Dormant) continue;
+                    if (entity.Health <= 0) continue;
 
-                    if (entityList[i].Team != LocalPlayer.Team)
+                    if (entity.Team != CBasePlayer.Team)
                     {
                         RenderColor rco = new RenderColor();
                         rco.r = Globals.RenderColor.R;
                         rco.g = Globals.RenderColor.G;
                         rco.b = Globals.RenderColor.B;
                         rco.a = 255;
-                        entityList[i].RenderColor = rco;
+                        entity.RenderColor = rco;
                     }
 
                     if (Globals.RenderEnemyOnly) continue;
@@ -107,7 +111,7 @@ namespace AqHaxCSGO.Hacks
                     rc.g = Globals.RenderColor.G;
                     rc.b = Globals.RenderColor.B;
                     rc.a = 255;
-                    entityList[i].RenderColor = rc;
+                    entity.RenderColor = rc;
                 }
 
                 Thread.Sleep(Globals.UsageDelay);
@@ -123,20 +127,22 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
-                int mp = Engine.MaxPlayer;
+                int mp = EngineDLL.MaxPlayer;
                 for (int i = 0; i < mp; i++)
                 {
-                    if (entityList[i] == null) continue;
-                    if (entityList[i].Dormant) continue;
-                    if (entityList[i].Team == LocalPlayer.Team) continue;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
+                    if (entity == null) continue;
+                    if (entity.Dormant) continue;
+                    if (entity.Team == CBasePlayer.Team) continue;
 
-                    if (!entityList[i].Spotted) entityList[i].Spotted = true;
+                    if (!entity.Spotted) entity.Spotted = true;
                 }
 
                 Thread.Sleep(Globals.UsageDelay);

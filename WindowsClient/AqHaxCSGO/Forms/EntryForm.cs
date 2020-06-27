@@ -12,6 +12,8 @@ using System.Diagnostics;
 using AqHaxCSGO.MemoryManagers;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System.IO;
+using AqHaxCSGO.Objects;
 
 namespace AqHaxCSGO
 {
@@ -29,7 +31,6 @@ namespace AqHaxCSGO
 
         private void EntryForm_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void launcherButton_Click(object sender, EventArgs e)

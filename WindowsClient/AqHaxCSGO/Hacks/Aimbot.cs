@@ -30,7 +30,7 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
@@ -40,32 +40,34 @@ namespace AqHaxCSGO.Hacks
                 {
                     if ((GetAsyncKeyState(Globals.TriggerKey) & 0x8000) > 0)
                     {
-                        if (LocalPlayer.CrosshairID > 0 && LocalPlayer.CrosshairID < Engine.MaxPlayer + 2)
+                        if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                         {
-                            Entity crossEntity = entityList[LocalPlayer.CrosshairID - 1];
+                            CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                            CCSPlayer crossEntity = new CCSPlayer(baseEntity);
                             if (crossEntity == null) continue; // TRIGGER BOT CRASH FIX
-                            if (crossEntity != null && crossEntity.Team != LocalPlayer.Team)
+                            if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
                             {
                                 Thread.Sleep(1);
-                                Client.ForceAttack(true);
+                                ClientDLL.ForceAttack(true);
                                 Thread.Sleep(5);
-                                Client.ForceAttack(false);
+                                ClientDLL.ForceAttack(false);
                             }
                         }
                     }
                 }
                 else
                 {
-                    if (LocalPlayer.CrosshairID > 0 && LocalPlayer.CrosshairID < Engine.MaxPlayer + 2)
+                    if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                     {
-                        Entity crossEntity = entityList[LocalPlayer.CrosshairID - 1];
-                        if (crossEntity == null) continue; // TRIGGER BOT CRASH FIX
-                        if (crossEntity != null && crossEntity.Team != LocalPlayer.Team)
+                        CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                        CCSPlayer crossEntity = new CCSPlayer(baseEntity);
+                        if (crossEntity == null) continue;
+                        if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
                         {
                             Thread.Sleep(1);
-                            Client.ForceAttack(true);
+                            ClientDLL.ForceAttack(true);
                             Thread.Sleep(5);
-                            Client.ForceAttack(false);
+                            ClientDLL.ForceAttack(false);
                         }
                     }
                 }
@@ -83,25 +85,27 @@ namespace AqHaxCSGO.Hacks
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
-                if (!Engine.InGame)
+                if (!EngineDLL.InGame)
                 {
                     Thread.Sleep(Globals.IdleWait);
                     continue;
                 }
 
-                int mp = Engine.MaxPlayer;
-                Rectangle screen = Misc.GetWindowRect();
+                int mp = EngineDLL.MaxPlayer;
+                Rectangle screen = Objects.Structs.Misc.GetWindowRect();
                 Vector2 screenOrigin = new Vector2(screen.Width / 2, screen.Height / 2);
                 double latestDistance = screen.Width;
                 Vector3 closestEntityPos = new Vector3(99999f, 0f, 0f);
                 for (int i = 0; i < mp; i++)
                 {
-                    if (entityList[i] == null) continue;
-                    if (entityList[i].Dormant) continue;
-                    if (entityList[i].Health <= 0) continue;
-                    if (entityList[i].Team == LocalPlayer.Team) continue;
+                    CBaseEntity baseEntity = entityList[i];
+                    CCSPlayer entity = new CCSPlayer(baseEntity);
+                    if (entity == null) continue;
+                    if (entity.Dormant) continue;
+                    if (entity.Health <= 0) continue;
+                    if (entity.Team == CBasePlayer.Team) continue;
 
-                    Vector3 entSelectedPos = entityList[i].GetBonePosition((int)Globals.AimPosition);
+                    Vector3 entSelectedPos = entity.GetBonePosition((int)Globals.AimPosition);
                     Vector2 entPosOnScreen;
                     if (entSelectedPos.PointOnScreen(out entPosOnScreen))
                     {
@@ -122,34 +126,34 @@ namespace AqHaxCSGO.Hacks
 
                 if (closestEntityPos.x != 99999f && (GetAsyncKeyState(Globals.TriggerKey) & 0x8000) > 0)
                 {
-                    Angle AimAt = CalcAngle(LocalPlayer.VectorEyeLevel, closestEntityPos);
+                    Angle AimAt = CalcAngle(CBasePlayer.VectorEyeLevel, closestEntityPos);
 
                     if (Globals.AimRecoil)
                     {
-                        Angle Punch = LocalPlayer.ViewPunchAngle * 2.0f;
+                        Angle Punch = CBasePlayer.ViewPunchAngle * 2.0f;
                         AimAt.x -= Punch.x;
                         AimAt.y -= Punch.y;
                     }
 
-                    LocalPlayer.ViewAngle = AimAt;
+                    CBasePlayer.ViewAngle = AimAt;
 
                     if (!Globals.AimShootOnCollide)
                     {
                         if (weaponList.ActiveWeapon.IsSniper())
                         {
-                            Client.ForceRightAttack(true);
+                            ClientDLL.ForceRightAttack(true);
                             Thread.Sleep(2);
-                            Client.ForceAttack(true);
+                            ClientDLL.ForceAttack(true);
                             Thread.Sleep(5);
-                            Client.ForceRightAttack(false);
-                            Client.ForceAttack(false);
+                            ClientDLL.ForceRightAttack(false);
+                            ClientDLL.ForceAttack(false);
                         }
                         else
                         {
                             Thread.Sleep(1);
-                            Client.ForceAttack(true);
+                            ClientDLL.ForceAttack(true);
                             Thread.Sleep(5);
-                            Client.ForceAttack(false);
+                            ClientDLL.ForceAttack(false);
                         }
                     }
                 }
