@@ -36,9 +36,11 @@ EDIT: Project has reached it's initial release you can go ahead and download :)
   - [ ] Chat-bot (maybe)
   - [ ] Animated Clan Name (maybe)
   - [ ] Just a Aim-Assist to look pretty much legit (i will probably make it)
-  - [ ] Skin Changer
-  - [ ] Knife Changer
+  - [x] Skin Changer
+  - [x] Knife Changer
+  - [x] Knife Animation Fixer
   - [ ] Glove Changer
+  - [x] GlowObjectManager Reimplementation
   - [ ] Custom Entity Glow System
   - [ ] Silent Aim (maybe)
   - [x] Signature Scanning
