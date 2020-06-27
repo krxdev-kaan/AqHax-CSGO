@@ -31,6 +31,7 @@ namespace AqHaxCSGO.Hacks
                 for (int i = 0; i < mp; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
+                    if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
@@ -89,6 +90,7 @@ namespace AqHaxCSGO.Hacks
                 for (int i = 0; i < mp; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
+                    if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
@@ -137,6 +139,7 @@ namespace AqHaxCSGO.Hacks
                 for (int i = 0; i < mp; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
+                    if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;

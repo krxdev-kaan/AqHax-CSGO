@@ -43,6 +43,7 @@ namespace AqHaxCSGO.Hacks
                         if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                         {
                             CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                            if (baseEntity == null) continue;
                             CCSPlayer crossEntity = new CCSPlayer(baseEntity);
                             if (crossEntity == null) continue; // TRIGGER BOT CRASH FIX
                             if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
@@ -60,6 +61,7 @@ namespace AqHaxCSGO.Hacks
                     if (CBasePlayer.CrosshairID > 0 && CBasePlayer.CrosshairID < EngineDLL.MaxPlayer + 2)
                     {
                         CBaseEntity baseEntity = entityList[CBasePlayer.CrosshairID - 1];
+                        if (baseEntity == null) continue;
                         CCSPlayer crossEntity = new CCSPlayer(baseEntity);
                         if (crossEntity == null) continue;
                         if (crossEntity != null && crossEntity.Team != CBasePlayer.Team)
@@ -99,6 +101,7 @@ namespace AqHaxCSGO.Hacks
                 for (int i = 0; i < mp; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
+                    if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
