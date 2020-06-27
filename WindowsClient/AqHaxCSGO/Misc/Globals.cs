@@ -92,7 +92,6 @@ namespace AqHaxCSGO.Objects
             for (int i = 0; i < 19; i++) 
             {
                 res.Add(listNames[i], new KnifeObj( (ItemDefinitionIndex)Enum.Parse(typeof(ItemDefinitionIndex), itemDefNames[i]), knifeModels[i]));
-                Console.WriteLine((int)((ItemDefinitionIndex)Enum.Parse(typeof(ItemDefinitionIndex), itemDefNames[i])));
             }
 
             return res;

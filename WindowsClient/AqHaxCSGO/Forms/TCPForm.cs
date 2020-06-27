@@ -57,7 +57,6 @@ namespace AqHaxCSGO
             IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddr = LocalIPAddress();
             IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 8080);
-            Console.WriteLine(ipAddr.MapToIPv4());
 
             Socket listener = new Socket(ipAddr.AddressFamily,
                          SocketType.Stream, ProtocolType.Tcp);

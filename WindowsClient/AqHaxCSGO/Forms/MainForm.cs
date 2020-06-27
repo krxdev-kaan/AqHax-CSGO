@@ -687,8 +687,8 @@ namespace AqHaxCSGO
 
         private void knifeSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Globals.SelectedKnife = (string)knifeSelectionBox.SelectedItem;
-            Console.WriteLine(Globals.SelectedKnife);
+            if (knifeSelectionBox.SelectedItem != null) Globals.SelectedKnife = (string)knifeSelectionBox.SelectedItem;
+            else Globals.SelectedKnife = "Bayonet";
         }
         #endregion
 

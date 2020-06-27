@@ -68,7 +68,6 @@ namespace AqHaxCSGO.Objects
 	        {
 		        int modelPrecacheDictItem = Memory.Read<int>(modelPrecacheDictItems + 0xC + i * 0x34);
                 string modelPrecacheDictItemName = Memory.ReadString(modelPrecacheDictItem, 128, Encoding.ASCII);
-                Console.WriteLine(modelPrecacheDictItemName);
 		        if (modelPrecacheDictItemName == modelName)
 			    {
 			        return i;
