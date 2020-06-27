@@ -306,7 +306,7 @@ namespace AqHaxCSGO
             }
             catch
             {
-                MessageBox.Show("IO Error (0x3)");
+                MessageBox.Show("IO Error.\n This usually happens once in your lifetime.\n Simply restarting will fix the issue.");
             }
         }
 
