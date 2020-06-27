@@ -19,8 +19,10 @@ namespace AqHaxCSGO.Hacks.Features
             int vKey
         );
 
-        public static void SkinChangerThread() 
+        public static void SkinChangerThread()
         {
+            int lastLoadedModelIndexForSkin = 0;
+
             while (true) 
             {
                 if (!Globals.SkinChangerEnabled)
@@ -34,6 +36,7 @@ namespace AqHaxCSGO.Hacks.Features
                     continue;
                 }
 
+                bool anythingChanged = false;
                 for (var i = 0; i < 8; i++)
                 {
                     CBaseCombatWeapon currentWeapon = weaponList[i];
@@ -55,10 +58,26 @@ namespace AqHaxCSGO.Hacks.Features
                     catch { continue; }
 
                     if (!contin) continue;
-                    if (currentWeapon.IsKnife()) continue;
+                    if (currentWeapon.IsKnife()) 
+                    {
+                        if (selected.WeaponID == (int)Constants.KnifeList[Globals.SelectedKnife].itemDefinitionIndex) 
+                        {
+                            if ((currentWeapon.PaintKit != selected.PaintKit || lastLoadedModelIndexForSkin != RuntimeGlobals.selectedKnifeModelIndex))
+                            {
+                                currentWeapon.ItemIDHigh = -1;
+                                currentWeapon.PaintKit = selected.PaintKit;
+                                currentWeapon.Wear = 0.0001f;
+                                lastLoadedModelIndexForSkin = RuntimeGlobals.selectedKnifeModelIndex;
 
-                    if (currentWeapon.PaintKit != Convert.ToInt32(selected.PaintKit) &&
-                        currentWeapon.ItemDefinitionIndex == Convert.ToInt32(selected.WeaponID))
+                                if (!Globals.ManualLoadEnabled) EngineDLL.ForceReload = -1;
+                                anythingChanged = true;
+                            }
+                        }
+                        continue; 
+                    }
+
+                    if (currentWeapon.PaintKit != selected.PaintKit &&
+                        currentWeapon.ItemDefinitionIndex == selected.WeaponID)
                     {
                         currentWeapon.ItemIDHigh = -1;
                         currentWeapon.PaintKit = selected.PaintKit;
@@ -67,21 +86,13 @@ namespace AqHaxCSGO.Hacks.Features
                         currentWeapon.AccountID = currentWeapon.XuIDLow;
                         if (selected.CustomName != null && selected.CustomName != "") currentWeapon.CustomName = selected.CustomName;
 
-                        if (!Globals.ManualLoadEnabled)
-                        {
-                            if (EngineDLL.ForceReload != -1) EngineDLL.ForceReload = -1;
-                        }
-                        else
-                        {
-                            if ((GetAsyncKeyState((int)Keys.P) & 0x8000) > 0)
-                            {
-                                if (EngineDLL.ForceReload != -1) EngineDLL.ForceReload = -1;
-                            }
-                        }
+                        if(!Globals.ManualLoadEnabled) EngineDLL.ForceReload = -1;
+                        anythingChanged = true;
                     }
                 }
+                if (Globals.ManualLoadEnabled && (GetAsyncKeyState((int)Keys.P) & 0x8000) > 0) EngineDLL.ForceReload = -1;
 
-                Thread.Sleep(Globals.UsageDelay);
+                Thread.Sleep(TimeSpan.FromMilliseconds(0.1));
             }
         }
     }

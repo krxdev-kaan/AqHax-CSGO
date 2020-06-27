@@ -630,6 +630,12 @@ namespace AqHaxCSGO
         private void manualLoadButton_CheckedChanged(object sender, EventArgs e)
         {
             Globals.ManualLoadEnabled = !Globals.ManualLoadEnabled;
+            if (Globals.ManualLoadEnabled) 
+            {
+                MessageBox.Show("Skin Changer Manual Reload Key is: P \n" +
+                    "Sorry that i didn't make the key customizable \n" +
+                    "but it's not my main worry since you will probably use this only on spawn.");
+            }
         }
 
         private void skinSaveButton_Click(object sender, EventArgs e)

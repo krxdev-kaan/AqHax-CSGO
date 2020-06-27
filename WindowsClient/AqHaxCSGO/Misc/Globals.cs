@@ -192,4 +192,9 @@ namespace AqHaxCSGO.Objects
         public static EntityList entityList = new EntityList();
         public static WeaponList weaponList = new WeaponList();
     }
+
+    static class RuntimeGlobals 
+    {
+        public static int selectedKnifeModelIndex = 0;
+    }
 }

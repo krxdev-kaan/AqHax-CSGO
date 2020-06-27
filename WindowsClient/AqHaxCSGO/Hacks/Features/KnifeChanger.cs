@@ -23,7 +23,7 @@ namespace AqHaxCSGO.Hacks.Features
         public static void KnifeChangerThread()
         {
             bool shouldReloadModelIndex = true;
-            int selectedKnifeModelIndex = 0;
+            RuntimeGlobals.selectedKnifeModelIndex = 0;
             int selectedKnifeIndex = 0;
 
             while (true)
@@ -43,7 +43,7 @@ namespace AqHaxCSGO.Hacks.Features
 
                 if (shouldReloadModelIndex || selectedKnifeIndex != (int)Constants.KnifeList[Globals.SelectedKnife].itemDefinitionIndex) 
                 {
-                    selectedKnifeModelIndex = EngineDLL.GetModelIndexByName(Constants.KnifeList[Globals.SelectedKnife].modelName);
+                    RuntimeGlobals.selectedKnifeModelIndex = EngineDLL.GetModelIndexByName(Constants.KnifeList[Globals.SelectedKnife].modelName);
                     selectedKnifeIndex = (int)Constants.KnifeList[Globals.SelectedKnife].itemDefinitionIndex;
                     shouldReloadModelIndex = false;
                 }
@@ -52,20 +52,19 @@ namespace AqHaxCSGO.Hacks.Features
                 {
                     CBaseCombatWeapon currentWeapon = weaponList[i];
 
-                    if (currentWeapon.IsKnife())
+                    if (currentWeapon.IsKnife()) 
                     {
                         currentWeapon.ItemDefinitionIndex = (int)Constants.KnifeList[Globals.SelectedKnife].itemDefinitionIndex;
                         currentWeapon.EntityQuality = 3;
-                        currentWeapon.ModelIndex = selectedKnifeModelIndex;
-                        currentWeapon.ViewModelIndex = selectedKnifeModelIndex;
+                        currentWeapon.ModelIndex = RuntimeGlobals.selectedKnifeModelIndex;
+                        currentWeapon.ViewModelIndex = RuntimeGlobals.selectedKnifeModelIndex;
                     }
                 }
 
-                CBaseCombatWeapon activeWeapon = weaponList.ActiveWeapon;
-                for (int i = 0; i < 50; i++) //Seems to be making it more stable
-                    if (weaponList.ActiveWeapon.IsKnife()) activeWeapon.ViewModelEntityModelIndex = selectedKnifeModelIndex;
+                for (int i = 0; i < 10; i++) //Seems to be making it more stable
+                    if (weaponList.ActiveWeapon.IsKnife()) weaponList.ActiveWeapon.ViewModelEntityModelIndex = RuntimeGlobals.selectedKnifeModelIndex;
 
-                Thread.Sleep(Globals.IdleWait);
+                Thread.Sleep(Globals.UsageDelay);
             }
         }
     }
