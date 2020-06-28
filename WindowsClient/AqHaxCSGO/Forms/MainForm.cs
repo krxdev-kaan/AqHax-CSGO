@@ -690,6 +690,11 @@ namespace AqHaxCSGO
             if (knifeSelectionBox.SelectedItem != null) Globals.SelectedKnife = (string)knifeSelectionBox.SelectedItem;
             else Globals.SelectedKnife = "Bayonet";
         }
+
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.KnifeChangerAnimFixEnabled = !Globals.KnifeChangerAnimFixEnabled;
+        }
         #endregion
 
         #region Some Shit For Loading State
@@ -698,10 +703,5 @@ namespace AqHaxCSGO
         [DllImport("kernel32.dll")]
         static extern bool FreeConsole();
         #endregion
-
-        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.KnifeChangerAnimFixEnabled = !Globals.KnifeChangerAnimFixEnabled;
-        }
     }
 }

@@ -43,7 +43,14 @@ namespace AqHaxCSGO
             if ((Process.GetProcessesByName("csgo").Length > 0))
             {
                 this.Visible = false;
-                new MainForm().Show();
+                if (iosSelector.Checked)
+                {
+                    new TCPForm().Show();
+                }
+                else
+                {
+                    new MainForm().Show();
+                }
             }
         }
     }

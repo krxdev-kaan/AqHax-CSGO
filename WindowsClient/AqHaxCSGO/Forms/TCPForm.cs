@@ -10,20 +10,53 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Timers;
+using System.Runtime.InteropServices;
 using AqHaxCSGO.MemoryManagers;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using AqHaxCSGO.Objects;
 using static AqHaxCSGO.Objects.Globals;
+using System.Diagnostics;
 
 namespace AqHaxCSGO
 {
     public partial class TCPForm : MaterialForm
     {
+        System.Timers.Timer timer = new System.Timers.Timer();
+
         public TCPForm()
         {
             InitializeComponent();
+            AllocConsole();
+
+            if (!Memory.Init())
+            {
+                timer.Stop();
+                timer.Dispose();
+                timer = null;
+                if (Program.entryForm.InvokeRequired)
+                {
+                    Program.entryForm.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        Program.entryForm.Visible = true;
+                    });
+                }
+                this.Close();
+            }
+            else
+            {
+                var materialSkinManager = MaterialSkinManager.Instance;
+                materialSkinManager.AddFormToManage(this);
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green900, Primary.Green600, Accent.Green200, TextShade.WHITE);
+            }
+
             this.FormClosing += new FormClosingEventHandler(AppEx);
+
+            timer.Elapsed += new ElapsedEventHandler(UpdateHandle);
+            timer.Interval = 90000;
+            timer.Start();
         }
 
         private void AppEx(object sender, FormClosingEventArgs e)
@@ -31,13 +64,40 @@ namespace AqHaxCSGO
             Environment.Exit(1);
         }
 
+        private void UpdateHandle(object source, ElapsedEventArgs e)
+        {
+            if (!(Process.GetProcessesByName("csgo").Length > 0))
+            {
+                timer.Stop();
+                timer.Dispose();
+                timer = null;
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        this.Hide();
+                        Program.entryForm.Visible = true;
+                        this.Close();
+                        var materialSkinManager = MaterialSkinManager.Instance;
+                        materialSkinManager.AddFormToManage(this);
+                        materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                        materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red600, Accent.Red200, TextShade.WHITE);
+                    });
+                }
+            }
+        }
+
         private void TCPForm_Load(object sender, EventArgs e)
         {
             materialLabel2.Text = LocalIPAddress()?.ToString();
             Thread th = new Thread(ExecuteServer);
             th.Start();
-            OffsetManager.DownloadOffsets();
+
+            NetvarManager.LoadOffsets();
+            OffsetManager.ScanOffsets();
             Threads.InitAll();
+            FreeConsole();
+            NetvarManager.netvarList.Clear();
         }
 
         private static IPAddress LocalIPAddress()
@@ -66,9 +126,7 @@ namespace AqHaxCSGO
                 listener.Bind(localEndPoint);
                 listener.Listen(10);
 
-                Console.WriteLine("Waiting connection ... ");
                 Socket clientSocket = listener.Accept();
-                Console.WriteLine("Connected.");
 
                 while (true)
                 {
@@ -85,8 +143,6 @@ namespace AqHaxCSGO
 
                         if (data != null) break;
                     }
-
-                    Console.WriteLine(data);
 
                     if (data == "Merhabalar AQ")
                     {
@@ -176,8 +232,6 @@ namespace AqHaxCSGO
                             AntiFlashEnabled = false;
                         }
                     }
-
-                    Console.WriteLine("Text received -> {0} ", data);
                 }
 
                 clientSocket.Shutdown(SocketShutdown.Both);
@@ -186,7 +240,7 @@ namespace AqHaxCSGO
 
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -236,5 +290,12 @@ namespace AqHaxCSGO
                 SetOfLabel("CSGO Offline", Color.Red);
             }
         }
+
+        #region Some Shit For Loading State
+        [DllImport("kernel32.dll")]
+        static extern bool AllocConsole();
+        [DllImport("kernel32.dll")]
+        static extern bool FreeConsole();
+        #endregion
     }
 }
