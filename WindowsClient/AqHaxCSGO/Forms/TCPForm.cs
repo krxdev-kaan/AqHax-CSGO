@@ -232,6 +232,78 @@ namespace AqHaxCSGO
                             AntiFlashEnabled = false;
                         }
                     }
+                    else if (data.Contains("bunnyhop,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            BunnyHopEnabled = true;
+                        }
+                        else
+                        {
+                            BunnyHopEnabled = false;
+                        }
+                    }
+                    else if (data.Contains("aim,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            AimEnabled = true;
+                        }
+                        else
+                        {
+                            AimEnabled = false;
+                        }
+                    }
+                    else if (data.Contains("aimrecoil,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            AimRecoil = true;
+                        }
+                        else
+                        {
+                            AimRecoil = false;
+                        }
+                    }
+                    else if (data.Contains("aimtrigger,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            AimShootOnCollide = true;
+                        }
+                        else
+                        {
+                            AimShootOnCollide = false;
+                        }
+                    }
+                    else if (data.Contains("trigger,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            TriggerEnabled = true;
+                        }
+                        else
+                        {
+                            TriggerEnabled = false;
+                        }
+                    }
+                    else if (data.Contains("triggerpress,"))
+                    {
+                        string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        if (formattedStr[1] == "on")
+                        {
+                            TriggerPressOnlyEnabled = true;
+                        }
+                        else
+                        {
+                            TriggerPressOnlyEnabled = false;
+                        }
+                    }
                 }
 
                 clientSocket.Shutdown(SocketShutdown.Both);
