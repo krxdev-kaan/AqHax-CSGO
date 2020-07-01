@@ -10,33 +10,23 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using static AqHaxCSGO.Offsets;
 
-namespace AqHaxCSGO.MemoryManagers
-{
-    static class OffsetManager
-    {
+namespace AqHaxCSGO.MemoryManagers {
+    static class OffsetManager {
         /**
          * Loads Offsets from a save file if you have a file like that
          */
-        public static void LoadOffsets()
-        {
-            try
-            {
+        public static void LoadOffsets() {
+            try {
                 string[] contentsOfFile = File.ReadAllLines("Offsets.data"); //Read the offset save file
-                foreach (string line in contentsOfFile)
-                {
+                foreach (string line in contentsOfFile) {
                     string[] props = line.Split(' '); //Split with ' ' since file is formatted like this: "offset_name offset_int32"
-                    try
-                    {
+                    try {
                         typeof(Offsets).GetField(props[0], BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField | BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty).SetValue(null, Convert.ToInt32(props[1])); //Get the variable field with offsets name and set it's value
-                    }
-                    catch (Exception err)
-                    {
+                    } catch (Exception err) {
                         Console.WriteLine("Field Of Offset Missing: " + props[0]); //If we got an error this means we found a offset name which doesn't confront any of the variables name
                     }
                 }
-            }
-            catch (Exception err)
-            {
+            } catch (Exception err) {
                 MessageBox.Show("IO Error. Restarting the Program is recommended.");
             }
         }
@@ -44,10 +34,8 @@ namespace AqHaxCSGO.MemoryManagers
         /**
          * Downloads the offsets from frk1/hazedumper repo and makes a save file out of it
          */
-        public static void DownloadOffsets()
-        {
-            try
-            {
+        public static void DownloadOffsets() {
+            try {
                 //StreamWriter sw = new StreamWriter(File.OpenWrite("Offsets.data"));  //Uncomment to gather all the offsets as a file
                 //TextWriter tw = sw; //Uncomment to gather all the offsets as a file
                 string offsetJSON = (new WebClient()).DownloadString("https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.json"); //Download the JSON containing updated offsets (Thanks to frk1/hazedumper :))
@@ -55,39 +43,28 @@ namespace AqHaxCSGO.MemoryManagers
                 JsonTextReader reader = new JsonTextReader(new StringReader(offsetJSON)); //Init JSON Reader
                 while (reader.Read()) //Starting reading and loop through
                 {
-                    if (reader.Value != null)
-                    {
+                    if (reader.Value != null) {
                         if (reader.TokenType == JsonToken.PropertyName) //If the type is PropertyName this means we found a offset name so let's set currentField to appropriate variable field
                         {
-                            try
-                            {
+                            try {
                                 currentField = typeof(Offsets).GetField(reader.Value.ToString(), BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.SetField | BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
                                 //Uncomment to gather all the offsets as a file
                                 //if (reader.Value.ToString() != "signatures" && reader.Value.ToString() != "netvars") tw.Write(reader.Value.ToString() + " ");
                                 Console.WriteLine("Prop: " + reader.Value.ToString());
-                            }
-                            catch
-                            {
+                            } catch {
                                 Console.WriteLine("Unknown Field Of Offset: {0}", reader.Value.ToString());
                             }
-                        }
-                        else if (reader.TokenType == JsonToken.Integer) //If we found an integer it's the value of the variable which we previously set the currentField to be
-                        {
-                            if (currentField != null)
-                            {
-                                try
-                                {
+                        } else if (reader.TokenType == JsonToken.Integer) //If we found an integer it's the value of the variable which we previously set the currentField to be
+                          {
+                            if (currentField != null) {
+                                try {
                                     currentField.SetValue(null, Convert.ToInt32(reader.Value.ToString()));
                                     //tw.WriteLine(reader.Value.ToString()); //Uncomment to gather all the offsets as a file
                                     Console.WriteLine("Val: " + reader.Value);
-                                }
-                                catch
-                                {
+                                } catch {
                                     MessageBox.Show("Could Not Access The Field: {0}", reader.Value.ToString());
                                 }
-                            }
-                            else
-                            {
+                            } else {
                                 Console.WriteLine("Field Of Offset Is Null: {0}", reader.Value.ToString());
                                 //tw.WriteLine(); //Uncomment to gather all the offsets as a file
                             }
@@ -97,9 +74,7 @@ namespace AqHaxCSGO.MemoryManagers
 
                 //tw.Close(); //Uncomment to gather all the offsets as a file
                 //sw.Close(); //Uncomment to gather all the offsets as a file
-            }
-            catch
-            {
+            } catch {
                 MessageBox.Show("FATAL ERROR");
             }
         }
@@ -107,8 +82,8 @@ namespace AqHaxCSGO.MemoryManagers
         /**
          * Scans the offsets by using SigScanner and NetvarManager
          */
-        public static void ScanOffsets()
-        {
+        public static void ScanOffsets() {
+            Console.WriteLine("Scanning Signatures...");
             dwClientState = SigScanner.EngineSigScan("A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0", 1, 0, true);
             dwClientState_GetLocalPlayer = SigScanner.EngineSigScan("8B 80 ? ? ? ? 40 C3", 2, 0, false);
             //dwClientState_IsHLTV = SigScanner.EngineSigScan("80 BF ? ? ? ? ? 0F 84 ? ? ? ? 32 DB", 2, 0, false);
@@ -166,7 +141,7 @@ namespace AqHaxCSGO.MemoryManagers
             force_update_spectator_glow = SigScanner.ClientSigScan("74 07 8B CB E8 ? ? ? ? 83 C7 10", 0, 0, true);
             //dwClientCmd = SigScanner.EngineSigScan("55 8B EC 8B 0D ? ? ? ? 81 F9 ? ? ? ? 75 0C A1 ? ? ? ? 35 ? ? ? ? EB 05 8B 01 FF 50 34 50", 0, 0, true);
             //Console.WriteLine(dwClientCmd);
-            
+
             GC.Collect();
 
 

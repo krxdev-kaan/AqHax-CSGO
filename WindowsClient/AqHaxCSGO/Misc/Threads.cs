@@ -7,10 +7,8 @@ using System.Threading;
 using AqHaxCSGO.Hacks;
 using AqHaxCSGO.Hacks.Features;
 
-namespace AqHaxCSGO
-{
-    static class Threads
-    {
+namespace AqHaxCSGO {
+    static class Threads {
         static Thread bunnyThread = new Thread(Others.BunnyThread);
         static Thread antiFlashThread = new Thread(Others.FlashThread);
         static Thread wallThread = new Thread(WallHack.WallHackThread);
@@ -22,8 +20,8 @@ namespace AqHaxCSGO
         static Thread knifeChangerThread = new Thread(KnifeChanger.KnifeChangerThread);
         static Thread knifeChangerAnimFixThread = new Thread(KnifeChangerAnimationFix.KnifeChangerAnimationFixThread);
 
-        public static void InitAll()
-        {
+        public static void InitAll() {
+            Console.WriteLine("Initializing Threads...");
             bunnyThread.IsBackground = true;
             antiFlashThread.IsBackground = true;
             wallThread.IsBackground = true;
