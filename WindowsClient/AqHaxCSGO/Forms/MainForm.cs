@@ -557,5 +557,9 @@ namespace AqHaxCSGO {
         [DllImport("kernel32.dll")]
         static extern bool FreeConsole();
         #endregion
+
+        private void skinSaveButton_Click_1(object sender, EventArgs e) {
+
+        }
     }
 }

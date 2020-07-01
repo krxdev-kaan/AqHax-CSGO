@@ -18,14 +18,17 @@ using MaterialSkin.Controls;
 using AqHaxCSGO.Objects;
 using static AqHaxCSGO.Objects.Globals;
 using System.Diagnostics;
+using System.Data.SqlTypes;
 
 namespace AqHaxCSGO {
     public partial class TCPForm : MaterialForm {
+        DateTime start = new DateTime();
         System.Timers.Timer timer = new System.Timers.Timer();
 
         public TCPForm() {
             InitializeComponent();
-            AllocConsole();
+
+            start = DateTime.Now;
 
             if (!Memory.Init()) {
                 timer.Stop();
@@ -83,6 +86,11 @@ namespace AqHaxCSGO {
             OffsetManager.ScanOffsets();
             Threads.InitAll();
             NetvarManager.netvarList.Clear();
+
+            DateTime end = DateTime.Now;
+            TimeSpan load = end - start;
+
+            Console.WriteLine("Loaded cheat in " + (load.TotalMilliseconds / 1000) + "s!");
         }
 
         private static IPAddress LocalIPAddress() {
@@ -106,125 +114,142 @@ namespace AqHaxCSGO {
 
                 while (true) {
                     Socket clientSocket = listener.Accept();
-
-                    Console.WriteLine(clientSocket.RemoteEndPoint.ToString() + " has connected.");
-
-                    while (clientSocket.Connected) {
-                        byte[] bytes = new Byte[1024];
-                        string data = null;
-
-                        while (true) {
-
-                            int numByte = clientSocket.Receive(bytes);
-
-                            data += Encoding.ASCII.GetString(bytes, 0, numByte);
-
-                            if (data != null) break;
-                        }
-
-                        if (data == "Merhabalar AQ") {
-                            SetTextOfLabel("CONNECTED", Color.Green);
-                        } else if (data.Contains("wall,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            Console.WriteLine(formattedStr[1]);
-                            if (formattedStr[1] == "on") {
-                                WallHackEnabled = true;
-                                Console.WriteLine(WallHackEnabled);
-                            } else {
-                                WallHackEnabled = false;
-                            }
-                        } else if (data.Contains("wallfull,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                WallHackFullEnabled = true;
-                            } else {
-                                WallHackFullEnabled = false;
-                            }
-                        } else if (data.Contains("wallglow,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                WallHackGlowOnly = true;
-                            } else {
-                                WallHackGlowOnly = false;
-                            }
-                        } else if (data.Contains("enemycolor,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            WallHackEnemy = ColorTranslator.FromHtml("#" + formattedStr[1]);
-                        } else if (data.Contains("rendercolor,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                RenderEnabled = true;
-                            } else {
-                                RenderEnabled = false;
-                            }
-                        } else if (data.Contains("rendercolorenemy,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                RenderEnemyOnly = true;
-                            } else {
-                                RenderEnemyOnly = false;
-                            }
-                        } else if (data.Contains("renderercolor,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            RenderColor = ColorTranslator.FromHtml("#" + formattedStr[1]);
-                        } else if (data.Contains("flash,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                AntiFlashEnabled = true;
-                            } else {
-                                AntiFlashEnabled = false;
-                            }
-                        } else if (data.Contains("bunnyhop,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                BunnyHopEnabled = true;
-                            } else {
-                                BunnyHopEnabled = false;
-                            }
-                        } else if (data.Contains("aim,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                AimEnabled = true;
-                            } else {
-                                AimEnabled = false;
-                            }
-                        } else if (data.Contains("aimrecoil,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                AimRecoil = true;
-                            } else {
-                                AimRecoil = false;
-                            }
-                        } else if (data.Contains("aimtrigger,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                AimShootOnCollide = true;
-                            } else {
-                                AimShootOnCollide = false;
-                            }
-                        } else if (data.Contains("trigger,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                TriggerEnabled = true;
-                            } else {
-                                TriggerEnabled = false;
-                            }
-                        } else if (data.Contains("triggerpress,")) {
-                            string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-                            if (formattedStr[1] == "on") {
-                                TriggerPressOnlyEnabled = true;
-                            } else {
-                                TriggerPressOnlyEnabled = false;
-                            }
-                        }
-                    }
-
-                    clientSocket.Shutdown(SocketShutdown.Both);
-                    clientSocket.Close();
+                    new Thread(ClientHandler).Start(clientSocket);
                 }
             } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        private void ClientHandler(object cli) {
+            Socket clientSocket = cli as Socket;
+
+            if (clientSocket == null) return;
+
+            string ip = clientSocket.RemoteEndPoint.ToString();
+
+            Console.WriteLine(ip + " has connected.");
+
+            while (clientSocket.Connected) {
+                byte[] bytes = new byte[1024];
+                string data = null;
+
+                while (true) {
+                    int numByte = clientSocket.Receive(bytes);
+
+                    data += Encoding.ASCII.GetString(bytes, 0, numByte);
+
+                    if (data != null) break;
+                }
+
+                if (data == "")
+                    break;
+
+                Console.WriteLine(ip + " > " + data);
+
+                if (data.Split(',').Length == 2) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    string state = (formattedStr[1] == "on") ? "Enabled" : "Disabled";
+                    Console.WriteLine(state + " " + formattedStr[0]);
+                }
+
+                if (data == "Merhabalar AQ") {
+                    SetTextOfLabel("CONNECTED", Color.Green);
+                } else if (data.Contains("wall,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        WallHackEnabled = true;
+                    } else {
+                        WallHackEnabled = false;
+                    }
+                } else if (data.Contains("wallfull,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        WallHackFullEnabled = true;
+                    } else {
+                        WallHackFullEnabled = false;
+                    }
+                } else if (data.Contains("wallglow,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        WallHackGlowOnly = true;
+                    } else {
+                        WallHackGlowOnly = false;
+                    }
+                } else if (data.Contains("enemycolor,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    WallHackEnemy = ColorTranslator.FromHtml("#" + formattedStr[1]);
+                } else if (data.Contains("rendercolor,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        RenderEnabled = true;
+                    } else {
+                        RenderEnabled = false;
+                    }
+                } else if (data.Contains("rendercolorenemy,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        RenderEnemyOnly = true;
+                    } else {
+                        RenderEnemyOnly = false;
+                    }
+                } else if (data.Contains("renderercolor,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    RenderColor = ColorTranslator.FromHtml("#" + formattedStr[1]);
+                } else if (data.Contains("flash,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        AntiFlashEnabled = true;
+                    } else {
+                        AntiFlashEnabled = false;
+                    }
+                } else if (data.Contains("bunnyhop,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        BunnyHopEnabled = true;
+                    } else {
+                        BunnyHopEnabled = false;
+                    }
+                } else if (data.Contains("aim,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        AimEnabled = true;
+                    } else {
+                        AimEnabled = false;
+                    }
+                } else if (data.Contains("aimrecoil,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        AimRecoil = true;
+                    } else {
+                        AimRecoil = false;
+                    }
+                } else if (data.Contains("aimtrigger,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        AimShootOnCollide = true;
+                    } else {
+                        AimShootOnCollide = false;
+                    }
+                } else if (data.Contains("trigger,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        TriggerEnabled = true;
+                    } else {
+                        TriggerEnabled = false;
+                    }
+                } else if (data.Contains("triggerpress,")) {
+                    string[] formattedStr = data.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    if (formattedStr[1] == "on") {
+                        TriggerPressOnlyEnabled = true;
+                    } else {
+                        TriggerPressOnlyEnabled = false;
+                    }
+                }
+            }
+
+            clientSocket.Shutdown(SocketShutdown.Both);
+            clientSocket.Close();
         }
 
         private void SetTextOfLabel(string text, Color color) {
@@ -240,14 +265,14 @@ namespace AqHaxCSGO {
         }
 
         private void SetOfLabel(string text, Color color) {
-            if (this.label1.InvokeRequired) {
-                this.label1.BeginInvoke((MethodInvoker)delegate () {
-                    this.label1.Text = text;
-                    this.label1.ForeColor = color;
+            if (this.materialLabel5.InvokeRequired) {
+                this.materialLabel5.BeginInvoke((MethodInvoker)delegate () {
+                    this.materialLabel5.Text = text;
+                    this.materialLabel5.ForeColor = color;
                 });
             } else {
-                this.label1.Text = text;
-                this.label1.ForeColor = color;
+                this.materialLabel5.Text = text;
+                this.materialLabel5.ForeColor = color;
             }
         }
 

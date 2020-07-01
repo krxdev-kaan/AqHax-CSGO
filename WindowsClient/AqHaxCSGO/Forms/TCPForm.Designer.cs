@@ -45,7 +45,7 @@
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Location = new System.Drawing.Point(-8, 57);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(2);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(241, 5);
@@ -57,7 +57,7 @@
             this.materialTabControl1.Controls.Add(this.Connection);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(2, 57);
-            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
@@ -70,9 +70,9 @@
             this.Connection.Controls.Add(this.materialLabel2);
             this.Connection.Controls.Add(this.materialLabel1);
             this.Connection.Location = new System.Drawing.Point(4, 22);
-            this.Connection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Connection.Margin = new System.Windows.Forms.Padding(2);
             this.Connection.Name = "Connection";
-            this.Connection.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Connection.Padding = new System.Windows.Forms.Padding(2);
             this.Connection.Size = new System.Drawing.Size(214, 253);
             this.Connection.TabIndex = 0;
             this.Connection.Text = "Connection";
@@ -158,8 +158,9 @@
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialDivider1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TCPForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.TCPForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.Connection.ResumeLayout(false);
