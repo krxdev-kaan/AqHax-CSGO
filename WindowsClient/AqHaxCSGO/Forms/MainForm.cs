@@ -25,18 +25,15 @@ using System.Threading;
 using AqHaxCSGO.Misc;
 using AqHaxCSGO.Objects.Structs;
 
-namespace AqHaxCSGO
-{
-    public partial class MainForm : MaterialForm
-    {
+namespace AqHaxCSGO {
+    public partial class MainForm : MaterialForm {
         private bool IsWaitingForInput = false;
         private int currentKey = 16;
         KeysConverter keyConverter = new KeysConverter();
 
         System.Timers.Timer timer = new System.Timers.Timer();
 
-        public MainForm()
-        {
+        public MainForm() {
             InitializeComponent();
             AllocConsole();
 
@@ -46,33 +43,22 @@ namespace AqHaxCSGO
             int[] versionParts = { fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart };
             int[] latestVersion = GetVersion();
 
-            if (latestVersion[0] != 0) 
-            {
-                if (latestVersion[0] > versionParts[0])
-                {
+            if (latestVersion[0] != 0) {
+                if (latestVersion[0] > versionParts[0]) {
                     DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes) 
-                    {
+                    if (dr == DialogResult.Yes) {
                         Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
                     }
-                }
-                else if (latestVersion[0] == versionParts[0]) 
-                {
-                    if (latestVersion[1] > versionParts[1])
-                    {
+                } else if (latestVersion[0] == versionParts[0]) {
+                    if (latestVersion[1] > versionParts[1]) {
                         DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
-                        if (dr == DialogResult.Yes)
-                        {
+                        if (dr == DialogResult.Yes) {
                             Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
                         }
-                    }
-                    else if (latestVersion[1] == versionParts[1])
-                    {
-                        if (latestVersion[2] > versionParts[2])
-                        {
+                    } else if (latestVersion[1] == versionParts[1]) {
+                        if (latestVersion[2] > versionParts[2]) {
                             DialogResult dr = MessageBox.Show("New version of AqHax-CSGO is available. Would you like to update ?", "New Version !", MessageBoxButtons.YesNo);
-                            if (dr == DialogResult.Yes)
-                            {
+                            if (dr == DialogResult.Yes) {
                                 Process.Start("https://github.com/krxdev-kaan/AqHax-CSGO/releases");
                             }
                         }
@@ -80,9 +66,9 @@ namespace AqHaxCSGO
                 }
             }
             #endregion
-            
+
             #region CUSTOM RENDER
-                        GraphicsPath path = new GraphicsPath();
+            GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, ctColor.Width, ctColor.Height);
             ctColor.Region = new Region(path);
 
@@ -100,11 +86,9 @@ namespace AqHaxCSGO
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
             string fullSavePath = Path.Combine(programDataPath, "CSG.dat");
-            try
-            {
+            try {
                 string[] lines = File.ReadAllLines(fullSavePath);
-                if (lines.Length == 0) 
-                {
+                if (lines.Length == 0) {
                     File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
                     lines = File.ReadAllLines(fullSavePath);
                 }
@@ -112,18 +96,14 @@ namespace AqHaxCSGO
                 Color colorT = new Color();
                 Color colorR = new Color();
                 int p = 0;
-                foreach (string line in lines)
-                {
-                    if (p == 1)
-                    {
+                foreach (string line in lines) {
+                    if (p == 1) {
                         colorCT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
                     }
-                    if (p == 2)
-                    {
+                    if (p == 2) {
                         colorT = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
                     }
-                    if (p == 3)
-                    {
+                    if (p == 3) {
                         colorR = Color.FromArgb(Convert.ToInt32(line.Substring(0, 3)), Convert.ToInt32(line.Substring(3, 3)), Convert.ToInt32(line.Substring(6, 3)));
                     }
                     p++;
@@ -135,25 +115,17 @@ namespace AqHaxCSGO
                 Globals.WallHackEnemy = colorCT;
                 Globals.WallHackTeammate = colorT;
                 Globals.RenderColor = colorR;
-            }
-            catch 
-            {
-                try
-                {
-                    try
-                    {
+            } catch {
+                try {
+                    try {
                         File.Create(fullSavePath);
                         File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
-                    }
-                    catch 
-                    {
+                    } catch {
                         Directory.CreateDirectory(programDataPath);
                         File.Create(fullSavePath);
                         File.WriteAllLines(fullSavePath, new string[] { "00", "255000000", "000255000", "255000000" });
                     }
-                }
-                catch
-                {
+                } catch {
                     MessageBox.Show("IO Error. \nApp save file cannot be initialized. \nRunning the program again should shortly fix th issue.",
                                     "FATAL ERROR");
                     Environment.Exit(1);
@@ -181,29 +153,24 @@ namespace AqHaxCSGO
             foreach (string s in res) skinSelector.Items.Add(s);
 
             List<string> ids = Enum.GetNames(typeof(ItemDefinitionIndex)).ToList();
-            foreach (string s in ids) if(s.Contains("WEAPON")) weaponSelector.Items.Add(s);
+            foreach (string s in ids) if (s.Contains("WEAPON")) weaponSelector.Items.Add(s);
 
             List<string> knives = Constants.KnifeList.Keys.ToList();
             foreach (string s in knives) knifeSelectionBox.Items.Add(s);
             #endregion
 
             #region SETUP
-            if (!Memory.Init())
-            {
+            if (!Memory.Init()) {
                 timer.Stop();
                 timer.Dispose();
                 timer = null;
-                if (Program.entryForm.InvokeRequired)
-                {
-                    Program.entryForm.BeginInvoke((MethodInvoker)delegate ()
-                    {
+                if (Program.entryForm.InvokeRequired) {
+                    Program.entryForm.BeginInvoke((MethodInvoker)delegate () {
                         Program.entryForm.Visible = true;
                     });
                 }
                 this.Close();
-            }
-            else 
-            {
+            } else {
                 var materialSkinManager = MaterialSkinManager.Instance;
                 materialSkinManager.AddFormToManage(this);
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -220,30 +187,22 @@ namespace AqHaxCSGO
             #endregion
         }
 
-        private int[] GetVersion()
-        {
-            try
-            {
-                using (var webC = new WebClient())
-                {
+        private int[] GetVersion() {
+            try {
+                using (var webC = new WebClient()) {
                     webC.Headers.Add("User-Agent", "request");
                     string json = webC.DownloadString("https://api.github.com/repos/krxdev-kaan/AqHax-CSGO/releases");
                     JsonTextReader reader = new JsonTextReader(new StringReader(json));
-                    while (reader.Read())
-                    {
-                        if (reader.Value != null)
-                        {
-                            if (reader.TokenType == JsonToken.PropertyName)
-                            {
-                                if (reader.Value.ToString() == "tag_name")
-                                {
+                    while (reader.Read()) {
+                        if (reader.Value != null) {
+                            if (reader.TokenType == JsonToken.PropertyName) {
+                                if (reader.Value.ToString() == "tag_name") {
                                     reader.Read();
                                     string version = reader.Value.ToString();
                                     string int_ified = version.Substring(1);
                                     string[] splitted = int_ified.Split('.');
                                     int[] result = new int[3];
-                                    for (int i = 0; i < splitted.Length; i++)
-                                    {
+                                    for (int i = 0; i < splitted.Length; i++) {
                                         result[i] = Convert.ToInt32(splitted[i]);
                                     }
                                     return result;
@@ -253,29 +212,22 @@ namespace AqHaxCSGO
                     }
                     return new int[] { 0, 0, 0 };
                 }
-            }
-            catch 
-            {
+            } catch {
                 return new int[] { 0, 0, 0 };
             }
         }
 
-        private void LoadSkins()
-        {
+        private void LoadSkins() {
             var assembly = Assembly.GetExecutingAssembly();
             string resourcePath = "AqHaxCSGO.Resources.Skins.dat";
 
-            using (StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(resourcePath)))
-            {
-                while (!reader.EndOfStream)
-                {
+            using (StreamReader reader = new StreamReader(assembly.GetManifestResourceStream(resourcePath))) {
+                while (!reader.EndOfStream) {
                     string raw = reader.ReadLine();
                     string[] splitted = raw.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries);
                     int count = 0;
-                    foreach (SkinObj s in Globals.CsgoSkinList.Values) 
-                    {
-                        if (s.SkinName == splitted[1]) 
-                        {
+                    foreach (SkinObj s in Globals.CsgoSkinList.Values) {
+                        if (s.SkinName == splitted[1]) {
                             count += 1;
                         }
                     }
@@ -283,19 +235,17 @@ namespace AqHaxCSGO
                 }
             }
 
-            try
-            {
+            try {
                 string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
                 string fullSavePath = Path.Combine(programDataPath, "SKChanger");
 
-                if (!Directory.Exists(fullSavePath)) 
+                if (!Directory.Exists(fullSavePath))
                     Directory.CreateDirectory(fullSavePath);
 
                 string[] files = Directory.GetFiles(fullSavePath);
 
-                foreach (string file in files)
-                {
+                foreach (string file in files) {
                     string[] lines2 = File.ReadAllLines(file);
                     Globals.LoadedPresets.Add(new Skin(Convert.ToInt32(file.Split(new string[] { ".dat" }, StringSplitOptions.RemoveEmptyEntries)[0].Substring(fullSavePath.Length + 1)),
                                                        Convert.ToInt32(lines2[0]),
@@ -303,40 +253,31 @@ namespace AqHaxCSGO
                                                        Convert.ToSingle(lines2[2]),
                                                        lines2[3]));
                 }
-            }
-            catch
-            {
+            } catch {
                 MessageBox.Show("IO Error.\n This usually happens once in your lifetime.\n Simply restarting will fix the issue.");
             }
         }
 
         #region Events
-        private void AppEx(object sender, FormClosingEventArgs e)
-        {
+        private void AppEx(object sender, FormClosingEventArgs e) {
             Environment.Exit(1);
         }
 
-        private void KeyEvent(object sender, KeyEventArgs e)
-        {
-            if (IsWaitingForInput) 
-            {
+        private void KeyEvent(object sender, KeyEventArgs e) {
+            if (IsWaitingForInput) {
                 currentKey = e.KeyValue;
                 keyButton.Text = e.KeyCode.ToString();
                 IsWaitingForInput = false;
             }
         }
 
-        private void UpdateHandle(object source, ElapsedEventArgs e)
-        {
-            if (!(Process.GetProcessesByName("csgo").Length > 0))
-            {
+        private void UpdateHandle(object source, ElapsedEventArgs e) {
+            if (!(Process.GetProcessesByName("csgo").Length > 0)) {
                 timer.Stop();
                 timer.Dispose();
                 timer = null;
-                if (this.InvokeRequired) 
-                {
-                    this.BeginInvoke((MethodInvoker)delegate ()
-                    {
+                if (this.InvokeRequired) {
+                    this.BeginInvoke((MethodInvoker)delegate () {
                         this.Hide();
                         Program.entryForm.Visible = true;
                         this.Close();
@@ -349,8 +290,7 @@ namespace AqHaxCSGO
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
+        private void MainForm_Load(object sender, EventArgs e) {
             NetvarManager.LoadOffsets();
             OffsetManager.ScanOffsets();
             Threads.InitAll();
@@ -360,87 +300,36 @@ namespace AqHaxCSGO
         #endregion
 
         #region User Events
-        private void tabChangeLeft_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < tabController.TabPages.Count; i++) 
-            {
-                if (tabController.TabPages[i] == tabController.SelectedTab) 
-                {
-                    tabController.SelectTab(i-1 >= 0 ? i - 1 : tabController.TabPages.Count - 1);
-                    tabLabel.Text = tabController.TabPages[i - 1 >= 0 ? i - 1 : tabController.TabPages.Count - 1].Text;
-                    tabLabel.Location = new Point(this.Size.Width / 2 - tabLabel.Width / 2, tabLabel.Location.Y);
 
-                    if (tabLabel.Text.Contains("Settings")) 
-                    {
-                        bunnySlider.Value = Math.Abs(Globals.BunnyHopAccuracy - 5);
-                        idlePowerSlider.Value = Math.Abs(Globals.IdleWait - 50) / 10;
-                        usagePowerSlider.Value = Math.Abs(Globals.UsageDelay - 5);
-                        keyButton.Text = keyConverter.ConvertToString(Globals.TriggerKey).Replace("İ", "I");
-                    }
-                    break;
-                }
-            }
+        private void wallCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.WallHackEnabled = wallCheckBox.Checked;
         }
 
-        private void tabChangeRight_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < tabController.TabPages.Count; i++)
-            {
-                if (tabController.TabPages[i] == tabController.SelectedTab)
-                {
-                    tabController.SelectTab(i + 1 < tabController.TabPages.Count ? i + 1 : 0);
-                    tabLabel.Text = tabController.TabPages[i + 1 < tabController.TabPages.Count ? i + 1 : 0].Text;
-                    tabLabel.Location = new Point(this.Size.Width / 2 - tabLabel.Width / 2, tabLabel.Location.Y);
-
-                    if (tabLabel.Text.Contains("Settings"))
-                    {
-                        bunnySlider.Value = Math.Abs(Globals.BunnyHopAccuracy - 5);
-                        idlePowerSlider.Value = Math.Abs(Globals.IdleWait - 50) / 10;
-                        usagePowerSlider.Value = Math.Abs(Globals.UsageDelay - 5);
-                        keyButton.Text = keyConverter.ConvertToString(Globals.TriggerKey).Replace("İ", "I");
-                    }
-                    break;
-                }
-            }
+        private void fullCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.WallHackFullEnabled = fullCheckBox.Checked;
         }
 
-        private void wallCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.WallHackEnabled = !Globals.WallHackEnabled;
+        private void fresnelCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.WallHackGlowOnly = fresnelCheckBox.Checked;
         }
 
-        private void fullCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.WallHackFullEnabled = !Globals.WallHackFullEnabled;
+        private void radarCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.RadarEnabled = radarCheckBox.Checked;
         }
 
-        private void fresnelCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.WallHackGlowOnly = !Globals.WallHackGlowOnly;
+        private void renderColorCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.RenderEnabled = renderColorCheckBox.Checked;
         }
 
-        private void radarCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.RadarEnabled = !Globals.RadarEnabled;
+        private void enemyCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.RenderEnemyOnly = enemyCheckBox.Checked;
         }
 
-        private void renderColorCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.RenderEnabled = !Globals.RenderEnabled;
-        }
-
-        private void enemyCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.RenderEnemyOnly = !Globals.RenderEnemyOnly;
-        }
-
-        private void ctColor_Click(object sender, EventArgs e)
-        {
+        private void ctColor_Click(object sender, EventArgs e) {
             ColorDialog clrDialog = new ColorDialog();
             Color c = new Color();
 
-            if (clrDialog.ShowDialog() == DialogResult.OK)
-            {
+            if (clrDialog.ShowDialog() == DialogResult.OK) {
                 c = clrDialog.Color;
             }
 
@@ -464,13 +353,11 @@ namespace AqHaxCSGO
             Globals.WallHackEnemy = Color.FromArgb(r2, g2, b2);
         }
 
-        private void tColor_Click(object sender, EventArgs e)
-        {
+        private void tColor_Click(object sender, EventArgs e) {
             ColorDialog clrDialog = new ColorDialog();
             Color c = new Color();
 
-            if (clrDialog.ShowDialog() == DialogResult.OK)
-            {
+            if (clrDialog.ShowDialog() == DialogResult.OK) {
                 c = clrDialog.Color;
             }
 
@@ -494,13 +381,11 @@ namespace AqHaxCSGO
             Globals.WallHackTeammate = Color.FromArgb(r2, g2, b2);
         }
 
-        private void rColor_Click(object sender, EventArgs e)
-        {
+        private void rColor_Click(object sender, EventArgs e) {
             ColorDialog clrDialog = new ColorDialog();
             Color c = new Color();
 
-            if (clrDialog.ShowDialog() == DialogResult.OK)
-            {
+            if (clrDialog.ShowDialog() == DialogResult.OK) {
                 c = clrDialog.Color;
             }
 
@@ -524,82 +409,63 @@ namespace AqHaxCSGO
             Globals.RenderColor = Color.FromArgb(r2, g2, b2);
         }
 
-        string ToFormedColor(string f)
-        {
-            if (f.Length == 2)
-            {
+        string ToFormedColor(string f) {
+            if (f.Length == 2) {
                 f = "0" + f;
                 return f;
-            }
-            else if (f.Length == 1)
-            {
+            } else if (f.Length == 1) {
                 f = "00" + f;
                 return f;
-            }
-            else
-            {
+            } else {
                 return f;
             }
         }
 
-        private void aimCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.AimEnabled = !Globals.AimEnabled;
-            if (Globals.AimEnabled)
-            {
+        private void aimCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.AimEnabled = aimCheckBox.Checked;
+            if (Globals.AimEnabled) {
                 triggerBotCheckBox.Checked = false;
             }
         }
 
-        private void shootOnCollideCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.AimShootOnCollide = !Globals.AimShootOnCollide;
+        private void shootOnCollideCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.AimShootOnCollide = shootOnCollideCheckBox.Checked;
         }
 
-        private void recoilControlCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.AimRecoil = !Globals.AimRecoil;
+        private void recoilControlCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.AimRecoil = recoilControlCheckBox.Checked;
         }
 
-        private void triggerBotCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.TriggerEnabled = !Globals.TriggerEnabled;
-            if (Globals.TriggerEnabled)
-            {
+        private void triggerBotCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.TriggerEnabled = triggerBotCheckBox.Checked;
+            if (Globals.TriggerEnabled) {
                 aimCheckBox.Checked = false;
             }
         }
 
-        private void holdForTriggerCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.TriggerPressOnlyEnabled = !Globals.TriggerPressOnlyEnabled;
+        private void holdForTriggerCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.TriggerPressOnlyEnabled = holdForTriggerCheckBox.Checked;
         }
 
-        private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
+        private void aimAssistCheckBox_CheckedChanged(object sender, EventArgs e) {
             MessageBox.Show("This feature is not implemented yet because im not sure if i want to add it right now.");
         }
 
-        private void bunnyHopCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.BunnyHopEnabled = !Globals.BunnyHopEnabled;
+        private void bunnyHopCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.BunnyHopEnabled = bunnyHopCheckBox.Checked;
         }
 
-        private void antiFlashCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.AntiFlashEnabled = !Globals.AntiFlashEnabled;
+        private void antiFlashCheckBox_CheckedChanged(object sender, EventArgs e) {
+            Globals.AntiFlashEnabled = antiFlashCheckBox.Checked;
         }
 
-        private void keyButton_Click(object sender, EventArgs e)
-        {
+        private void keyButton_Click(object sender, EventArgs e) {
             IsWaitingForInput = !IsWaitingForInput;
             keyButton.Text = "Press any key..";
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            if (IsWaitingForInput) 
-            {
+        private void saveButton_Click(object sender, EventArgs e) {
+            if (IsWaitingForInput) {
                 MessageBox.Show("Aim/Trigger Key undefined.", "Error");
                 return;
             }
@@ -617,32 +483,26 @@ namespace AqHaxCSGO
             SaveManager.SaveSettings(settings);
         }
 
-        private void skinChangerButton_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.SkinChangerEnabled = !Globals.SkinChangerEnabled;
+        private void skinChangerButton_CheckedChanged(object sender, EventArgs e) {
+            Globals.SkinChangerEnabled = skinChangerButton.Checked;
         }
 
-        private void knifeChangerButton_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.KnifeChangerEnabled = !Globals.KnifeChangerEnabled;
+        private void knifeChangerButton_CheckedChanged(object sender, EventArgs e) {
+            Globals.KnifeChangerEnabled = knifeChangerButton.Checked;
         }
 
-        private void manualLoadButton_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.ManualLoadEnabled = !Globals.ManualLoadEnabled;
-            if (Globals.ManualLoadEnabled) 
-            {
+        private void manualLoadButton_CheckedChanged(object sender, EventArgs e) {
+            Globals.ManualLoadEnabled = manualLoadButton.Checked;
+            if (Globals.ManualLoadEnabled) {
                 MessageBox.Show("Skin Changer Manual Reload Key is: P \n" +
                     "Sorry that i didn't make the key customizable \n" +
                     "but it's not my main worry since you will probably use this only on spawn.");
             }
         }
 
-        private void skinSaveButton_Click(object sender, EventArgs e)
-        {
-            if (Enum.Parse(typeof(ItemDefinitionIndex), (string)weaponSelector.SelectedItem) == null || 
-                Globals.CsgoSkinList[(string)skinSelector.SelectedItem] == null)
-            {
+        private void skinSaveButton_Click(object sender, EventArgs e) {
+            if (Enum.Parse(typeof(ItemDefinitionIndex), (string)weaponSelector.SelectedItem) == null ||
+                Globals.CsgoSkinList[(string)skinSelector.SelectedItem] == null) {
                 MessageBox.Show("Both WeaponID and SkinID should be declared.");
                 return;
             }
@@ -651,9 +511,9 @@ namespace AqHaxCSGO
             string programDataPath = Path.Combine(appDataPath, "AqHaxCSGO");
             string fullSavePath = Path.Combine(programDataPath, "SKChanger");
 
-            string[] conts = new string[] { Globals.CsgoSkinList[(string)skinSelector.SelectedItem].SkinID.ToString(), 
-                                            seedTextBox.Text, 
-                                            ((float)((float)(wearSlider.Value) / 100)).ToString(), 
+            string[] conts = new string[] { Globals.CsgoSkinList[(string)skinSelector.SelectedItem].SkinID.ToString(),
+                                            seedTextBox.Text,
+                                            ((float)((float)(wearSlider.Value) / 100)).ToString(),
                                             tagTextBox.Text};
 
             File.WriteAllLines(Path.Combine(fullSavePath, ((int)Enum.Parse(typeof(ItemDefinitionIndex), (string)weaponSelector.SelectedItem)).ToString() + ".dat"), conts);
@@ -662,15 +522,13 @@ namespace AqHaxCSGO
 
             Globals.LoadedPresets.Clear();
 
-            try
-            {
+            try {
                 if (!Directory.Exists(fullSavePath))
                     Directory.CreateDirectory(fullSavePath);
 
                 string[] files = Directory.GetFiles(fullSavePath);
 
-                foreach (string file in files)
-                {
+                foreach (string file in files) {
                     string[] lines2 = File.ReadAllLines(file);
                     Globals.LoadedPresets.Add(new Skin(Convert.ToInt32(file.Split(new string[] { ".dat" }, StringSplitOptions.RemoveEmptyEntries)[0].Substring(fullSavePath.Length + 1)),
                                                        Convert.ToInt32(lines2[0]),
@@ -678,22 +536,18 @@ namespace AqHaxCSGO
                                                        Convert.ToSingle(lines2[2]),
                                                        lines2[3]));
                 }
-            }
-            catch
-            {
+            } catch {
                 MessageBox.Show("IO Error (0x3)");
             }
         }
 
-        private void knifeSelectionBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void knifeSelectionBox_SelectedIndexChanged(object sender, EventArgs e) {
             if (knifeSelectionBox.SelectedItem != null) Globals.SelectedKnife = (string)knifeSelectionBox.SelectedItem;
             else Globals.SelectedKnife = "Bayonet";
         }
 
-        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.KnifeChangerAnimFixEnabled = !Globals.KnifeChangerAnimFixEnabled;
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e) {
+            Globals.KnifeChangerAnimFixEnabled = materialCheckBox1.Checked;
         }
         #endregion
 
