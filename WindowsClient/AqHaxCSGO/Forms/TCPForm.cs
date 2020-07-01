@@ -18,6 +18,7 @@ using MaterialSkin.Controls;
 using AqHaxCSGO.Objects;
 using static AqHaxCSGO.Objects.Globals;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace AqHaxCSGO
 {
@@ -102,20 +103,38 @@ namespace AqHaxCSGO
 
         private static IPAddress LocalIPAddress()
         {
-            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            if (!NetworkInterface.GetIsNetworkAvailable())
             {
                 return null;
             }
 
-            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                var addr = ni.GetIPProperties().GatewayAddresses.FirstOrDefault();
+                if (addr != null)
+                {
+                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || 
+                        ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                    {
+                        foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+                        {
+                            if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                            {
+                                return ip.Address;
+                            }
+                        }
+                    }
+                }
+            }
 
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
             return host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
         }
 
         public void ExecuteServer()
         {
             IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddr = LocalIPAddress();
+            IPAddress ipAddr = IPAddress.Any;
             IPEndPoint localEndPoint = new IPEndPoint(ipAddr, 8080);
 
             Socket listener = new Socket(ipAddr.AddressFamily,
@@ -330,36 +349,6 @@ namespace AqHaxCSGO
             {
                 this.materialLabel3.Text = text;
                 this.materialLabel3.ForeColor = color;
-            }
-        }
-
-        private void SetOfLabel(string text, Color color)
-        {
-            if (this.label1.InvokeRequired)
-            {
-                this.label1.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    this.label1.Text = text;
-                    this.label1.ForeColor = color;
-                });
-            }
-            else
-            {
-                this.label1.Text = text;
-                this.label1.ForeColor = color;
-            }
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            if (Memory.Init())
-            {
-                SetOfLabel("CSGO Online", Color.Green);
-                IntPtr temp = AqHaxCSGO.Objects.Structs.Misc.handle;
-            }
-            else
-            {
-                SetOfLabel("CSGO Offline", Color.Red);
             }
         }
 
