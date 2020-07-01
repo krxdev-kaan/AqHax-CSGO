@@ -105,6 +105,7 @@ namespace AqHaxCSGO.Objects
         public static bool WallHackGlowOnly = false;
         public static Color WallHackEnemy = Color.Red;
         public static Color WallHackTeammate = Color.Green;
+        public static float FullBloomAmount = 1.0f;
 
         public static bool RenderEnabled = false;
         public static bool RenderEnemyOnly = false;

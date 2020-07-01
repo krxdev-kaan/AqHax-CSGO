@@ -14,10 +14,14 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using System.IO;
 using AqHaxCSGO.Objects;
+using System.Runtime.InteropServices;
 
-namespace AqHaxCSGO {
-    public partial class EntryForm : MaterialForm {
-        public EntryForm() {
+namespace AqHaxCSGO 
+{
+    public partial class EntryForm : MaterialForm 
+    {
+        public EntryForm() 
+        {
             InitializeComponent();
 
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -26,19 +30,26 @@ namespace AqHaxCSGO {
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Red900, Primary.Red600, Accent.Red200, TextShade.WHITE);
         }
 
-        private void EntryForm_Load(object sender, EventArgs e) {
+        private void EntryForm_Load(object sender, EventArgs e) 
+        {
         }
 
-        private void launcherButton_Click(object sender, EventArgs e) {
+        private void launcherButton_Click(object sender, EventArgs e) 
+        {
             Process.Start("steam://rungameid/730");
         }
 
-        private void initButton_Click(object sender, EventArgs e) {
-            if ((Process.GetProcessesByName("csgo").Length > 0)) {
+        private void initButton_Click(object sender, EventArgs e) 
+        {
+            if ((Process.GetProcessesByName("csgo").Length > 0)) 
+            {
                 this.Visible = false;
-                if (iosSelector.Checked) {
+                if (iosSelector.Checked) 
+                {
                     new TCPForm().Show();
-                } else {
+                } 
+                else 
+                {
                     new MainForm().Show();
                 }
             }

@@ -45,6 +45,7 @@ namespace AqHaxCSGO.Hacks
                         glowObject.b = Globals.WallHackEnemy.B / 255;
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
+                        glowObject.BloomAmount = Globals.FullBloomAmount;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
                         glowObject.m_bRenderWhenOccluded = true;
                         glowObject.m_bRenderWhenUnoccluded = false;
@@ -54,11 +55,12 @@ namespace AqHaxCSGO.Hacks
                     else
                     {
                         GlowObject glowObject = entityList[i].GlowObject;
-                        glowObject.r = 0 / 255;
-                        glowObject.g = 255 / 255;
-                        glowObject.b = 0 / 255;
+                        glowObject.r = Globals.WallHackTeammate.R / 255;
+                        glowObject.g = Globals.WallHackTeammate.G / 255;
+                        glowObject.b = Globals.WallHackTeammate.B / 255;
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
+                        glowObject.BloomAmount = Globals.FullBloomAmount;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
                         glowObject.m_bRenderWhenOccluded = true;
                         glowObject.m_bRenderWhenUnoccluded = false;
