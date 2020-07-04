@@ -110,6 +110,7 @@ namespace AqHaxCSGO.Objects
         public static bool RenderEnabled = false;
         public static bool RenderEnemyOnly = false;
         public static Color RenderColor = Color.Red;
+        public static int RenderBrightness = 1;
 
         public static bool RadarEnabled = false;
 

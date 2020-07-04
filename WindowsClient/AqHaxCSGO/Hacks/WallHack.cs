@@ -108,14 +108,17 @@ namespace AqHaxCSGO.Hacks
                         entity.RenderColor = rco;
                     }
 
-                    if (Globals.RenderEnemyOnly) continue;
+                    if (!Globals.RenderEnemyOnly) 
+                    {
+                        RenderColor rc = new RenderColor();
+                        rc.r = Globals.RenderColor.R;
+                        rc.g = Globals.RenderColor.G;
+                        rc.b = Globals.RenderColor.B;
+                        rc.a = 255;
+                        entity.RenderColor = rc;
+                    }
 
-                    RenderColor rc = new RenderColor();
-                    rc.r = Globals.RenderColor.R;
-                    rc.g = Globals.RenderColor.G;
-                    rc.b = Globals.RenderColor.B;
-                    rc.a = 255;
-                    entity.RenderColor = rc;
+                    EngineDLL.ModelAmbientIntensity = Globals.RenderBrightness;
                 }
 
                 Thread.Sleep(Globals.UsageDelay);

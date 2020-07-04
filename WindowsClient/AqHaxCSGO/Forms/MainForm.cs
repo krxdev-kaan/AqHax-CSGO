@@ -629,6 +629,11 @@ namespace AqHaxCSGO
         {
             Globals.FullBloomAmount = ((float)fullBloomSlider.Value) / 10;
         }
+
+        private void renderBrightnessSlider_Scroll(object sender, EventArgs e)
+        {
+            Globals.RenderBrightness = renderBrightnessSlider.Value;
+        }
         #endregion
 
         #region Some Shit For Loading State

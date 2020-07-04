@@ -153,16 +153,16 @@ namespace AqHaxCSGO.MemoryManagers
             //dwZoomSensitivityRatioPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 1A F3 0F 10 05 ? ? ? ? F3 0F 11 45 ? 8B 45 F4 35 ? ? ? ? 89 45 FC EB 0A 8B 01 8B 40 30 FF D0 D9 5D FC A1", 2, 0, true);
             dwbSendPackets = SigScanner.EngineSigScan("B3 01 8B 01 8B 40 10 FF D0 84 C0 74 0F 80 BF ? ? ? ? ? 0F 84", 0, 1, true);
             //dwppDirect3DDevice9 = SigScanner.ClientSigScan("A1 ? ? ? ? 50 8B 08 FF 51 0C", 1, 0, true);
-            /*m_pStudioHdr = SigScanner.ClientSigScan("8B B6 ? ? ? ? 85 F6 74 05 83 3E 00 75 02 33 F6 F3 0F 10 44 24", 2, 0, false);
-            m_yawClassPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 16 F3 0F 10 05 ? ? ? ? F3 0F 11 45 ? 81 75 ? ? ? ? ? EB 0A 8B 01 8B 40 30 FF D0 D9 5D 0C 8B 55 08", 2, 0, true);
-            m_pitchClassPtr = SigScanner.ClientSigScan("A1 ? ? ? ? 89 74 24 28", 1, 0, true);
-            interface_engine_cvar = SigScanner.ClientSigScan("8B 0D ? ? ? ? C7 05", 2, 0, true);
-            convar_name_hash_table = SigScanner.ClientSigScan("8B 3C 85", 3, 0, true);*/
-            m_bDormant = SigScanner.ClientSigScan("8A 81 ? ? ? ? C3 32 C0", 2, 8, false);
-            /*model_ambient_min = SigScanner.EngineSigScan("F3 0F 10 0D ? ? ? ? F3 0F 11 4C 24 ? 8B 44 24 20 35 ? ? ? ? 89 44 24 0C", 4, 0, true);
-            set_abs_angles = SigScanner.ClientSigScan("55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1 E8", 0, 0, true);
-            set_abs_origin = SigScanner.ClientSigScan("55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8", 0, 0, true);
-            is_c4_owner = SigScanner.ClientSigScan("56 8B F1 85 F6 74 31", 0, 0, true);*/
+            //m_pStudioHdr = SigScanner.ClientSigScan("8B B6 ? ? ? ? 85 F6 74 05 83 3E 00 75 02 33 F6 F3 0F 10 44 24", 2, 0, false);
+            //m_yawClassPtr = SigScanner.ClientSigScan("81 F9 ? ? ? ? 75 16 F3 0F 10 05 ? ? ? ? F3 0F 11 45 ? 81 75 ? ? ? ? ? EB 0A 8B 01 8B 40 30 FF D0 D9 5D 0C 8B 55 08", 2, 0, true);
+            //m_pitchClassPtr = SigScanner.ClientSigScan("A1 ? ? ? ? 89 74 24 28", 1, 0, true);
+            //interface_engine_cvar = SigScanner.ClientSigScan("8B 0D ? ? ? ? C7 05", 2, 0, true);
+            //convar_name_hash_table = SigScanner.ClientSigScan("8B 3C 85", 3, 0, true);*/
+            //m_bDormant = SigScanner.ClientSigScan("8A 81 ? ? ? ? C3 32 C0", 2, 8, false);
+            model_ambient_min = SigScanner.EngineSigScan("F3 0F 10 0D ? ? ? ? F3 0F 11 4C 24 ? 8B 44 24 20 35 ? ? ? ? 89 44 24 0C", 4, 0, true);
+            //set_abs_angles = SigScanner.ClientSigScan("55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1 E8", 0, 0, true);
+            //set_abs_origin = SigScanner.ClientSigScan("55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8", 0, 0, true);
+            //is_c4_owner = SigScanner.ClientSigScan("56 8B F1 85 F6 74 31", 0, 0, true);*/
             force_update_spectator_glow = SigScanner.ClientSigScan("74 07 8B CB E8 ? ? ? ? 83 C7 10", 0, 0, true);
             //dwClientCmd = SigScanner.EngineSigScan("55 8B EC 8B 0D ? ? ? ? 81 F9 ? ? ? ? 75 0C A1 ? ? ? ? 35 ? ? ? ? EB 05 8B 01 FF 50 34 50", 0, 0, true);
             //Console.WriteLine(dwClientCmd);

@@ -30,6 +30,7 @@ EDIT: Project has reached it's initial release you can go ahead and download :)
   - [ ] BSP Parsing would be pretty cool to achieve but im not pretty sure if i can do it.
   - [x] Aimbot with some customization.
   - [x] WallHack with some customization.
+  - [x] Custom Render Color Brightness
   - [ ] ESP and HealthBar (will include player name, rank, gun, etc.)
   - [x] Bunny-Hop
   - [x] Anti-Flash

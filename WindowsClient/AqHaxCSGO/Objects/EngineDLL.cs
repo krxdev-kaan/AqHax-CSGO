@@ -58,6 +58,21 @@ namespace AqHaxCSGO.Objects
             }
         }
 
+        public static float ModelAmbientIntensity 
+        {
+            get 
+            {
+                return Memory.Read<int>(Memory.engineBase + model_ambient_min);
+            }
+            set 
+            {
+                int ptr = Memory.Read<int>(Memory.engineBase + model_ambient_min - 0x2C);
+                int convertedBrightness = BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
+                int xored = convertedBrightness ^ ptr;
+                Memory.Write<int>(Memory.engineBase + model_ambient_min, xored);
+            }
+        }
+
         public static int GetModelIndexByName(string modelName)
         {
             int modelPrecacheTable = Memory.Read<int>(ClientStatePtr + dwClientState_ModelPrecacheTable);
