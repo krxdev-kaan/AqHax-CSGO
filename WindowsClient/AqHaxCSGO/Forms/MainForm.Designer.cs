@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabController = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
+            this.renderBrightnessSlider = new System.Windows.Forms.TrackBar();
             this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
             this.fullBloomSlider = new System.Windows.Forms.TrackBar();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -97,10 +99,9 @@
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
-            this.renderBrightnessSlider = new System.Windows.Forms.TrackBar();
             this.tabController.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.renderBrightnessSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fullBloomSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tColor)).BeginInit();
@@ -114,7 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.usagePowerSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunnySlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.idlePowerSlider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.renderBrightnessSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // tabController
@@ -128,7 +128,7 @@
             this.tabController.Depth = 0;
             this.tabController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabController.Location = new System.Drawing.Point(0, 121);
-            this.tabController.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabController.Margin = new System.Windows.Forms.Padding(6);
             this.tabController.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabController.Name = "tabController";
             this.tabController.SelectedIndex = 0;
@@ -156,13 +156,40 @@
             this.tabPage1.Controls.Add(this.radarCheckBox);
             this.tabPage1.Controls.Add(this.wallCheckBox);
             this.tabPage1.Location = new System.Drawing.Point(8, 39);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
             this.tabPage1.Size = new System.Drawing.Size(1150, 499);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Visuals";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel22
+            // 
+            this.materialLabel22.AutoSize = true;
+            this.materialLabel22.Depth = 0;
+            this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel22.Location = new System.Drawing.Point(654, 359);
+            this.materialLabel22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel22.Name = "materialLabel22";
+            this.materialLabel22.Size = new System.Drawing.Size(261, 37);
+            this.materialLabel22.TabIndex = 54;
+            this.materialLabel22.Text = "Render Brightness";
+            // 
+            // renderBrightnessSlider
+            // 
+            this.renderBrightnessSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.renderBrightnessSlider.Location = new System.Drawing.Point(592, 411);
+            this.renderBrightnessSlider.Margin = new System.Windows.Forms.Padding(6);
+            this.renderBrightnessSlider.Maximum = 8;
+            this.renderBrightnessSlider.Minimum = 1;
+            this.renderBrightnessSlider.Name = "renderBrightnessSlider";
+            this.renderBrightnessSlider.Size = new System.Drawing.Size(370, 90);
+            this.renderBrightnessSlider.TabIndex = 53;
+            this.renderBrightnessSlider.Value = 1;
+            this.renderBrightnessSlider.Scroll += new System.EventHandler(this.renderBrightnessSlider_Scroll);
             // 
             // materialLabel21
             // 
@@ -182,7 +209,7 @@
             // 
             this.fullBloomSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.fullBloomSlider.Location = new System.Drawing.Point(592, 85);
-            this.fullBloomSlider.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fullBloomSlider.Margin = new System.Windows.Forms.Padding(6);
             this.fullBloomSlider.Minimum = 1;
             this.fullBloomSlider.Name = "fullBloomSlider";
             this.fullBloomSlider.Size = new System.Drawing.Size(370, 90);
@@ -208,7 +235,7 @@
             // 
             this.rColor.BackColor = System.Drawing.Color.Red;
             this.rColor.Location = new System.Drawing.Point(1096, 387);
-            this.rColor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.rColor.Margin = new System.Windows.Forms.Padding(6);
             this.rColor.Name = "rColor";
             this.rColor.Size = new System.Drawing.Size(42, 40);
             this.rColor.TabIndex = 12;
@@ -247,7 +274,7 @@
             // 
             this.tColor.BackColor = System.Drawing.Color.Chartreuse;
             this.tColor.Location = new System.Drawing.Point(1096, 92);
-            this.tColor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tColor.Margin = new System.Windows.Forms.Padding(6);
             this.tColor.Name = "tColor";
             this.tColor.Size = new System.Drawing.Size(42, 40);
             this.tColor.TabIndex = 9;
@@ -258,7 +285,7 @@
             // 
             this.ctColor.BackColor = System.Drawing.Color.Red;
             this.ctColor.Location = new System.Drawing.Point(1096, 23);
-            this.ctColor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ctColor.Margin = new System.Windows.Forms.Padding(6);
             this.ctColor.Name = "ctColor";
             this.ctColor.Size = new System.Drawing.Size(42, 40);
             this.ctColor.TabIndex = 8;
@@ -270,7 +297,7 @@
             this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider3.Depth = 0;
             this.materialDivider3.Location = new System.Drawing.Point(0, 296);
-            this.materialDivider3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider3.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider3.Name = "materialDivider3";
             this.materialDivider3.Size = new System.Drawing.Size(1176, 44);
@@ -282,7 +309,7 @@
             this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider2.Depth = 0;
             this.materialDivider2.Location = new System.Drawing.Point(0, 183);
-            this.materialDivider2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider2.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
             this.materialDivider2.Size = new System.Drawing.Size(1176, 44);
@@ -414,7 +441,7 @@
             this.tabPage2.Controls.Add(this.shootOnCollideCheckBox);
             this.tabPage2.Controls.Add(this.aimCheckBox);
             this.tabPage2.Location = new System.Drawing.Point(8, 39);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(1150, 499);
             this.tabPage2.TabIndex = 1;
@@ -445,7 +472,7 @@
             this.materialDivider5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider5.Depth = 0;
             this.materialDivider5.Location = new System.Drawing.Point(6, 356);
-            this.materialDivider5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider5.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider5.Name = "materialDivider5";
             this.materialDivider5.Size = new System.Drawing.Size(1174, 44);
@@ -495,7 +522,7 @@
             this.materialDivider4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider4.Depth = 0;
             this.materialDivider4.Location = new System.Drawing.Point(-14, 185);
-            this.materialDivider4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider4.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider4.Name = "materialDivider4";
             this.materialDivider4.Size = new System.Drawing.Size(1194, 44);
@@ -565,7 +592,7 @@
             this.tabPage3.Controls.Add(this.antiFlashCheckBox);
             this.tabPage3.Controls.Add(this.materialDivider6);
             this.tabPage3.Location = new System.Drawing.Point(8, 39);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1150, 499);
             this.tabPage3.TabIndex = 2;
@@ -615,7 +642,7 @@
             this.materialDivider6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider6.Depth = 0;
             this.materialDivider6.Location = new System.Drawing.Point(-8, 206);
-            this.materialDivider6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialDivider6.Margin = new System.Windows.Forms.Padding(6);
             this.materialDivider6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider6.Name = "materialDivider6";
             this.materialDivider6.Size = new System.Drawing.Size(1188, 44);
@@ -642,7 +669,7 @@
             this.tabPage4.Controls.Add(this.skinChangerButton);
             this.tabPage4.Controls.Add(this.knifeChangerButton);
             this.tabPage4.Location = new System.Drawing.Point(8, 39);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1150, 499);
             this.tabPage4.TabIndex = 3;
@@ -688,7 +715,7 @@
             this.knifeSelectionBox.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.knifeSelectionBox.FormattingEnabled = true;
             this.knifeSelectionBox.Location = new System.Drawing.Point(136, 406);
-            this.knifeSelectionBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.knifeSelectionBox.Margin = new System.Windows.Forms.Padding(6);
             this.knifeSelectionBox.Name = "knifeSelectionBox";
             this.knifeSelectionBox.Size = new System.Drawing.Size(366, 33);
             this.knifeSelectionBox.TabIndex = 50;
@@ -696,7 +723,7 @@
             // seedTextBox
             // 
             this.seedTextBox.Location = new System.Drawing.Point(136, 181);
-            this.seedTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.seedTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.seedTextBox.Name = "seedTextBox";
             this.seedTextBox.Size = new System.Drawing.Size(366, 31);
             this.seedTextBox.TabIndex = 49;
@@ -707,7 +734,7 @@
             this.skinSaveButton.Depth = 0;
             this.skinSaveButton.ForeColor = System.Drawing.Color.Transparent;
             this.skinSaveButton.Location = new System.Drawing.Point(866, 77);
-            this.skinSaveButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.skinSaveButton.Margin = new System.Windows.Forms.Padding(6);
             this.skinSaveButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.skinSaveButton.Name = "skinSaveButton";
             this.skinSaveButton.Primary = true;
@@ -734,11 +761,12 @@
             this.manualLoadButton.TabIndex = 47;
             this.manualLoadButton.Text = "Manual Reload";
             this.manualLoadButton.UseVisualStyleBackColor = false;
+            this.manualLoadButton.CheckedChanged += new System.EventHandler(this.manualLoadButton_CheckedChanged);
             // 
             // tagTextBox
             // 
             this.tagTextBox.Location = new System.Drawing.Point(136, 252);
-            this.tagTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tagTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.tagTextBox.Name = "tagTextBox";
             this.tagTextBox.Size = new System.Drawing.Size(366, 31);
             this.tagTextBox.TabIndex = 46;
@@ -761,7 +789,7 @@
             // 
             this.wearSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.wearSlider.Location = new System.Drawing.Point(136, 319);
-            this.wearSlider.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.wearSlider.Margin = new System.Windows.Forms.Padding(6);
             this.wearSlider.Maximum = 95;
             this.wearSlider.Minimum = 1;
             this.wearSlider.Name = "wearSlider";
@@ -818,7 +846,7 @@
             this.skinSelector.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.skinSelector.FormattingEnabled = true;
             this.skinSelector.Location = new System.Drawing.Point(136, 112);
-            this.skinSelector.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.skinSelector.Margin = new System.Windows.Forms.Padding(6);
             this.skinSelector.Name = "skinSelector";
             this.skinSelector.Size = new System.Drawing.Size(366, 33);
             this.skinSelector.TabIndex = 40;
@@ -844,7 +872,7 @@
             this.weaponSelector.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.weaponSelector.FormattingEnabled = true;
             this.weaponSelector.Location = new System.Drawing.Point(136, 44);
-            this.weaponSelector.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.weaponSelector.Margin = new System.Windows.Forms.Padding(6);
             this.weaponSelector.Name = "weaponSelector";
             this.weaponSelector.Size = new System.Drawing.Size(366, 33);
             this.weaponSelector.TabIndex = 38;
@@ -866,6 +894,7 @@
             this.skinChangerButton.TabIndex = 37;
             this.skinChangerButton.Text = "Skin-Changer";
             this.skinChangerButton.UseVisualStyleBackColor = false;
+            this.skinChangerButton.CheckedChanged += new System.EventHandler(this.skinChangerButton_CheckedChanged);
             // 
             // knifeChangerButton
             // 
@@ -884,6 +913,7 @@
             this.knifeChangerButton.TabIndex = 36;
             this.knifeChangerButton.Text = "Knife Changer";
             this.knifeChangerButton.UseVisualStyleBackColor = false;
+            this.knifeChangerButton.CheckedChanged += new System.EventHandler(this.knifeChangerButton_CheckedChanged);
             // 
             // tabPage5
             // 
@@ -894,7 +924,7 @@
             this.tabPage5.Controls.Add(this.materialLabel18);
             this.tabPage5.Controls.Add(this.materialLabel17);
             this.tabPage5.Location = new System.Drawing.Point(8, 39);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1150, 499);
             this.tabPage5.TabIndex = 4;
@@ -997,7 +1027,7 @@
             this.tabPage6.Controls.Add(this.idlePowerSlider);
             this.tabPage6.Controls.Add(this.materialLabel5);
             this.tabPage6.Location = new System.Drawing.Point(8, 39);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(1150, 499);
             this.tabPage6.TabIndex = 5;
@@ -1024,7 +1054,7 @@
             this.keyButton.BackColor = System.Drawing.Color.Transparent;
             this.keyButton.Depth = 0;
             this.keyButton.Location = new System.Drawing.Point(74, 235);
-            this.keyButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.keyButton.Margin = new System.Windows.Forms.Padding(6);
             this.keyButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.keyButton.Name = "keyButton";
             this.keyButton.Primary = true;
@@ -1051,7 +1081,7 @@
             // 
             this.usagePowerSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.usagePowerSlider.Location = new System.Drawing.Point(372, 213);
-            this.usagePowerSlider.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.usagePowerSlider.Margin = new System.Windows.Forms.Padding(6);
             this.usagePowerSlider.Maximum = 4;
             this.usagePowerSlider.Name = "usagePowerSlider";
             this.usagePowerSlider.Size = new System.Drawing.Size(420, 90);
@@ -1076,7 +1106,7 @@
             // 
             this.bunnySlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.bunnySlider.Location = new System.Drawing.Point(372, 365);
-            this.bunnySlider.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.bunnySlider.Margin = new System.Windows.Forms.Padding(6);
             this.bunnySlider.Maximum = 4;
             this.bunnySlider.Name = "bunnySlider";
             this.bunnySlider.Size = new System.Drawing.Size(420, 90);
@@ -1101,7 +1131,7 @@
             // 
             this.idlePowerSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.idlePowerSlider.Location = new System.Drawing.Point(372, 63);
-            this.idlePowerSlider.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.idlePowerSlider.Margin = new System.Windows.Forms.Padding(6);
             this.idlePowerSlider.Maximum = 4;
             this.idlePowerSlider.Name = "idlePowerSlider";
             this.idlePowerSlider.Size = new System.Drawing.Size(420, 90);
@@ -1142,39 +1172,12 @@
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Dock = System.Windows.Forms.DockStyle.Top;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 48);
-            this.materialTabSelector1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.materialTabSelector1.Margin = new System.Windows.Forms.Padding(6);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(1166, 73);
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
-            // 
-            // materialLabel22
-            // 
-            this.materialLabel22.AutoSize = true;
-            this.materialLabel22.Depth = 0;
-            this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel22.Location = new System.Drawing.Point(654, 359);
-            this.materialLabel22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel22.Name = "materialLabel22";
-            this.materialLabel22.Size = new System.Drawing.Size(261, 37);
-            this.materialLabel22.TabIndex = 54;
-            this.materialLabel22.Text = "Render Brightness";
-            // 
-            // renderBrightnessSlider
-            // 
-            this.renderBrightnessSlider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.renderBrightnessSlider.Location = new System.Drawing.Point(592, 411);
-            this.renderBrightnessSlider.Margin = new System.Windows.Forms.Padding(6);
-            this.renderBrightnessSlider.Maximum = 8;
-            this.renderBrightnessSlider.Minimum = 1;
-            this.renderBrightnessSlider.Name = "renderBrightnessSlider";
-            this.renderBrightnessSlider.Size = new System.Drawing.Size(370, 90);
-            this.renderBrightnessSlider.TabIndex = 53;
-            this.renderBrightnessSlider.Value = 1;
-            this.renderBrightnessSlider.Scroll += new System.EventHandler(this.renderBrightnessSlider_Scroll);
             // 
             // MainForm
             // 
@@ -1186,7 +1189,7 @@
             this.Controls.Add(this.materialTabSelector1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(0, 48, 0, 0);
@@ -1198,6 +1201,7 @@
             this.tabController.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.renderBrightnessSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fullBloomSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tColor)).EndInit();
@@ -1216,7 +1220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.usagePowerSlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunnySlider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idlePowerSlider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.renderBrightnessSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
