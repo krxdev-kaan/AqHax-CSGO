@@ -152,11 +152,11 @@ namespace AqHaxCSGO.MemoryManagers
             WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, buffer.Length, out m_iNumberOfBytesWritten);
         }
 
-        public static void Write<T>(int Adress, byte Value, bool isByte)
+        public static void WriteByte<T>(int Adress, byte Value)
         {
-            byte[] buffer = StructureToByteArray(Value);
+            byte[] buffer = { Value };
 
-            WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, sizeof(byte), out m_iNumberOfBytesWritten);
+            WriteProcessMemory((int)m_pProcessHandle, Adress, buffer, 1, out m_iNumberOfBytesWritten);
         }
 
         public static void WriteProtectedMemory<T>(int Adress, object ob)
@@ -173,12 +173,6 @@ namespace AqHaxCSGO.MemoryManagers
                 if (VirtualProtectEx(m_pProcessHandle, (IntPtr)Adress, (UIntPtr)Value.Length, oldFlag, out nvm))
                 {
                 }
-                else
-                {
-                }
-            }
-            else
-            {
             }
         }
 

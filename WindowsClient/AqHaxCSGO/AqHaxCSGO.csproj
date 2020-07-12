@@ -119,6 +119,7 @@
     <Compile Include="Objects\Entity\CBaseEntity.cs" />
     <Compile Include="Misc\Globals.cs" />
     <Compile Include="Objects\Entity\CBasePlayer.cs" />
+    <Compile Include="Objects\Entity\CEnvTonemapController.cs" />
     <Compile Include="Objects\Managers\GlowObjectManager.cs" />
     <Compile Include="Objects\Structs\Angle.cs" />
     <Compile Include="Objects\Structs\ClassIDs.cs" />

@@ -132,6 +132,7 @@ namespace AqHaxCSGO.Objects
 
         public static bool AntiFlashEnabled = false;
         public static bool BunnyHopEnabled = false;
+        public static bool NightModeEnabled = true;
 
         public static bool SkinChangerEnabled = false;
         public static bool KnifeChangerEnabled = false;

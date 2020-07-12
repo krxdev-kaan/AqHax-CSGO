@@ -719,6 +719,7 @@
             this.knifeSelectionBox.Name = "knifeSelectionBox";
             this.knifeSelectionBox.Size = new System.Drawing.Size(366, 33);
             this.knifeSelectionBox.TabIndex = 50;
+            this.knifeSelectionBox.SelectedIndexChanged += new System.EventHandler(this.knifeSelectionBox_SelectedIndexChanged);
             // 
             // seedTextBox
             // 

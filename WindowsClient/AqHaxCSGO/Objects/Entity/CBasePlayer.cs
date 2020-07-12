@@ -47,6 +47,14 @@ namespace AqHaxCSGO.Objects
             }
         }
 
+        public static int TonemapControllerIndex
+        {
+            get 
+            {
+                return Memory.Read<int>(LocalPlayerPtr + m_hTonemapControllerIndex) & 0xFFF;
+            }
+        }
+
         public static Vector3 VectorOrigin
         {
             get

@@ -54,7 +54,7 @@ namespace AqHaxCSGO.Objects
             }
             set
             {
-                Memory.Write<byte>(Memory.engineBase + dwbSendPackets, value ? (byte)0x1 : (byte)0x0, true);
+                Memory.Write<byte>(Memory.engineBase + dwbSendPackets, value ? (byte)0x1 : (byte)0x0);
             }
         }
 
