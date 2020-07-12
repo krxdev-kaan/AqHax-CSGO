@@ -43,6 +43,8 @@ EDIT: Project has reached it's initial release you can go ahead and download :)
   - [ ] Glove Changer
   - [x] GlowObjectManager Reimplementation
   - [ ] Custom Entity Glow System
+  - [x] CEnvTonemapController Implementation
+  - [ ] Nightmode Implementation
   - [ ] Silent Aim (maybe)
   - [x] Signature Scanning
   - [x] Full Netvar Manager
