@@ -33,6 +33,7 @@ namespace AqHaxCSGO.Hacks
                     CBaseEntity baseEntity = entityList[i];
                     if (baseEntity == null) continue;
                     CCSPlayer entity = new CCSPlayer(baseEntity);
+
                     if (entity == null) continue;
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;

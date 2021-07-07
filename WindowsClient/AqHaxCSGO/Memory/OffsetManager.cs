@@ -117,7 +117,7 @@ namespace AqHaxCSGO.MemoryManagers
             dwClientState_MaxPlayer = SigScanner.EngineSigScan("A1 ? ? ? ? 8B 80 ? ? ? ? C3 CC CC CC CC 55 8B EC 8A 45 08", 7, 0, false);
             dwClientState_PlayerInfo = SigScanner.EngineSigScan("8B 89 ? ? ? ? 85 C9 0F 84 ? ? ? ? 8B 01", 2, 0, false);
             dwClientState_State = SigScanner.EngineSigScan("83 B8 ? ? ? ? ? 0F 94 C0 C3", 2, 0, false);
-            dwClientState_ViewAngles = SigScanner.EngineSigScan("F3 0F 11 80 ? ? ? ? D9 46 04 D9 05", 4, 0, false);
+            dwClientState_ViewAngles = SigScanner.EngineSigScan("F3 0F 11 80 ? ? ? ? F3 0F 10 44 24 38", 4, 0, false);
             dwClientState_ModelPrecacheTable = SigScanner.EngineSigScan("0C 3B 81 ? ? ? ? 75 11 8B 45 10 83 F8 01 7C 09 50 83", 3, 0, false);
             clientstate_delta_ticks = SigScanner.EngineSigScan("C7 87 ? ? ? ? ? ? ? ? FF 15 ? ? ? ? 83 C4 08", 2, 0, false);
             //clientstate_last_outgoing_command = SigScanner.EngineSigScan("8B 8F ? ? ? ? 8B 87 ? ? ? ? 41", 2, 0, false);
