@@ -677,6 +677,8 @@
 761: Copper Borre
 762: Red Stone
 763: Mjölnir
+764: Fennec Fox
+765: Desert Blossom
 775: Facility Sketch
 776: Facility Negative
 777: Facility Draft
@@ -720,6 +722,18 @@
 815: Danger Close
 816: Fubar
 817: Flashback
+818: Purple DDPAT
+819: Desert Hydra
+820: Music Box
+821: Elegant Vines
+822: Navy Sheen
+823: Sand Storm
+824: Drift Wood
+825: Drought
+826: Sienna Damask
+827: Humidor
+828: Verdant Growth
+829: Anolis
 835: Crypsis
 836: Uncharted
 837: Angry Mob
@@ -759,6 +773,8 @@
 871: Surfwood
 872: Bamboo Garden
 873: Seabird
+879: Fade
+880: Parched
 884: Embargo
 885: Rat Rod
 886: Arctic Wolf
@@ -794,6 +810,21 @@
 918: Sacrifice
 919: Commemoration
 920: Boroque Sand
+921: Gold Arabesque
+922: Orange Anolis
+923: Oxide Oasis
+924: Desert Brush
+925: Desert DDPAT
+926: Red DDPAT
+927: Spalted Wood
+928: Black & Tan
+929: Quick Sand
+930: New Roots
+931: Old Roots
+932: Withered Vine
+933: Midnight Palm
+934: Bleached
+935: Prey
 941: Phantom Disruptor
 942: Tom Cat
 943: Capillary
@@ -811,6 +842,184 @@
 955: Darkwing
 956: Fever Dream
 957: Bullet Queen
+958: Ultralight
+959: Legion of Anubis
+960: Gnarled
+961: Monster Call
+962: Printstream
+963: Vogue
+964: Brother
+965: Allure
+966: Ol' Rusty
+967: Mainframe 001
+968: Cassette
+969: Freight
+970: Entombed
+971: Tooth Fairy
+972: Connexion
+973: Runic
+974: Kitbash
+975: Exoskeleton
+976: Vendetta
+977: Cocoa Rampage
+978: Dezastre
+979: Fairy Tale
+980: Digital Mesh
+981: Vandal
+982: Contaminant
+983: Deep Relief
+984: Printstream
+985: Cyber Security
+986: Condition Zero
+987: Clear Polymer
+988: Neo-Noir
+989: Parallax
+990: Gold Bismuth
+991: Monster Mashup
+992: The Bronze
+993: Global Offensive
+994: Charter
+995: Surveillance
+996: Threat Detected
+997: Dispatch
+998: Switch Board
+999: Prime Conspiracy
+1000: Run and Hide
+1001: Welcome to the Jungle
+1002: Berries And Cherries
+1003: Crime Scene
+1004: X-Ray
+1005: Heist
+1006: Night Heist
+1007: Vault Heist
+1008: Houndstooth
+1009: Hot Snakes
+1010: Phoenix Chalk
+1011: Phoenix Marker
+1012: Phoenix Stencil
+1013: Phoenix Blacklight
+1014: Clay Ambush
+1015: Tiger Pit
+1016: Franklin
+1017: Blue Phosphor
+1018: Panthera onca
+1019: Panther Camo
+1020: Ancient Earth
+1021: Ancient Lore
+1022: Lush Ruins
+1023: Tall Grass
+1024: Blast From the Past
+1025: Gold Brick
+1026: Fade
+1027: Target Acquired
+1028: Magna Carta
+1029: Silk Tiger
+1030: Bengal Tiger
+1031: Ancient Visions
+1032: Dusk Ruins
+1033: Carved Jade
+1034: Ancient Ritual
+1035: Slate
+1036: Circaetus
+1037: Food Chain
+1038: Chromatic Aberration
+1039: Clear Polymer
+1040: The Traitor
+1041: In Living Color
+1042: O.S.I.P.R.
+1043: dev_texture
+1044: Cyber Shell
+1045: Button Masher
+1046: XOXO
+1047: Junk Yard
+1048: Heavy Metal
+1049: Oscillator
+1050: Trigger Discipline
+1051: Windblown
+1052: Death Strike
+1053: Meltdown
+1055: Space Race
+1056: Sputnik
+1058: POP AWP
+1059: Fizzy POP
+1060: Spring Twilly
+1061: Autumn Twilly
+1063: The Coalition
+1064: Syndicate
+1065: Whiteout
+1066: Faulty Wiring
+1067: Propaganda
+1070: Green Laminate
+1071: CAUTION!
+1072: Prism Terrace
+1073: Imminent Danger
+1074: Schematic
+1075: Strats
+1076: Framework
+1077: Interlock
+1078: Blue Tire
+1079: Red Tire
+1080: Infrastructure
+1081: Digital Architect
+1082: Fall Hazard
+1083: Breaker Box
+1084: Hazard Pay
+1085: Mechanism
+1086: Oil Change
+1087: Leet Museo
+1088: Plague
+1089: BI83 Spectrum
+1090: Ocean Drive
+1091: Tread
+1092: ZX Spectron
+1093: Boost Protocol
+1094: Mount Fuji
+1095: Keeping Tabs
+1096: Guerrilla
+1097: Spider Lily
+1098: Toybox
+1099: Lumen
+1100: Snack Attack
+1101: Turbo Peek
+1102: Black Lotus
+1103: Watchdog
+1104: Lore
+1105: Lore
+1106: Lore
+1107: Lore
+1108: Lore
+1109: Black Laminate
+1110: Black Laminate
+1111: Black Laminate
+1112: Black Laminate
+1113: Black Laminate
+1114: Autotronic
+1115: Autotronic
+1116: Autotronic
+1117: Autotronic
+1118: Autotronic
+1119: Gamma Doppler
+1120: Gamma Doppler
+1121: Gamma Doppler
+1122: Gamma Doppler
+1123: Gamma Doppler
+1125: Space Cat
+1126: Melondrama
+1127: Rapid Eye Movement
+1128: Scrawl
+1129: Dream Glade
+1130: Night Terror
+1131: Ensnared
+1132: Foresight
+1133: Abyssal Apparition
+1134: Starlight Protector
+1135: Zombie Offensive
+1136: Ticket to Hell
+1137: Necro Jr.
+1138: Lifted Spirits
+1139: Poultrygeist
+1140: Spirit Board
+1141: Nightwish
 10006: Charred
 10007: Snakebite
 10008: Bronzed
@@ -859,3 +1068,27 @@
 10062: Buckshot
 10063: Fade
 10064: Mogul
+10065: Marble Fade
+10066: Lt. Commander
+10067: Tiger Strike
+10068: Field Agent
+10069: Rezan the Red
+10070: Snow Leopard
+10071: Queen Jaguar
+10072: Black Tie
+10073: Slingshot
+10074: Big Game
+10075: Scarlet Shamagh
+10076: Nocts
+10077: Finish Line
+10078: Smoke Out
+10079: Blood Pressure
+10080: 3rd Commando Company
+10081: Desert Shamagh
+10082: Giraffe
+10083: Constrictor
+10084: CAUTION!
+10085: Jade
+10086: Yellow-banded
+10087: Needle Point
+10088: Unhinged

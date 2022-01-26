@@ -1049,6 +1049,7 @@
             this.saveButton.TabIndex = 44;
             this.saveButton.Text = "Apply & Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // keyButton
             // 
@@ -1063,6 +1064,7 @@
             this.keyButton.TabIndex = 43;
             this.keyButton.Text = "Press";
             this.keyButton.UseVisualStyleBackColor = false;
+            this.keyButton.Click += new System.EventHandler(this.keyButton_Click);
             // 
             // materialLabel10
             // 
