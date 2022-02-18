@@ -150,7 +150,6 @@
             this.MaximizeBox = false;
             this.Name = "EntryForm";
             this.Sizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.EntryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
